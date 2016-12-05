@@ -1,0 +1,8 @@
+excerpt_separator: ""
+pygments: true
+markdown: kramdown
+url: http://pkritiotis.github.io
+title: in awe with code
+tagline: code bits here and there
+description: blog example
+paginate: 5
