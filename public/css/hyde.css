@@ -59,6 +59,12 @@ html {
   color: rgba(255,255,255,.5);
   background-color: #202020;
 }
+
+.sidebar img{
+  margin: auto;
+  margin-bottom:1.1rem;
+}
+
 @media (min-width: 48rem) {
   .sidebar {
     position: fixed;
@@ -79,8 +85,8 @@ html {
 .sidebar-about h1 {
   color: #fff;
   margin-top: 0;
-  font-family: "Abril Fatface", serif;
-  font-size: 3.25rem;
+  font-family: "PT Sans", serif;
+  font-size: 2.25rem;
 }
 
 /* Sidebar nav */
