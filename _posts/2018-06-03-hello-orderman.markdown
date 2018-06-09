@@ -8,7 +8,7 @@ Oh yes, a new side project
 
 ## Project OrderMan
 
-OrderMan project is an order management system using based on [Microservices](https://en.wikipedia.org/wiki/Microservices) architecture and built on [.Net Core](https://docs.microsoft.com/en-us/dotnet/core/) on the backend and [Angular](https://angular.io/) on the front-end
+OrderMan project is an order management system based on [Microservices](https://en.wikipedia.org/wiki/Microservices) architecture and built on [.Net Core](https://docs.microsoft.com/en-us/dotnet/core/) on the backend and [Angular](https://angular.io/) on the front-end
 
 ## Goal
 Coming from a .NET Framework background working with C# and .NET and having a basic understanding of .Net Core, Angular and the concept of microservices, this is a side project which will give me the opportunity to get practical experience on these technologies.
