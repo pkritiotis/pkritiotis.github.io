@@ -1,6 +1,7 @@
 excerpt_separator: ""
-pygments: true
+highlighter: rouge
 markdown: kramdown
+plugins: [jekyll-paginate]
 url: http://pkritiotis.github.io
 title: in awe of code
 tagline: Software bits and pieces
