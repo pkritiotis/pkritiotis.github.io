@@ -3,7 +3,7 @@ highlighter: rouge
 markdown: kramdown
 plugins: [jekyll-paginate]
 url: http://pkritiotis.github.io
-title: in awe of code
+title: Code Decoded
 tagline: Software bits and pieces
 description: Software bits and pieces
 paginate: 5
