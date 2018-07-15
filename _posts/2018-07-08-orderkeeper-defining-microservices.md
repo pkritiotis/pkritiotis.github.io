@@ -2,7 +2,7 @@
 published: true
 title: Orderman - Defining microservices
 layout: post
-categories: orderman microservices architecture
+categories: orderkeeper microservices architecture
 ---
 
 One of the first challenges when using a microservices architecture is analysing the business domain of the system to be implemented and identifying which features/operations could be identified as separate microservices.
@@ -13,9 +13,9 @@ One of the first challenges when using a microservices architecture is analysing
 * Enable consistency between microservices (when sharing common identities)
 * Find balance between fully decoupled microservices and performance
 
-## OrderMan microservices
+## OrderKeeper microservices
 
-![microservices]({{ "/assets/orderman_microservices_high_level.png" | absolute_url }})
+![microservices]({{ "/assets/orderkeeper_microservices_high_level.png" | absolute_url }})
 
 ### Customer Management
 This microservice will be reponsible for customer management in terms of maintaining details of customers, and will be the service responsible to acquire/modify/add/delete customer details

@@ -1,22 +1,22 @@
 ---
 published: true
-title: Hello OrderMan
+title: Hello OrderKeeper
 layout: post
-categories: orderman microservices architecture
+categories: orderkeeper microservices architecture
 ---
 
 Oh yes, a new side project
 
-## Project OrderMan
+## Project OrderKeeper
 
-OrderMan project is an order management system based on [Microservices](https://en.wikipedia.org/wiki/Microservices) architecture and built on [.Net Core](https://docs.microsoft.com/en-us/dotnet/core/) on the backend and [Angular](https://angular.io/) on the front-end
+OrderKeeper project is an order management system based on [Microservices](https://en.wikipedia.org/wiki/Microservices) architecture and built on [.Net Core](https://docs.microsoft.com/en-us/dotnet/core/) on the backend and [Angular](https://angular.io/) on the front-end
 
 ## Goal
 Coming from a .NET Framework background working with C# and .NET and having a basic understanding of .Net Core, Angular and the concept of microservices, this is a side project which will give me the opportunity to get practical experience on these technologies.
 
 Through the course of this project I will be posting bits and pieces of software challenges that I have stumbled across and things that I find interesting
 
-## Why OrderMan
+## Why OrderKeeper
 This is a project that combines a variety of features and multiple separate modules that would need to interact and coordinated in a flexible way to provide a seamless system operation. This will require  good architecture design and good development practices to ensure that the system is maintainable and offers a good level of extensibility and scalability.
 
 ## Requirements
