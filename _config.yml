@@ -1,7 +1,7 @@
 excerpt_separator: ""
 highlighter: rouge
 markdown: kramdown
-plugins: [jekyll-paginate]
+plugins: [jekyll-paginate, jekyll-seo-tag]
 url: http://pkritiotis.github.io
 title: Code Decoded
 tagline: Software bits and pieces
