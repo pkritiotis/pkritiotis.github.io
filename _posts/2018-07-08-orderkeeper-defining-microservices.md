@@ -1,6 +1,6 @@
 ---
 published: true
-title: Orderman - Defining microservices
+title: OrderKeeper - Defining microservices
 layout: post
 categories: orderkeeper microservices architecture
 ---
@@ -30,7 +30,7 @@ This service will be the repository and access point of products, both sales and
 This is responsible to hold all supplier data. This could be merged with customer management module since we are essentially exposing the same operation on a different 'type' of data. 
 
 
-The above solution is just a first try to break the Orderman System into microservices. This might not be the best approach but it is something to begin with. As this project progresses, changes might appear and applied through refactoring. 
+The above solution is just a first try to break the OrderKeeper System into microservices. This might not be the best approach but it is something to begin with. As this project progresses, changes might appear and applied through refactoring. 
 
 This is a learning process and I can see the challenges already at this first stage of identifying the microservices, and this is a great exercise to find out at a later stage, what might be wrong in this initial thought process and how to avoid it  
 
