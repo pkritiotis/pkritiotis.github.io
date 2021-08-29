@@ -1,0 +1,36 @@
+{
+    "grammarly.overrides": [
+        {
+            "files": [
+                "**/_posts/2021-08-10-clean-architecture-golang.markdown"
+            ],
+            "config": {
+                "audience": "knowledgeable",
+                "dialect": "american",
+                "domain": "technical",
+                "emotions": [
+                    "confident",
+                    "joyful",
+                    "optimistic",
+                    "friendly",
+                    "analytical"
+                ],
+                "goals": [
+                    "inform",
+                    "describe"
+                ]
+            }
+        }
+    ],
+    "cSpell.enableFiletypes": [
+        "markdown"
+    ],
+    "spellright.language": [
+        "en"
+    ],
+    "spellright.documentTypes": [
+        "markdown",
+        "latex",
+        "plaintext"
+    ]
+}
