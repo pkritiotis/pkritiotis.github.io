@@ -16,8 +16,8 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 
 # Site Settings
 locale                   : "en-US"
-title                    : "pkritiotis | Software Engineering bits and pieces"
-title_separator          : ""
+title                    : "pkritiotis | Software Engineering"
+title_separator          : "|"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Panayiotis Kritiotis"
 description              : ""
@@ -26,7 +26,7 @@ baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "pkritiotis/pkritiotis.github.io" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : #https://avatars.githubusercontent.com/u/2086112?v=4 # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo                     : #https://avatars.githubusercontent.com/u/2086112?v=4 # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
-masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
+masthead_title           :  # overrides the website title displayed in the masthead, use " " for no title
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
 comments:
@@ -71,7 +71,7 @@ google:
   search_engine_id       : # YOUR_SEARCH_ENGINE_ID
   instant_search         : # false (default), true
 # SEO Related
-google_site_verification :
+google_site_verification : "sYbskJpcA0p-e4l6nIwklXmWFa_vuz_D9Lirr1xPDak"
 bing_site_verification   :
 yandex_site_verification :
 naver_site_verification  :
