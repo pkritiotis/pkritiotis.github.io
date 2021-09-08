@@ -9,7 +9,7 @@ I'm **Panayiotis Kritiotis**.
 
 I work as an **Engineering Manager/Technical Lead** @ **[Beat](https://thebeat.co/)**.
 
-During my work day, I build **high-performance, large-scale, distributed web applications**.
+I am interested in building **high-performance, large-scale, distributed web applications**.
 
 I am fascinated by **software design patterns**, **clean code**, **architecture design**, and the human factors in **software engineering**.
 

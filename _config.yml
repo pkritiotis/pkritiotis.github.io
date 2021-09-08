@@ -131,7 +131,7 @@ footer:
   links:
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
-      url: twitter.com/pkritiotis
+      url: "https://twitter.com/pkritiotis"
     - label: "Facebook"
       icon: "fab fa-fw fa-facebook-square"
       # url:
