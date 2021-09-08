@@ -48,6 +48,9 @@ $base0d: #6a41ff;
 $base0e: #00dbf8;
 $base0f: #ff5370;
 
+em{
+  color: rgb(43, 42, 42);
+}
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
