@@ -40,7 +40,7 @@ These two features give the flexibility to design functions with different signa
 
 In the following sections, we explore recommended and non-recommended signatures of 'Find Functions'.
 
-# The value, ok idiom
+# The value, error idiom
 Firstly, let's introduce an idiom that is commonly found in Go.
 
 In Go, functions that return a value with a possibility of an error have the following signature:
@@ -61,7 +61,7 @@ This design is often referred to as the *'value error'* idiom.
 
 # **Pattern to avoid #1:** Indicate absence by returning a zero value
 
-*Why don't we use the value, ok idiom and return a zero value if the value is not found?*
+*Why don't we use the value, error idiom and return a zero value if the value is not found?*
 
 Here is an example of how this would look like:
 
