@@ -57,27 +57,29 @@ That's it. Very simple but very powerful at the same time. Let's explore the imp
 
 # Implementation
 
-While the outbox pattern is simple as a concept, its implementation can become considerably complicated depending on the requirements.
+While the outbox pattern is simple as a concept, its implementation can become considerably complicated.
+
+## Outbox Pattern Implementation Requirements
+An outbox implementation includes some mandatory and some optional requirements depending on the targeted system.
+
+**Mandatory:**\
+1. Retrial policy
+  - The main purpose of the outbox pattern is to ensure message delivery reliability. While the database transaction guarantee atomicity in local and message storage operations we also need to ensure that the message is delivered successfully as well.
+  - A typical retrial policy will include 
+    - maximum number of attempts ( how many times should the dispatcher attempt to delivere the message before it gives up)
+    - time between attempts ( how much time should the dispatcher wait between attempts )
+    - maximum total duration of retrials ( from the time that we received the message request, how long does it make sense to retry sending the message )
+2. Retention policy
+  - Messages are stored for reliability purposes, not for auditing purposes. For this reason, we need to ensure that we don't leave the outbox table expanding forever and never delete any records
+  - A typical retention policy includes a time to keep the records in the database
+
+**Optional**\
+1. Order of messages
+  - While a strict order of message delivery might be required in some cases, there are some systems that do not have this requirement
+2. Concurrent delivery of messages
+  - This of course depends on the order of messages requirement. If it is not needed the solution can be parallelized to reduce the delivery time by delivering multiple messages at the same time
 
 In the following subsections we explore the implementation components of the outbox pattern and explain the challenges and approaches that we can follow depending on the requirements.
-
-## A detailed look into the flow
-Firstly, let's explore how the outbox works in more detail.
-The outbox implementation that we will be looking at will support:
-1. Retrials
-2. Retention
-3. 
-
-The flow would look like this:
-1. The service, as part of the transaction stores the encoded message to be sent in the outbox table in an `unprocessed` state
-2. A single instance dispatcher periodically checks for new entries by querying the `outbox` table for `unprocessed` entities
-3. For all unprocessed entries
-  1. The dispatcher decodes the message
-  2. Sends the message to the message broker
-  3. If the sending was successful, mark the message as `Processed`
-
-Let's take a look at the details of this implementation
-
 
 
 ## The `outbox` table schema
@@ -125,40 +127,74 @@ We have two main approaches that an implementation can follow:
 
 ## Dispatcher Implementation
 
-General:
- Specific Database vs Any Database
-  pros and cons
-  implementation complexity
- Specific Broker vs Any Broker
-  model
+The message dispatcher is the heart of the outbox pattern. The dispatcher is responsible to 
+1. Observe the outbox table for new messages
+2. Manage the outbox records lifecycle
+3. Deliver the messages to the message broker
+4. Handle error
+5. Respect the message retrial policy
 
-Observing Patterns:
-- scraping
-  - database features
-- polling
+### Message Observation
 
-## Error Handling
-errors errors errors
-  retrials
-  break or kill
-  discarded messages
-  notifications
+The message dispatcher has two main ways to 'observe' new messages
+1. Polling
+  - Periodically query the `outbox` table to find `Undelivered` messages
+  - Applicable for any database
+2. Transaction log tailing
+  - Continuously monitor the database transaction log for `oubox` table entries and directly triggre the processing once an entry appears
+  - Only applicable for databases that provide an interface to monitor transaction logs such as MySQL and Postgres
 
-## Concurrency
-distributed workers
-  only one instance
-    consensus
-    election
-  concurrency
+### Dispatcher Flow/Algorithm
 
-## Retention Policy
+The flow would look like this:
+1. The service, as part of the transaction stores the encoded message to be sent in the outbox table in an `Undelivered` state
+2. A single instance dispatcher periodically checks for new entries by querying the `outbox` table for `Undelivered` entities that meet the retrial policy rules
+3. For all unprocessed entries
+  1. The dispatcher decodes the message
+  2. Sends the message to the message broker
+  3. Increase the number of attempts, update the last attempt datetime and update the state
+     1. If the sending was successful, mark the message as `Delivered`
+     2. If it failed leave it as `Undelivered`
 
+### Message broker specific or generic
+
+Different message brokers might have different message data requirements and this is somethihng that should be considered when designing an outbox implementation.
+Fortunately most of them have typical requirements such as a message key, payload and headers and that's it. If we need more advanced features per message broker while also supporting multiple message broker provider, we need to provide an extensibility mechanism and the foundation for this to be supported. (Perhaps a generic `Message` interface that can be broker-specific)
+
+### Error handling
+While the main algorithm section provides a generic description of the flow we have some further decisions to make:
+- If a message delivery fails due to message broker unavailability and I have more in the queue should I try to process them?
+  - Probably not. We need to track errors and depending on the nature try later
+- If I try to save to the database and it is not reachable should I perhaps sleep for a bit?
+- What happens with discarded message that exceed retrial times? Should we notify someone about them?
+
+### Concurrency
+
+High availability is a requirement in distributed systems and this applies to the dispatcher too. While the above algorithm describes an environment where a single instance of a background worker is only running, it is very probable that we will have multiple instances running at the same time. 
+
+Although the message consumers, should be indepotent, we should not of course waste deliveries by having all dispatcher workers sending the same messages. 
+Here we have typical distributed system consensus challenges in which we should only allow one instance of a worker to process/deliver an `outbox` record.
+We have two ways we can approach these:
+1. Multiple instances deliver concurrently different records
+  - this approach does not maintain the order of messages which can be a mandatory requirements depending on the use case
+  - with this approach we need a *locking mechanism* in place
+    - An instance of a dispatcher locks the messages that it will process
+    - If the lock was successful then proceed with the delivery
+    - Once finished unlock the record
+  - the problem of locking can get quite complex when handling error scenarios, for example when an instance failed to unlock the message
+    - mechanisms need to be introduced to unlock stale messages periodically
+2. Only one instance - the leader - processes and delivers messages
+  - Guarantees the order of messages
+  - Requires a consensus stage in which all instances elect a leader]
+  - Can be complicated to implement
+
+## Retention Worker
+ In addition to the dispatcher, we also need a retention worker that will be running periodically deleting/archiving events older than X months. This can be part of the dispatcher's algorithm.
 
 ## Idempotency and Order of Messages
-
-## An outbox library - Generic Purpose or Specific RDBMS and Message Broker
-The first choice we have to make when implementing the outbox library is whether
 
 Notes:
 - The outbox pattern is usually accompanied with the Unit of Work pattern to support grouping business database operations with the message storage in on single transaction
 - The outbox pattern works with RDBMS since typically NoSQL databases don't support transactions
+
+Conclusion
