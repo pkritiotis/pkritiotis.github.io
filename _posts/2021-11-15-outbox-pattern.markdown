@@ -12,13 +12,13 @@ This article presents the outbox pattern, a communication/messaging pattern used
 
 # Introduction
 
-In the distributed services world, there are two ways to achieve inter-communication between two services; synchronously and asynchronously. Synchronously is most commonly achieved through HTTP calls while asynchronous communication is achieved through the exchange of events via a message broker. Event driven architectures focus on asynchronous communication since it can provide numerous benefits including scalability, decoupling, and processing time. However asynchronous communication introduces multiple challenges that have to be resolved to provide a robust system and one of them is the messaging delivery reliability.
+In the past few weeks as I have started experimenting with a generic implementation of the outbox pattern in go. I started this project as an opportunity to see how one can generically support multiple data providers and message brokers given the limitations of explicit interfaces and generics(not for long) in go. While the 'generic' factor is indeed a challenge, I was very impressed by the considerable complexity of the implementation of the outbox pattern especially when you compare it with the simplicity of the concept. Hence the motivation to write this article.
 
-In many scenarios services need to process a request in which they need to perform a local operation and publish a message to be consumed by subscribers. In this type of scenarios we usually need to ensure that both the local operations and the message delivery have succeeded. If one of them did not succeed then we should return to the initial state of the service  otherwise we may end in an inconsistent state in which local changes applied while external services never got notified.
+# Asynchronous Message Delivery Reliability in Distributed Systems
 
-The outbox patterns resolves this messaging reliability issue by tackling scenarios in which database operations and message delivery should be done atomically through the use of an RDBMS.
+In the distributed services world, there are two types of inter-communication; synchronous and asynchronous. Synchronous communication is most commonly achieved through HTTP calls. Asynchronous communication is achieved through the exchange of events via a message broker. Event driven architectures focus on asynchronous communication since it can provide numerous benefits including scalability, decoupling, and processing time. However, this asynchronous nature introduces multiple challenges that have to be resolved to provide a robust system. 
 
-# A detailed look into the problem
+One of these challenges is the **messaging delivery reliability**. We cannot be sure that at the time we need to deliver a message, that the message broker will be available to process the request. In some cases we need to perform a number of local operations and then notify external services by sending a message to the message broker. And we want to do this reliably.
 
 Let's look at an example of a typical scenario in a microservice:
 1. The service receives an entity-related request via a HTTP API
@@ -30,7 +30,7 @@ Let's look at an example of a typical scenario in a microservice:
 \- We can rollback the change we just applied on the database
 \- But what if the database is not available at that time? Or what if the program somehow crashes?
 
-Well, we end up in an inconsistent state. The datavase will have the entity changes stored, while the external subscribers will never get notified.
+Well, we end up in an inconsistent state. The database will have the entity changes stored, while the external subscribers will never get notified.
 
 How do we resolve this?
 -> Steps 2 and 3 have to be done in an *atomic* fashion. And this is where the outbox pattern comes to save us!
@@ -48,21 +48,22 @@ The outbox pattern consists of two main components
   This is a background worker that observes and publishes the entries of the `outbox` table to the designated message broker
 
 The flow:
-1. The request handler prepares and commits the business database operations and the message publishing operation in a single atomic database transaction. As part of this atomic transaction, the message to be delivered is stored in the `outbox` table
+1. When the service receives a request, the request handler prepares and commits the business database operations and the message publishing operation **in a single atomic database transaction**. As part of this atomic transaction, the message to be delivered is stored in the `outbox` table
   - If the transaction fails at this point, we notify the client that something went wrong. No harm here, neither the business database operations are stored nor the message is published.
-2. The `message dispatcher` **observes** the entries in the database, delivers unsent messages to the message broker and marks them as delivered.
+2. The `message dispatcher` **observes** the entries in the database, delivers the required messages to the message broker and marks them as delivered.
   - If the message delivery operation is not successful the dispatcher will retry later following a retrial policy
+
+
+The outbox pattern guarantees **at least once** delivery. This is because we can still have a failure after the message broker delivery, when the dispatcher tries to update the databse record. While this is a generally best practice, consumers of messages published by services that use the outbox pattern should definitely be idempotent. They should expect that they may receive the same message and should handle this without any issues.
 
 That's it. Very simple but very powerful at the same time. Let's explore the implementation details in the next section.
 
 # Implementation
 
 While the outbox pattern is simple as a concept, its implementation can become considerably complicated.
+Depending on the requirements of the system that needs the outbox pattern we have some mandatory and some optional requirements.
 
-## Outbox Pattern Implementation Requirements
-An outbox implementation includes some mandatory and some optional requirements depending on the targeted system.
-
-**Mandatory:**\
+**Mandatory Requirements**\
 1. Retrial policy
   - The main purpose of the outbox pattern is to ensure message delivery reliability. While the database transaction guarantee atomicity in local and message storage operations we also need to ensure that the message is delivered successfully as well.
   - A typical retrial policy will include 
@@ -73,7 +74,7 @@ An outbox implementation includes some mandatory and some optional requirements 
   - Messages are stored for reliability purposes, not for auditing purposes. For this reason, we need to ensure that we don't leave the outbox table expanding forever and never delete any records
   - A typical retention policy includes a time to keep the records in the database
 
-**Optional**\
+**Optional Requirements**\
 1. Order of messages
   - While a strict order of message delivery might be required in some cases, there are some systems that do not have this requirement
 2. Concurrent delivery of messages
@@ -97,9 +98,9 @@ The `outbox` table, at a bare minimum needs to hold:
 5. Delivery/Discard Datetime
 
 ### Message to be sent
-This column is mostly straightforward, we need to send some data to the message broker. 
+This column is mostly straightforward, it store the data that we need to send to the message broker. 
 The important thing to note here is that since the message to be sent can hold any type of data, the data should be serialized/encoded in a predefined way that is known to the message dispatcher.
-Depending on how generic we want the outbox implementation to be we could introduce different types of encoding that we can represent with another column that we can name `encoding_type`. The important thing is that the dispatcher should support deconding the message data.
+Depending on how generic we want the outbox implementation to be, we could introduce different types of encoding that we can represent with an additional column that we can name `encoding_type`. The important thing is that the dispatcher should support deconding the message data.
 
 ### State
 The `state` column is used to control the flow of the message.
@@ -110,7 +111,7 @@ It can also end up in a `Discarded` state if the message is discarded. This scen
 The `number of attempts` column is required to ensure that we have not exceeded the maximum retrial threshold. The `last attempt time` column is required to ensure that the maximum attempt duration is not exceeded either.
 
 ### Delivery/Discard Time
-This column is required for retention purposes. As the number of messages to be sent grows, we need to apply a retention policy which is based on time. Using this column we can , for example, periodically delete the 'completed' entries older than X months.
+This column is required for retention purposes. As the number of messages to be sent grows, we need to apply a retention policy which is based on time. Using this column we can , for example, periodically archive or delete the 'completed' entries older than X months.
 
 
 ## Storing Messages to the Outbox Table
@@ -125,14 +126,16 @@ We have two main approaches that an implementation can follow:
   - Can handle encoding and provide a generic message data model that can be applicable for any RDBMS and Message Broker Technology
   - Can be less efficient because of its generic nature
 
+For both of these approaches we can use the Unit of Work pattern. This will ensure that both business operations and the outbox pattern will be commited as a single unit.
+
 ## Dispatcher Implementation
 
 The message dispatcher is the heart of the outbox pattern. The dispatcher is responsible to 
 1. Observe the outbox table for new messages
 2. Manage the outbox records lifecycle
 3. Deliver the messages to the message broker
-4. Handle error
-5. Respect the message retrial policy
+4. Handle errors
+5. Apply the message retrial policy
 
 ### Message Observation
 
@@ -146,12 +149,12 @@ The message dispatcher has two main ways to 'observe' new messages
 
 ### Dispatcher Flow/Algorithm
 
-The flow would look like this:
+The flow looks like this:
 1. The service, as part of the transaction stores the encoded message to be sent in the outbox table in an `Undelivered` state
-2. A single instance dispatcher periodically checks for new entries by querying the `outbox` table for `Undelivered` entities that meet the retrial policy rules
+2. A single instance of the dispatcher periodically checks for new entries by querying the `outbox` table for `Undelivered` entities that meet the retrial policy rules
 3. For all unprocessed entries
-  1. The dispatcher decodes the message
-  2. Sends the message to the message broker
+  1. Decode the message
+  2. Send the message to the message broker
   3. Increase the number of attempts, update the last attempt datetime and update the state
      1. If the sending was successful, mark the message as `Delivered`
      2. If it failed leave it as `Undelivered`
@@ -159,22 +162,26 @@ The flow would look like this:
 ### Message broker specific or generic
 
 Different message brokers might have different message data requirements and this is somethihng that should be considered when designing an outbox implementation.
-Fortunately most of them have typical requirements such as a message key, payload and headers and that's it. If we need more advanced features per message broker while also supporting multiple message broker provider, we need to provide an extensibility mechanism and the foundation for this to be supported. (Perhaps a generic `Message` interface that can be broker-specific)
+Fortunately most of them have typical requirements such as a message **key**, **payload** and **headers** and that's it. If we need more advanced features per message broker while also supporting multiple message broker provider, we need to provide an extensibility mechanism and the foundation for this to be supported. A generic `Message` interface that can be broker-specific can do the job here.
 
 ### Error handling
-While the main algorithm section provides a generic description of the flow we have some further decisions to make:
+While the main algorithm section provides a generic description of the flow, it is not bulletproof. Since we have dependencies on the database provider and the message broker that are external services we need to account for possible failures.
 - If a message delivery fails due to message broker unavailability and I have more in the queue should I try to process them?
-  - Probably not. We need to track errors and depending on the nature try later
-- If I try to save to the database and it is not reachable should I perhaps sleep for a bit?
-- What happens with discarded message that exceed retrial times? Should we notify someone about them?
+  - Probably not. We need to track errors and depending on the error type (i.e. network) try later.
+- If I try to save to the database and it is not reachable how can I proceed?
+  - A solution would be to sleep for some brief duration and retry? The database is a crucial component to manage the state and therefore it doesn't make sense to proceed with other records if the database is not reachable.
+- What happens with discarded message that exceed retrial times?
+  - The dispatcher has tried to sent a message X times and failed. So it has discarded the message. Should we notify someone about these types of messages to take a closer look?
 
-### Concurrency
+These are scenarios that are not uncommon and it is important to determine how our impelmentation deals with them in each case.
 
-High availability is a requirement in distributed systems and this applies to the dispatcher too. While the above algorithm describes an environment where a single instance of a background worker is only running, it is very probable that we will have multiple instances running at the same time. 
+### Coordinating Multiple Dispatcher Instances
+
+High availability is a requirement in distributed systems and this applies to the dispatcher too. While the above algorithm describes an environment where a single instance of a background worker is only running, it is probable that we will have multiple instances running at the same time. 
 
 Although the message consumers, should be indepotent, we should not of course waste deliveries by having all dispatcher workers sending the same messages. 
-Here we have typical distributed system consensus challenges in which we should only allow one instance of a worker to process/deliver an `outbox` record.
-We have two ways we can approach these:
+In an environment that manages multiple instance of an outbox dispatcher, we have typical distributed system consensus challenges in which we should only allow one instance of a worker to process/deliver an `outbox` record.
+In these type of scenarios, we have two ways we can approach these:
 1. Multiple instances deliver concurrently different records
   - this approach does not maintain the order of messages which can be a mandatory requirements depending on the use case
   - with this approach we need a *locking mechanism* in place
@@ -189,12 +196,13 @@ We have two ways we can approach these:
   - Can be complicated to implement
 
 ## Retention Worker
- In addition to the dispatcher, we also need a retention worker that will be running periodically deleting/archiving events older than X months. This can be part of the dispatcher's algorithm.
+ In addition to the dispatcher, we also need a retention worker that will be running periodically deleting/archiving events older than X months. This can be part of the dispatcher's algorithm. 
 
-## Idempotency and Order of Messages
+ For the retention worker we could use a cronjob that executre periodically every x days.
 
-Notes:
-- The outbox pattern is usually accompanied with the Unit of Work pattern to support grouping business database operations with the message storage in on single transaction
-- The outbox pattern works with RDBMS since typically NoSQL databases don't support transactions
+# Conclusion
 
-Conclusion
+This is the outbox pattern, a very common pattern found in event-driven systems.
+As we have seen, it is a very powerful tool to ensure message delivery reliability when we need to group database operations and event delivery as a unit and commit them atomically.
+
+While simple as a concept it can be complicated to design and implement as there are a lot of edge cases and decisions to make that affect its performance and extensibility.
