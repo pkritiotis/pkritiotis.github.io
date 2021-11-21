@@ -1,14 +1,14 @@
 ---
 layout: single
 title:  "Outbox pattern - The why, the what, and the how"
-date:   2021-11-15 18:00:00 +0300
+date:   2021-11-25 18:00:00 +0300
 tags: golang software-patterns
 header:
-  image: assets/images/outbox.png
+  image: ../assets/diagrams/outbox/outbox-Outbox%20Pattern.drawio.png
 toc: true
 ---
 
-This article presents the outbox pattern, a communication/messaging pattern used in event-driven distributed systems. We will examine the problem that the outbox pattern solves, the way it works and the implementation complexity.
+This article presents the outbox pattern, a communication/messaging pattern used in event-driven distributed systems that allows executing database operations and publishing messages in a reliable manner. We will examine the problem that the outbox pattern solves, the way it works and the implementation complexity.
 
 # Motivation
 
@@ -18,26 +18,30 @@ In the past few weeks as I have started experimenting with a generic implementat
 
 In the distributed services world, services can communicate with each other synchronously and asynchronously. Synchronous communication is most commonly achieved through HTTP or gRPC calls. Asynchronous communication is achieved through the exchange of events via a message broker. Event driven architectures focus on asynchronous communication since it can provide numerous benefits including scalability, decoupling, and processing time. However, this asynchronous nature introduces multiple challenges that have to be resolved to provide a robust system. 
 
-One of these challenges in event-driven architecture is the guaranteed **messaging delivery** after the completion of a local operation. We cannot be sure that at the time we need to deliver a message, that the message broker will be available to receive the message. In some cases it is essential to guarantee the message delivery along with local operations to support the requirements of a system.
+One of these challenges in event-driven architecture is the guaranteed **message delivery** after the completion of a database operation. We cannot be sure that at the time we need to deliver a message, that the message broker will be available to receive the message. In some cases it is essential to guarantee the message delivery along with local operations to support the requirements of a system.
 
 Let's look at an example of a typical scenario in a microservice:
-\<TODO Add Diagram>
+
+![AtomicSuccess](../assets/diagrams/outbox/outbox-Atomic_Success.drawio.png)
 
 1. The service receives an entity-related request via a HTTP API
 2. The handler processes the request and stores the updated entity in a persistent storage
 3. Then it publishes an event containing the latest snapshot of the entity
 4. If the storage and the event/command publishing is successful, return a successful response
 
-*** - What happens if the message broker is not available at the time of the message delivery***
+***- Q: What happens if the message broker is not available at the time of the message delivery***
 
-\<TODO Add Diagram>
+![AtomicSuccess](../assets/diagrams/outbox/outbox-Atomic_Error.drawio.png)
 
-\- We can rollback the change we just applied on the database
+\- A: We can rollback the change we just applied on the database
 
-*** \- But what if the database is not available at that time? Or what if the program somehow crashes?***
-\<TODO Add Diagram>
+![AtomicSuccess](../assets/diagrams/outbox/outbox-Atomic_DBRollback.drawio.png)
 
-Well, we end up in an inconsistent state. The database will have the entity changes stored, while the external subscribers will never get notified.
+***- Q: But what if the database is not available at that time? Or what if the program somehow crashes?***
+
+![AtomicSuccess](../assets/diagrams/outbox/outbox-Atomic_DbRollback_Failed.drawio.png)
+
+\- A: Well, **we end up in an inconsistent state**. The database will have the entity changes stored, while the external subscribers will never get notified.
 
 How do we resolve this?
 -> Steps 2 and 3 have to be done in an *atomic* fashion. And this is where the outbox pattern comes to save us!
@@ -54,7 +58,7 @@ The outbox pattern consists of two main components
 2. The `message dispatcher`
   This is a background worker that observes and publishes the entries of the `outbox` table to the designated message broker
 
-\<TODO Add Diagram>
+![AtomicSuccess](../assets/diagrams/outbox/outbox-Outbox%20Pattern.drawio.png)
 
 The flow:
 1. When the service receives a request, the request handler prepares and commits the business database operations and the message publishing operation **in a single atomic database transaction**. As part of this atomic transaction, the message to be delivered is stored in the `outbox` table
@@ -72,7 +76,8 @@ That's it. Very simple but very powerful at the same time. Let's explore the imp
 While the outbox pattern is simple as a concept, its implementation can become considerably complicated.
 Depending on the requirements of the system that needs the outbox pattern we have some mandatory and some optional requirements.
 
-**Mandatory Requirements**\
+**Mandatory Requirements**
+
 1. Retrial policy
   - The main purpose of the outbox pattern is to ensure message delivery reliability. While the database transaction guarantees atomicity, we also need to ensure that the message is delivered successfully as well even if the message broker is unavailable for some time.
   - A typical retrial policy will include 
@@ -84,7 +89,8 @@ Depending on the requirements of the system that needs the outbox pattern we hav
   - Messages are stored for reliability purposes, not for auditing purposes. For this reason, we need to ensure that we don't leave the outbox table expanding forever and never delete any records
   - A typical retention policy includes a time duration threshold to keep the records in the database
 
-**Optional Requirements**\
+**Optional Requirements**
+
 1. Order of messages
   - While a strict order of message delivery might be required in some cases, there are some systems that do not have this requirement
 2. Concurrent delivery of messages
@@ -95,18 +101,18 @@ In the following subsections we explore the implementation components of the out
 
 ## The `outbox` table schema
 The `outbox` table, based on the above requirements needs to hold:
-1. Message Data to be sent
-2. State of the message
+1. Message `Data` to be sent
+2. `State` of the message
   - Processed
   - Unprocessed
   - Discarded
-3. Retrial Policy columns
+3. `Retrial Policy` columns
   - Number of Attempts
   - Last Attempt Time
-4. Error Description
+4. `Error` Description
   - Last Attempt Error
-5. Delivery/Discard Datetime
-6. Creation Datetime
+5. `Delivery/Discard Datetime`
+6. `Creation Datetime`
 
 ### Message to be sent
 This column is mostly straightforward, it holds the data that we need to send to the message broker. 
