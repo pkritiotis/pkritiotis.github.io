@@ -1,22 +1,20 @@
 ---
 layout: single
-title:  "Outbox pattern - The why, the what, and the how"
+title:  "Outbox pattern - Why, How and Implementation Challenges"
 date:   2021-11-25 18:00:00 +0300
-tags: golang software-patterns
-header:
-  image: ../assets/diagrams/outbox/outbox-Outbox%20Pattern.drawio.png
+tags: software-patterns microservices
 toc: true
 ---
 
-This article presents the outbox pattern, a communication/messaging pattern used in event-driven distributed systems that allows executing database operations and publishing messages in a reliable manner. We will examine the problem that the outbox pattern solves, the way it works and the implementation complexity.
+This article presents the outbox pattern, a communication/messaging pattern used in event-driven distributed systems that allows executing database operations and publishing messages in a reliable manner. We will examine the problem that the outbox pattern solves, the way it works and its implementation challenges.
 
 # Introduction
 
 In the distributed services world, services communicate with each other synchronously and/or asynchronously. Synchronous communication is most commonly achieved through HTTP or gRPC calls. Asynchronous communication is achieved through the exchange of events via a message broker. 
 
-Modern, event-driven architectures use asynchronous communication for intercommunication purposes, based on the fact that it can provide numerous benefits including more straightforward scalability, high decoupling, and fast processing time. However, this asynchronous nature introduces multiple challenges that have to be resolved to provide a robust system. 
+Modern, event-driven architectures use asynchronous communication for intercommunication purposes, based on the fact that its nature can provide numerous benefits including more straightforward scalability, high decoupling, and fast processing time. However, this asynchronous nature introduces multiple challenges that have to be resolved to provide a robust system. 
 
-One of these challenges in event-driven architecture is the guaranteed **message delivery** after the completion of a database operation. We cannot be sure that at the time we need to deliver a message the message broker will be available to receive the message. In some cases it is essential to guarantee the message delivery along with local operations to support the requirements of a system.
+One of these challenges in event-driven architecture is the **guaranteed message delivery** after the completion of a database operation. We cannot be sure that at the time we need to deliver a message the message broker will be available to receive the message. In some cases it is essential to guarantee the message delivery along with local operations to support the requirements of a system.
 
 Let's look at an example of a typical scenario in a microservice:
 
@@ -41,8 +39,9 @@ Let's look at an example of a typical scenario in a microservice:
 
 \- A: Well, **we end up in an inconsistent state**. The database will have the entity changes stored, while the external subscribers will never get notified.
 
-How do we resolve this?
--> Steps 2 and 3 have to be done in an *atomic* fashion. And this is where the outbox pattern comes to save us!
+**How do we resolve this?**
+
+The database operation and the message publishing have to be done in an *atomic* fashion. And this is where the outbox pattern comes to save us!
 
 # The outbox pattern
 
@@ -58,12 +57,18 @@ The outbox pattern consists of two main components
 
 ![OutboxPattern](../assets/diagrams/outbox/outbox-OutboxGeneric.drawio.png)
 
-The flow:
-1. When the service receives a request, the request handler prepares and commits the business database operations and the message publishing operation **in a single atomic database transaction**. As part of this atomic transaction, the message to be delivered is stored in the `outbox` table
-  - If the transaction fails at this point, we notify the client that something went wrong. No harm here, neither the business database operations are stored nor the message is published.
-2. The `message dispatcher` **observes** the entries in the database, delivers the required messages to the message broker and marks them as delivered.
-  - If the message delivery operation is not successful the dispatcher will retry later following a retrial policy
 
+Request Handler:
+1. The service receives a request
+2. The request handler prepares and commits the business database operations and the message publishing operation **in a single atomic database transaction**. As part of this atomic transaction, the message to be delivered is stored in the `outbox` table
+  - If the transaction fails at this point, we notify the client that something went wrong. No harm here, neither the business database operations are stored nor the message is published.
+3. The request handler returns a response indicating that the request is accepted
+
+Dispatcher:
+4. In the background, in a separate instance, the `message dispatcher` **observes** the entries in the database
+5. If a new message is found, the dispatcher delivers the required messages to the message broker
+6. If the delivery is successful it marks the message as delivered.
+  - If the message delivery operation is not successful the dispatcher will retry later following a retrial policy
 
 **The outbox pattern guarantees *at least once* delivery**. This is because we can still have a failure after the message broker delivery, when the dispatcher tries to update the database record. While this is a generally best practice, especially when using the outbox pattern, **consumers should definitely be idempotent**[^idempotent]. They should expect that they may receive the same message and should handle this without any issues.
 
@@ -76,20 +81,20 @@ Depending on the requirements of the system that needs the outbox pattern we hav
 
 **Mandatory Requirements**
 
-1. Retrial policy
+- Retrial policy
   - The main purpose of the outbox pattern is to ensure message delivery reliability. While the database transaction guarantees atomicity, we also need to ensure that the message is delivered successfully as well even if the message broker is unavailable for some time.
   - A typical retrial policy will include 
-    - time between attempts ( how much time should the dispatcher wait between attempts )
-    - if discarding a message is an acceptable action for messages that are retried many times or for too long
-      - maximum number of attempts ( how many times should the dispatcher attempt to deliver the message before it gives up).
-      - maximum total duration of retrials ( from the time that we received the message request, how long does it make sense to retry sending the message )
-2. Retention policy
+    - Time between attempts (how much time should the dispatcher wait between attempts)
+    - If discarding a message is an acceptable action for messages that are retried many times or for too long
+      - Maximum number of attempts (how many times should the dispatcher attempt to deliver the message before it gives up).
+      - Maximum total duration of retrials (from the time that we received the message request, how long does it make sense to retry sending the message)
+- Retention policy
   - Messages are stored for reliability purposes, not for auditing purposes. For this reason, we need to ensure that we don't leave the outbox table expanding forever and never delete any records
   - A typical retention policy includes a time duration threshold to keep the records in the database
 
 **Optional Requirement**
 
-1. Order of messages
+- Order of messages
   - While a strict order of message delivery might be required in some cases, there are some systems that do not have this requirement
    - If maintaining the order of the messages is not needed, the solution can be parallelized to reduce the delivery time by delivering multiple messages at the same time
 
@@ -128,7 +133,7 @@ It can also end up in a `Discarded` state if the message is discarded. This scen
 The `number of attempts` column is required to ensure that we have not exceeded the maximum retrial threshold. The `last attempt time` column is required to ensure that the maximum attempt duration is not exceeded either.
 
 ### Delivery/Discard Time
-This column is required for retention purposes. As the number of messages to be sent grows, we need to apply a retention policy which is based on time. Using this column we can , for example, periodically archive or delete the 'completed' entries older than X months.
+This column is required for retention purposes. As the number of messages to be sent grows, we need to apply a retention policy which is based on time. Using this column we can , for example, periodically archive or delete the 'completed' entries older than X hours/days/weeks/months.
 
 
 ## Storing Messages to the Outbox Table
