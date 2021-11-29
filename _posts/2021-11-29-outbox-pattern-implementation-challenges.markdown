@@ -1,18 +1,20 @@
 ---
 layout: single
 title:  "Outbox pattern - Why, How and Implementation Challenges"
-date:   2021-11-25 18:00:00 +0300
+date:   2021-11-29 19:00:00 +0300
 tags: software-patterns microservices
 toc: true
 ---
 
-This article presents the outbox pattern, a communication/messaging pattern used in event-driven distributed systems that allows executing database operations and reliably publishing messages. We will examine why we need the outbox pattern, how it works, and its implementation challenges.
+This article presents the **outbox pattern**, a communication/messaging pattern used in event-driven distributed systems that allows executing database operations and reliably publishing messages. 
+
+We will examine why we need the outbox pattern, how it works, and its implementation challenges.
 
 # Introduction
 
 In the distributed services world, services communicate with each other synchronously and/or asynchronously. Synchronous communication is most commonly achieved through HTTP or gRPC calls. Asynchronous communication is achieved through the exchange of events via a message broker. 
 
-Modern, event-driven architectures use asynchronous communication for intercommunication purposes, based on the fact that its nature can provide numerous benefits, including more straightforward scalability, high decoupling, and fast processing time. However, this asynchronous nature introduces multiple challenges that have to be resolved to provide a robust system.
+Modern, event-driven architectures use asynchronous communication for intercommunication purposes, based on the fact that its nature can provide numerous benefits, including more straightforward scalability, high decoupling, and fast processing time. However, this asynchronous nature introduces multiple challenges that we need to resolve to ensure a robust system.
 
 One of these challenges in event-driven architecture is the **guaranteed message delivery** after completing a database operation. We cannot be sure that when we need to deliver a message, the message broker will be available to receive the message. In some cases, it is essential to guarantee the message delivery along with local operations to support the requirements of a system.
 
@@ -105,18 +107,14 @@ In the following subsections, we explore the implementation components of the ou
 
 ## The `outbox` table schema
 The `outbox` table, based on the above requirements, needs to hold:
-1. Message `Data` to be sent
-2. `State` of the message
-  - Processed
-  - Unprocessed
-  - Discarded
-3. `Retrial Policy` columns
-  - Number of Attempts
-  - Last Attempt Time
-4. `Error` Description
-  - Last Attempt Error
-5. `Delivery/Discard Datetime`
-6. `Creation Datetime`
+
+| Column  | Description  |
+|---|---|
+| Message `Data`  |  The contents of the message to be sent |
+| `State` |  The current state of the message: `Processed`, `Unprocessed`, `Discarded` |
+| `Error` Description |  Contains the last attempt's error. This can be expanded to contain a series of errors per attempt |
+|  `Delivery/Discard Datetime` | The datetime that the message was delivered/discarded  |
+| `Creation Datetime`  | The time the record was created  |
 
 ### Message to be sent
 This column is mostly straightforward; it holds the data we need to send to the message broker. 
@@ -152,7 +150,7 @@ We have two main approaches that an implementation can follow:
   - Can handle encoding and provide a generic message data model that can be applied for any RDBMS and Message Broker Technology
   - Can be less efficient because of its generic nature
 
-For both of these approaches, we can use the Unit of Work(UoW) pattern. The UoW will ensure that both business operations and the outbox pattern will be committed as a single unit.
+For both of these approaches, we can use the Unit of Work(UoW)[^uow] pattern. The UoW will ensure that both business operations and the outbox pattern will be committed as a single unit.
 
 ## Dispatcher Implementation
 
@@ -196,10 +194,10 @@ Fortunately, most of them have typical requirements such as a message **key**, *
 
 ### Error handling
 While the main algorithm section provides a generic description of the flow, it is not bulletproof. We have dependencies on the database provider and the message broker that are external services we need to account for possible failures.
-- When the order of messages is not required, ff a message delivery fails due to message broker unavailability and I have more in the queue, should I try to process them?
+- When the order of messages is not required, if a message delivery fails due to message broker unavailability and I have more in the queue, should I try to process them?
   - Probably not. We need to track errors and try later depending on the error type (i.e., network).
 - If I try to save the updated state to the database and it is not reachable, how can I proceed?
-  - A solution would be to sleep for some brief duration and retry? The database is a crucial component to manage the state, and therefore it doesn't make sense to proceed with other records if the database is not reachable.
+  - A solution would be to sleep for some brief duration and retry. The database is a crucial component to manage the state, and therefore it doesn't make sense to proceed with other records if the database is not reachable.
 - What happens with a discarded message that exceeds retrial times?
   - The dispatcher has tried to send a message X times and failed. So it has discarded the message. Should we notify someone about these types of messages to take a closer look?
 
@@ -236,9 +234,11 @@ In these types of scenarios, we have two ways we can approach these:
 # Conclusion
 
 We have seen the outbox pattern, an instrumental pattern found in event-driven systems.
-As we have seen, it is a potent tool that ensures message delivery reliability when we need to execute database operations and message delivery as a unit and commit them atomically.
+As we have seen in this article, it ensures message delivery reliability when we need to execute database operations and message delivery as a unit and commit them atomically.
 
 While simple as a concept, it can be complicated to design and implement as there are a lot of edge cases and decisions to make that affect its performance and extensibility.
 
+# References 
 [^idempotent]: [Idempotent Consumer](https://microservices.io/patterns/communication-style/idempotent-consumer.html#:~:text=Implement%20an%20idempotent%20consumer%2C%20which,to%20detect%20and%20discard%20duplicates.)
 [^leader-election]: [Leader Election](https://en.wikipedia.org/wiki/Leader_election)
+[^uow]: [Unit of Work](https://martinfowler.com/eaaCatalog/unitOfWork.html)
