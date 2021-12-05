@@ -2,6 +2,7 @@
 layout: single
 title:  "Clean Architecture in Go"
 date:   2021-09-08 21:30:00 +0300
+last_modified_at: 2021-12-05 21:30:00 +0300
 tags: clean-architecture golang software-patterns
 author_profile: true
 header:
@@ -80,7 +81,7 @@ Typically, software applications have the following behavior:
 
 The entry points from which we receive information (i.e., requests) are called *input ports*. The gateways through which we integrate with external services are called *interface adapters*.
 
-Ports and interface adapters depend on frameworks/platforms and external services that are not part of the business or domain logic. For this reason, they belong to this separate layer named *infrastructure*. This layer is sometimes referred to as *Ports & Adapters*.
+Input Ports and interface adapters depend on frameworks/platforms and external services that are not part of the business or domain logic. For this reason, they belong to this separate layer named *infrastructure*. This layer is sometimes referred to as *Ports & Adapters*.
 
 
 ### Interface Adapters
@@ -115,7 +116,7 @@ The sample application, *Go Climb*, is a climbing crag management web API. Its p
 The scope of this application is kept minimal for conciseness.
 
 **Where can I find the code?**\
-The complete source code is here: [GitHub repo](https://github.com/pkritiotis/go-climb).
+The complete source code is here: [GitHub repo](https://github.com/pkritiotis/go-climb-clean-architecture-example).
 
 ### Use Cases
 Before we move to the implementation details, let's see the use cases that this application implements. Use Cases will help us design the application logic of the application.
@@ -165,15 +166,32 @@ Go Climb follows the group-by-layer structure:
 │   ├── cmd/
 │   ├── docs/
 │   ├── internal
-|   │   ├── app
-|   │   │   ├── crag/
-|   │   │   └── notification/
-|   │   ├── domain
-|   │   │   └── crag/
-|   │   ├── infra
-|   │   │   ├── http/
-|   │   │   ├── notification/
-|   │   │   └── repo/
+│   ├── app
+│   │   ├── crag
+│   │   │   ├── commands
+│   │   │   └── queries
+│   │   ├── notification
+│   │   │   ├── mock_notification.go
+│   │   │   └── notification.go
+│   │   ├── services.go
+│   │   └── services_test.go
+│   ├── domain
+│   │   └── crag
+│   │       ├── crag.go
+│   │       ├── mock_repository.go
+│   │       └── repository.go
+│   ├── inputports
+│   │   ├── http
+│   │   │   ├── crag
+│   │   │   └── server.go
+│   │   └── sevices.go
+│   ├── outputadapters
+│   │   ├── notification
+│   │   │   └── console
+│   │   ├── services.go
+│   │   └── storage
+│   │       ├── memory
+│   │       └── mysql
 |   │   └── pkg
 |   │       ├── time/
 |   │       └── uuid/
@@ -183,6 +201,8 @@ Go Climb follows the group-by-layer structure:
 - `docs` contains documentation about the application
 - `internal` contains the main implementation of our application. It consists of the three layers of clean architecture + shared utility code under `pkg/`
   - infra
+	- outputadapters
+	- inputports
   - app
   - domain
   - pkg
@@ -329,37 +349,54 @@ The application layer depends on domain entities and services and uses the `crag
 ### Infrastructure
 
 ```
-├── infra
+├── inputports
 │   ├── http
-│   │   ├── crag_handler.go
-│   │   ├── crag_handler_test.go
+│   │   ├── crag
+│   │   │   ├── handler.go
+│   │   │   └── handler_test.go
 │   │   └── server.go
+│   └── sevices.go
+├── outputadapters
 │   ├── notification
-│   │   ├── console.go
-│   │   └── console_test.go
-│   └── repo
-│       ├── inmemory.go
-│       └── inmemory_test.go
+│   │   └── console
+│   │       ├── notificationservice.go
+│   │       └── notificationservice_test.go
+│   ├── services.go
+│   └── storage
+│       ├── memory
+│       │   ├── repo.go
+│       │   └── repo_test.go
+│       └── mysql
+│           └── repo.go
+
 ```
 
 #### Interface Adapters
 Interface adapters contain the implementation of *domain* and *application* services. In our case, these are the `crag.Repository` and the `notification.Service`, respectively.
 
-The `crag.Repository` is implemented by `repo.InMemory`, a repo that holds all data in memory. 
+The `crag.Repository` is implemented by `memory.Repo`, a repo that holds all data in memory. 
 ```go
-//inMemory Implements the Repository Interface to provide an in-memory storage provider
-type inMemory struct {
+package memory
+
+import (
+	"fmt"
+	"github.com/google/uuid"
+	"github.com/pkritiotis/go-climb/internal/domain/crag"
+)
+
+//Repo Implements the Repository Interface to provide an in-memory storage provider
+type Repo struct {
 	crags map[string]crag.Crag
 }
 
-//NewInMemory Constructor
-func NewInMemory() crag.Repository {
+//NewRepo Constructor
+func NewRepo() Repo {
 	crags := make(map[string]crag.Crag)
-	return inMemory{crags}
+	return Repo{crags}
 }
 
 //GetByID Returns the crag with the provided id
-func (m inMemory) GetByID(id uuid.UUID) (*crag.Crag, error) {
+func (m Repo) GetByID(id uuid.UUID) (*crag.Crag, error) {
 	crag, ok := m.crags[id.String()]
 	if !ok {
 		return nil, nil
@@ -369,18 +406,26 @@ func (m inMemory) GetByID(id uuid.UUID) (*crag.Crag, error) {
 ...
 ```
 
-The `notification.Service` is implemented by `notification.ConsoleService`. This service prints notifications in the console.
+The `notification.Service` is implemented by `console.NotificationService`. This service prints notifications in the console.
 ```go
-// ConsoleService provides a console implementation of the Service
-type ConsoleService struct{}
+package console
 
-// NewConsoleService constructor for ConsoleService
-func NewConsoleService() *ConsoleService {
-	return &ConsoleService{}
+import (
+	"encoding/json"
+	"fmt"
+	"github.com/pkritiotis/go-climb/internal/app/notification"
+)
+
+// NotificationService provides a console implementation of the Service
+type NotificationService struct{}
+
+// NewNotificationService constructor for NotificationService
+func NewNotificationService() *NotificationService {
+	return &NotificationService{}
 }
 
 // Notify prints out the notifications in console
-func (ConsoleService) Notify(notification notification.Notification) error {
+func (NotificationService) Notify(notification notification.Notification) error {
 	jsonNotification, err := json.Marshal(notification)
 	if err != nil {
 		return err
@@ -391,38 +436,51 @@ func (ConsoleService) Notify(notification notification.Notification) error {
 ```
 #### Input Ports
 
-In Go Climb, the input/requests are provided through HTTP. The handler of this RESTful API is implemented by `http.CragHandler`.
+In Go Climb, the input/requests are provided through HTTP. The handler of this RESTful API is implemented by `crag.Handler`.
 
 ```go
-//CragHandler Crag http request handler
-type CragHandler struct {
-	app app.App
+package crag
+
+import (
+	"encoding/json"
+	"fmt"
+	"github.com/google/uuid"
+	"github.com/gorilla/mux"
+	"github.com/pkritiotis/go-climb/internal/app"
+	"github.com/pkritiotis/go-climb/internal/app/crag/commands"
+	"github.com/pkritiotis/go-climb/internal/app/crag/queries"
+	"net/http"
+)
+
+//Handler Crag http request handler
+type Handler struct {
+	cragServices app.CragServices
 }
 
-//NewCragHandler Constructor
-func NewCragHandler(app app.App) *CragHandler {
-	return &CragHandler{app: app}
+//NewHandler Constructor
+func NewHandler(app app.CragServices) *Handler {
+	return &Handler{cragServices: app}
 }
 
 [..]
 
-//AddCragRequestModel represents the request model expected for Add request
-type AddCragRequestModel struct {
+//CreateCragRequestModel represents the request model expected for Add request
+type CreateCragRequestModel struct {
 	Name    string `json:"name"`
 	Desc    string `json:"desc"`
 	Country string `json:"country"`
 }
 
-//AddCrag Adds the provides crag
-func (c CragHandler) AddCrag(w http.ResponseWriter, r *http.Request) {
-	var cragToAdd AddCragRequestModel
+//Create Adds the provides crag
+func (c Handler) Create(w http.ResponseWriter, r *http.Request) {
+	var cragToAdd CreateCragRequestModel
 	decodeErr := json.NewDecoder(r.Body).Decode(&cragToAdd)
 	if decodeErr != nil {
 		w.WriteHeader(http.StatusBadRequest)
 		fmt.Fprint(w, decodeErr.Error())
 		return
 	}
-	err := c.app.Commands.AddCragHandler.Handle(commands.AddCragRequest{
+	err := c.cragServices.Commands.CreateCragHandler.Handle(commands.AddCragRequest{
 		Name:    cragToAdd.Name,
 		Desc:    cragToAdd.Desc,
 		Country: cragToAdd.Country,
@@ -436,12 +494,11 @@ func (c CragHandler) AddCrag(w http.ResponseWriter, r *http.Request) {
 }
 
 ```
-The `CragHandler` performs the following steps:
+The `crag.Handler` performs the following steps:
 1. Receives requests and parses their body using the corresponding *request model*.
 2. Maps request model to application model (command/query request model).
 3. Executes the request handler.
 4. Gets the result of the request handling and returns the corresponding status.
-
 
 
 #### Dependencies/Interactions with other layers
@@ -459,24 +516,23 @@ Since everything is/should be using an interface for external operations, we nee
 
 ```go
 func main() {
-	r := repo.NewInMemory()
-	ns := notification.NewConsoleService()
+	interfaceAdapterServices := interfaceadapters.NewServices()
 	tp := time.NewTimeProvider()
 	up := uuid.NewUUIDProvider()
-	a := app.NewApp(r, ns, up, tp)
-	httpServer := http.NewServer(a)
-	httpServer.ListenAndServe(":8080")
+	appServices := app.NewServices(interfaceAdapterServices.CragRepository, interfaceAdapterServices.NotificationService, up, tp)
+	inputPortsServices := inputports.NewServices(appServices)
+	inputPortsServices.Server.ListenAndServe(":8080")
 }
 ```
 
 `main` is responsible for getting the external configuration, if any, instantiating the infrastructure services based on this config and passing them over to the application and domain layer to instantiate their structs.
 
 ### Per Layer Wiring
-In this sample application, we also have a layer entry-point (`app.go`) in the application layer. This entry point bootstraps the layer dependencies in a grouped manner to avoid bloating `main` with layer-specific code. 
+In this sample application, we also have a per layer entry-point (`[app|inputports|interfaceadapters]/services.go`) file. This entry point bootstraps the layer dependencies in a grouped manner to avoid bloating `main` with layer-specific code. 
 
 This separation is also applicable in the domain layer and would help if we had multiple domain services.
 
-However, this might be an anti-pattern for more complicated projects since the `App` struct exposes all contents of the application layer, which is against the *least knowledge principle*.
+However, this might be an anti-pattern for more complicated projects since the `Services` struct exposes all contents of each layer, which is against the *least knowledge principle*.
 
 ### Dependency Injection Containers
 In many programming languages, mainly OO, it is common to use *Dependency Injection Containers* for bootstrapping the application. Containers offer automatic instantiation of concrete implementation and binding to the corresponding interfaces. There are some implementations of auto dependency injection approaches in Go that are not covered in this post. However, one of these approaches might be introduced at a later stage in Go Climb. 
