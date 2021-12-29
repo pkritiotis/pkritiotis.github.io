@@ -14,6 +14,8 @@ This article describes a methodical way of approaching Technical Requirement Ana
 There is a great amount of literature on approaching different Software Development LifeCycle (SDLCs) frameworks that provide the steps, practices  and guidelines required to achieve an *efficient* software development process.
 Most frequently, software engineers are involved in this whole process after the business requirements phase with the responsibility to design, implement, test and deploy applications.
 
+![Technical Requirement Analysis](/assets/diagrams/technical-requirements/TechnicalRequirementAnalysis.drawio.png)
+
 Between the handover of the requirements from the product team to the engineering team and the initiation of the design there is a short period in which engineers work with the product team to clarify any ambiguous requirements, talk about potential issues and agree on specific business specs. This phase which in this article I refer to as **Technical Requirement Analysis**. 
 
 In my view, the Technical Requirement Analysis is one of the most important phases in the lifecycle and in my experience, it is one of the phases that is often rushed and sometimes even overlooked. During my career, especially during the most recent years, I have been involved in the analysis and design of a few projects and many features. Finding a perfect solution to approaching the Technical Requirement Analysis is very difficult and companies, teams, and even people have different tools that help them complete this stage. Personally, I find that following a methodical approach with a set of recommended steps that I have accumulated during the last years, provides a good framework to prevent errors and give confidence to proceed to the design phase.
@@ -37,6 +39,8 @@ Please note that this is by no means a phase that has to be strictly defined and
 ## 1. Read the docs!
 Quite obvious uh? Well, yes it is :) 
 
+![Read](/assets/images/read.png)
+
 The technical requirement analysis is ideally a *team activity*. The engineering team should dedicate enough time to read the requirements and make sure that all members understand **what** is the problem, **why** it needs to be addressed, and **how** the feature requirements addresses it.
 
 If there are any unknowns or any missing context, this is the time to ask questions to the product and seek complete understanding on the requirements.
@@ -45,6 +49,8 @@ Reading and clarifying requirements expands the domain knowledge of engineers an
 
 ## 2. Edge-Case Analysis - Business Specifications
 Once the requirements are well understood, the team should proceed to the in-depth edge-case analysis stage.
+
+![Read](/assets/images/find.png)
 
 Often, the requirements presented from the Product cover the essentials and potential business-related side-effects, but the engineering perspective can bring edge cases that are related to the system behavior and impact on other services that product might be unaware off. 
 
@@ -111,6 +117,7 @@ Since this is still the analysis stage,
 
 ## 5. Extract Use Cases
 The next step is to identify the use cases.
+
 We can think of use cases as individual operations that should be served by the application to meet the requirements.
 A useful tool we can use in this phase is thinking of use-cases in terms of **Commands** and **Queries**. If a requirement refers to an operation that provides data it can be though of as a 'Query'. If the operation modifies data, it can be considered as a 'Command'.
 This separation of use-cases is particularly useful when working with code bases using [Clean Architecture]().
@@ -118,43 +125,13 @@ This separation of use-cases is particularly useful when working with code bases
 At the end of this step, the engineering team should have a clear picture of the requirements in very high detail and they can start visualizing how the technical design would look like.
 # TL;DR;
 
-## 1. Read the docs!
-### Actions:
-Understand:
-- What is the problem we are solving?
-- Why do we need to solve it?
-- How does this feature solve the issue?
-### Expected outcome
-Requirements are clarified
-
-## 2. Edge-Case analysis
-### Actions:
-- Identify edge-cases
-- Present options
-- Propose Recommended Approach
-### Outcome:
-- Edge Cases Documented with resolution options
-
-## 3. Finalize revises business specs
-### Actions
-- Revise and finalize business specs
-### Outcome
-- Documented revised business specs
-
-## 4. Data Flow Analysis
-### Actions
-- Identify required data.
-- Find input data
-- Define output data
-### Outcome
-- Input data requirements and data owners
-- Output data provisional model
-
-## 5. Use Cases
-### Actions
-- Extract use cases based on the business requirements
-### Outcome
-- Documented use cases
+|    | Step                    | Goal                                                                                                                           | Outcome                                                               |
+|----|-------------------------|--------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------|
+| #1 | Read the docs           | Understand what, why and how                                                                                                   | Requirements are clear                                                |
+| #2 | Edge-case analysis      | 1. Identify technical edge cases <br>2. Present possible options to deal with technical edge cases <br>3. Propose recommended approach | Documented edge cases with options and approach                       |
+|  #3  | Finalize business specs | Based on the edge case analysis, finalize business specs                                                                       | Documented final business specs                                       |
+| #4 | Data flow analysis      | Identify required data Find required input data Define output data                                                             | Input Data Requirements with their owners <br>Defined output model/schema |
+| #5 | Extract Use Cases       | Defind the use-cases of the requested feature                                                                                  | Documented use-cases in commands and queries                          |
 
 # Conclusion
 That's it. This is a structured approach that I have been following during the last years and I have seen it producing great results in terms of common expectations/alignment between product and engineering, and preventing delayed capturing of edge cases.
