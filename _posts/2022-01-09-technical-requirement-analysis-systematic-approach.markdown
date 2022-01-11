@@ -6,6 +6,8 @@ last_modified_at: 2022-01-09 20:30:00 +0300
 tags: software-processes
 author_profile: true
 toc: true
+header:
+    og_image: /assets/diagrams/technical-requirements/TechnicalRequirementAnalysis_OG.png
 ---
 
 This article describes a methodical way of approaching Technical Requirement Analysis that includes a list of steps that help in clarifying ambiguity and preventing unexpected issues before an engineering team jumps into the design phase.
