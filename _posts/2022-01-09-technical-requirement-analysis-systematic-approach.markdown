@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "A systematic approach on Technical Requirement Analysis"
+title:  "A systematic approach to Technical Requirement Analysis"
 date:   2022-01-09 20:30:00 +0300
 last_modified_at: 2022-01-09 20:30:00 +0300
 tags: software-processes
@@ -8,7 +8,7 @@ author_profile: true
 toc: true
 ---
 
-This article describes a systematic way of approaching Technical Requirement Analysis that includes a list of steps that help in clarifying ambiguity and preventing unexpected issues before an engineering team jumps into the design phase.
+This article describes a methodical way of approaching Technical Requirement Analysis that includes a list of steps that help in clarifying ambiguity and preventing unexpected issues before an engineering team jumps into the design phase.
 
 # Introduction
 There is an astounding amount of literature on approaching different Software Development LifeCycle (SDLC) frameworks that provide the steps, practices, and guidelines required to achieve an *efficient* software development process. A typical, generic SDLC consists of the following stages:
