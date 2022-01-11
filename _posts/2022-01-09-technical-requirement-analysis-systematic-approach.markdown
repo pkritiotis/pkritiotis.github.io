@@ -2,7 +2,7 @@
 layout: single
 title:  "A systematic approach to Technical Requirement Analysis"
 date:   2022-01-09 20:30:00 +0300
-last_modified_at: 2022-01-09 20:30:00 +0300
+last_modified_at: 2022-01-11 12:30:00 +0300
 tags: software-processes
 author_profile: true
 toc: true
