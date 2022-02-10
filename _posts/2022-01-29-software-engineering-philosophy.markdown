@@ -59,19 +59,15 @@ Software can be characterized by three main properties:
     - Extensibility
 - Performance
 
-In software engineering, the decision making is complicate; everything is a tradeoff. 
-In general, my view on the prioritization of the above when I work on a new project is the following:
+In software engineering, the decision making is complicated; everything is a tradeoff. 
+In general, my view on the prioritization of the above when I work on a new project is **generally** the following:
 
-1. General Case (No particular requirements in terms of performance)
 Correctness > Readability > Simplicity > Extensibility > Performance
-
-2. Performance Is Important - Very specific use-case (extensibility not expected)
-Correctness > Readability > Simplicity > Performance > Extensibility
 
 ### Correctness
 Each software has a well-defined purpose that is described by its requirements.
 
-Correctness is the only mandatory property of any software. We can increase the correctness confidence of software by introducing processes such as pair programming code reviews so that more than one developers can identify potential issues at the implementation stages. The most important tool though is testing. Testing has a multitude of benefits and is critical to achieve correctness. 
+Correctness is the only mandatory property of any software. We can increase the correctness confidence of software by introducing processes such as pair programming, code reviews so that more than one developers can identify potential issues at the implementation stages. The most important tool though is testing. Testing has a multitude of benefits and is critical to achieve correctness. 
 
 ### Maintainability
 One of the common properties we strive for is *maintainability*. Maintainability is a word that can mean a lot of things but usually it is associated with code that has the following characteristics:
@@ -90,3 +86,6 @@ Extensibility is much more complicated. Sometimes extensibility is not needed at
 ### Performance
 Another common property that describes software is performance.
 General performance considerations should always be part of software, but performance optimizations that decrease in readability and simplicity without a solid requirement should be avoided.
+
+Premature optimization is unfortunately applied in many projects unecessarily and introduces uneeded complexity.
+
