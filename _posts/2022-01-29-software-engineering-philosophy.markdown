@@ -5,18 +5,16 @@ date:   2022-01-29 14:15:52 +0300
 tags: software-processes
 # classes: wide
 ---
-This post contains my *software engineering philosophy*; a list of the fundamental *values* that I have accumulated over the years and that I use to decide how to work on software engineering problems.
+This post contains my *software engineering philosophy*; the list and priorities of the fundamental *values* I use to decide how to approach software engineering problems.
 
 ## Introduction
 The nature of our software engineering involves a continuous need for decision making around the design, development and delivery of software.
 
-While there is a general consensus on many fundamental best practices within the software engineering community, there are some topics that cause arguments.  
+While there is a general consensus on many fundamental best practices within the software engineering community, there are some topics that are open to arguments.  
 
 This is normal; Through our experience we reflect on approaches that produce good and bad results from which, through time, we form opinions and define principles that shape the way we work. This set of fundamental principles can be thought as *values* that compose an individual's *"software engineering philosophy"*.
 
 In the next sections I will be sharing my view on the importance of having a software philosophy and the framework with the values around how I approach software egnineering projects.
-
-### The philosophy in Software Engineering
 
 ## The philosophy analogy
 I am an admirer of philosophy with a strong interest in *ethics* and especially practical ethics.
@@ -43,15 +41,17 @@ Analogously to philosophy, defining, tracking and ***consciously*** evaluating t
 
 It is also very interesting to see from an individual's perspective, how our views change through time by our experiences and advances within the industry.
 
-# My software engineering philosophy
+## My software engineering philosophy
 
-Over the years I have read, discussed and studied multiple ways of approaching software engineering projects and experimented with different techniques and suggestions. 
+Since I started studying and then working as a software engineer I have made multiple mistakes, I sometimes focused on the wrong things and had the opportunity to work on a various projects. At the same time I have read, discussed and studied multiple ways of approaching software engineering projects and experimented with different techniques and suggestions. 
 
-During this time I have formed my own values, which I continuously revisit and evaluate as I learn new things and gain experience in new situations.
+Through this time, I have formed my own values, which I continuously revisit and evaluate as I learn new things and gain experience in new situations.
 
 ## Tradeoffs in Software development
 
-Software can be characterized by three main properties:
+In software engineering, the decision making is complicated; everything is a tradeoff. 
+
+Software can be characterized by many properties; Three main core properties are:
 - Correctness
 - Maintainability
     - Readability
@@ -59,18 +59,27 @@ Software can be characterized by three main properties:
     - Extensibility
 - Performance
 
-In software engineering, the decision making is complicated; everything is a tradeoff. 
 In general, my view on the prioritization of the above when I work on a new project is **generally** the following:
 
 Correctness > Readability > Simplicity > Extensibility > Performance
 
 ### Correctness
-Each software has a well-defined purpose that is described by its requirements.
 
-Correctness is the only mandatory property of any software. We can increase the correctness confidence of software by introducing processes such as pair programming, code reviews so that more than one developers can identify potential issues at the implementation stages. The most important tool though is testing. Testing has a multitude of benefits and is critical to achieve correctness. 
+Software applications have a well-defined purpose that is described by its requirements.
+
+Correctness is the only mandatory property of any software. As long as the behavior of the application does what it needs to do without any errors, the software is useful and it's also deliverable. For PoC and early experimental MVP stage products this can be the only requirement.
+
+For large projects, ensuring correctness can be challenging. We can increase the correctness confidence of software by introducing processes that:
+1. Prevent errors
+2. Validate Behavior
+
+Error Prevention can be achieved by practices such as pair programming and code reviews; Both of these practices ensure that more than one developers validate the code before it is submitted so we have more eyes that can identify potential issues at the implementation stages.
+
+The most important tool though is **testing**. Testing has a multitude of benefits and is critical to achieve correctness. Unit testing as well as BDD tests and e2e tests for more complicated flows are essential for validating the behavior of software.
 
 ### Maintainability
-One of the common properties we strive for is *maintainability*. Maintainability is a word that can mean a lot of things but usually it is associated with code that has the following characteristics:
+
+One of the common properties software engineers strive for, is *maintainability*. Maintainability is a term that encapsulates multiple attributes but usually it is associated with code that has the following characteristics:
 1. Easy to troubleshoot
 2. Easy to extend 
 
@@ -80,8 +89,14 @@ These two characteristics are achievable by writing code that is:
 - Extensibile
 
 Readability and simplicity are two attributes that prevent errors when developing and reviewing software.
+These two are excellently represented by two of my favorite principles:
+- YAGNI - You Ain't Gonna Need it
+- KISS - Keep It Stupid Simple
 
 Extensibility is much more complicated. Sometimes extensibility is not needed at all and we should follow the YAGNI(You Aint Gonna Need It) principle. If however we build a system that is by nature going to be extended, then extensibility is necessary.
+In this case we opt for **low-coupling** and **high-cohesion**. The principles I almost always follow are:
+- SRP - Single Responsibility Principle
+- Platform Independability
 
 ### Performance
 Another common property that describes software is performance.
