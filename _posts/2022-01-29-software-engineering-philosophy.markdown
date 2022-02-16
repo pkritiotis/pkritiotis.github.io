@@ -41,13 +41,13 @@ Analogously to philosophy, defining, tracking and ***consciously*** evaluating t
 
 It is also very interesting to see from an individual's perspective, how our views change through time by our experiences and advances within the industry.
 
-## My software engineering philosophy
+# My software engineering philosophy
 
 Since I started studying and then working as a software engineer I have made multiple mistakes, I sometimes focused on the wrong things and had the opportunity to work on a various projects. At the same time I have read, discussed and studied multiple ways of approaching software engineering projects and experimented with different techniques and suggestions. 
 
 Through this time, I have formed my own values, which I continuously revisit and evaluate as I learn new things and gain experience in new situations.
 
-## Tradeoffs in Software development
+## Prioritizing Tradeoffs in Software development
 
 In software engineering, the decision making is complicated; everything is a tradeoff. 
 
@@ -63,6 +63,14 @@ In general, my view on the prioritization of the above when I work on a new proj
 
 Correctness > Readability > Simplicity > Extensibility > Performance
 
+I live by the following simplistic rules:
+1. Always strive for correctness at all costs. Meet the software requirements.
+2. Make your code readable. If not for others, for your future self.
+3. Strive for simplicity. Simplicity promotes clarity, minimizes errors and reduces the effort to maintain the code.
+4. Write extensible code only if it is guaranteed to be needed.
+5. Don't sacrifice any of the above for performance optimizations if not required.
+6. Never apply pre-mature optimizations. Profile, measure and analyze.
+
 ### Correctness
 
 Software applications have a well-defined purpose that is described by its requirements.
@@ -73,7 +81,7 @@ For large projects, ensuring correctness can be challenging. We can increase the
 1. Prevent errors
 2. Validate Behavior
 
-Error Prevention can be achieved by practices such as pair programming and code reviews; Both of these practices ensure that more than one developers validate the code before it is submitted so we have more eyes that can identify potential issues at the implementation stages.
+Error Prevention can be achieved by practices such as *pair programming* and code reviews; Both of these practices ensure that more than one developers validate the code before it is submitted so we have more eyes that can identify potential issues at the implementation stages.
 
 The most important tool though is **testing**. Testing has a multitude of benefits and is critical to achieve correctness. Unit testing as well as BDD tests and e2e tests for more complicated flows are essential for validating the behavior of software.
 
@@ -88,7 +96,7 @@ These two characteristics are achievable by writing code that is:
 - Simple
 - Extensibile
 
-Readability and simplicity are two attributes that prevent errors when developing and reviewing software.
+Readability and simplicity are two properties that prevent errors when developing and reviewing software.
 These two are excellently represented by two of my favorite principles:
 - YAGNI - You Ain't Gonna Need it
 - KISS - Keep It Stupid Simple
@@ -100,7 +108,29 @@ In this case we opt for **low-coupling** and **high-cohesion**. The principles I
 
 ### Performance
 Another common property that describes software is performance.
-General performance considerations should always be part of software, but performance optimizations that decrease in readability and simplicity without a solid requirement should be avoided.
+General performance considerations should always be part of software, but performance optimizations that inhibit readability and simplicity without a solid requirement should be avoided.
 
 Premature optimization is unfortunately applied in many projects unecessarily and introduces uneeded complexity.
+
+## Summary
+
+1. Correctness
+   - Unit Testing
+   - E2E Testing
+   - BDD Testing
+   - Integration Testing
+2. Maintainability
+   - YAGNI
+   - KISS
+   - SRP
+3. Performance
+
+
+## Documentation
+Once upon a time I used to hate documentation and now I am a big proponent of documentation.
+Documentation is an investement. At the same time documentation needs care; if it gets outdated it can become useless.
+
+1. Document Business Use Cases in Detail
+2. Document Developer's Handbook for projects with multiple contributors
+3. Document a Troubleshooter's guide for common issues and FAQ
 
