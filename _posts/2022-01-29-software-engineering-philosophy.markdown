@@ -12,7 +12,7 @@ The nature of our software engineering involves a continuous need for decision m
 
 While there is a general consensus on many fundamental best practices within the software engineering community, there are some topics that are open to arguments.  
 
-This is normal; Through our experience we reflect on approaches that produce good and bad results from which, through time, we form opinions and define principles that shape the way we work. This set of fundamental principles can be thought as *values* that compose an individual's *"software engineering philosophy"*.
+This is natural and expected; Through our experience we reflect on approaches that produce good and bad results from which, through time, we form opinions and define principles that shape the way we work. This set of fundamental principles can be thought as *values* that compose an individual's *"software engineering philosophy"*.
 
 In the next sections I will be sharing my view on the importance of having a software philosophy and the framework with the values around how I approach software egnineering projects.
 
