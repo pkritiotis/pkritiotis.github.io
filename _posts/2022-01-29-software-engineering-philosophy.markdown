@@ -5,7 +5,7 @@ date:   2022-01-29 14:15:52 +0300
 tags: software-processes
 # classes: wide
 ---
-This post contains my *software engineering philosophy*; the list and priorities of the fundamental *values* I use to decide how to approach software engineering problems.
+This post contains my *software engineering philosophy*; the list and priorities of the fundamental *values* I use to decide how to approach tradeoffs in software engineering problems.
 
 ## Introduction
 The nature of our software engineering involves a continuous need for decision making around the design, development and delivery of software.
@@ -47,9 +47,9 @@ Since I started studying and then working as a software engineer I have made mul
 
 Through this time, I have formed my own values, which I continuously revisit and evaluate as I learn new things and gain experience in new situations.
 
-## Prioritizing Tradeoffs in Software development
+## Tradeoffs in Software development
 
-In software engineering, the decision making is complicated; everything is a tradeoff. 
+In software engineering, in the decision making process everything is a tradeoff. 
 
 Software can be characterized by many properties; Three main core properties are:
 - Correctness
@@ -68,7 +68,7 @@ I live by the following simplistic rules:
 2. Make your code readable. If not for others, for your future self.
 3. Strive for simplicity. Simplicity promotes clarity, minimizes errors and reduces the effort to maintain the code.
 4. Write extensible code only if it is guaranteed to be needed.
-5. Don't sacrifice any of the above for performance optimizations if not required.
+5. Don't sacrifice any of the above for performance optimizations if not absolutely required.
 6. Never apply pre-mature optimizations. Profile, measure and analyze.
 
 ### Correctness
@@ -98,7 +98,7 @@ These two characteristics are achievable by writing code that is:
 
 Readability and simplicity are two properties that prevent errors when developing and reviewing software.
 These two are excellently represented by two of my favorite principles:
-- YAGNI - You Ain't Gonna Need it
+- YAGNI - You Ain't Gonna Need It
 - KISS - Keep It Stupid Simple
 
 Extensibility is much more complicated. Sometimes extensibility is not needed at all and we should follow the YAGNI(You Aint Gonna Need It) principle. If however we build a system that is by nature going to be extended, then extensibility is necessary.
@@ -127,10 +127,28 @@ Premature optimization is unfortunately applied in many projects unecessarily an
 
 
 ## Documentation
-Once upon a time I used to hate documentation and now I am a big proponent of documentation.
-Documentation is an investement. At the same time documentation needs care; if it gets outdated it can become useless.
+Many software engineers hate to write documentation and I have to say that I was one of them in the past. Through the years and my interaction with undocumented code I have grown to be a big proponent of documentation.
 
-1. Document Business Use Cases in Detail
-2. Document Developer's Handbook for projects with multiple contributors
-3. Document a Troubleshooter's guide for common issues and FAQ
+Documentation is an investement; it saves communication and investigation time.
+At the same time documentation needs care; if it gets outdated it can become useless.
 
+My rules around documentation are described in the below statements:
+1. Always document business use cases in detail
+2. Always include and maintain a *Developer's Handbook* section for projects with multiple contributors
+3. When a project is big enough and support takes considerable time, document a *Troubleshooter's guide* for common issues and FAQ
+
+
+## Working with legacy code
+
+### Respect the predecessors decisions
+I have worked with a number of legacy projects and I have had thought of the type **"Why on earth did they do this like X? They could have easily done it like Y instead"**. 
+
+Well, software code is organic. And business often prioritize time to market over future extensibility and maintainability. We also learn from our mistakes. All these conditions contribute to instances in which we initially design optimal code for Feature A and Feature B in mind. And when Feature C comes and the code is not ready for it we produce quick results bypassing quality standards. Been there, done that.
+
+My philosophy around legacy code is:
+1. Never rush to judge/blame previous code authors. 
+2. The state of the software you inherit does not represent the competency of its developers.
+
+
+### Consistency
+No matter how bad you think the design or style or any other attribute of the codebase approach is, it is much better in the long-term to conform to it when modifying or introducing new behavior. This comes back to readability and maintainability.
