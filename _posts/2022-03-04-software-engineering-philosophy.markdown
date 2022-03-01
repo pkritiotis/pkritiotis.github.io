@@ -1,7 +1,7 @@
 ---
 layout: single
 title:  "Software Engineering Philosophy"
-date:   2022-01-29 14:15:52 +0300
+date:   2022-03-04 14:15:52 +0300
 tags: software-processes
 # classes: wide
 ---
@@ -73,7 +73,7 @@ I live by the following simplistic rules:
 
 ### Correctness
 
-Software applications have a well-defined purpose that is described by its requirements.
+Software applications have a well-defined purpose that is described by their requirements.
 
 Correctness is the only mandatory property of any software. As long as the behavior of the application does what it needs to do without any errors, the software is useful and it's also deliverable. For PoC and early experimental MVP stage products this can be the only requirement.
 
@@ -81,7 +81,7 @@ For large projects, ensuring correctness can be challenging. We can increase the
 1. Prevent errors
 2. Validate Behavior
 
-Error Prevention can be achieved by practices such as *pair programming* and code reviews; Both of these practices ensure that more than one developers validate the code before it is submitted so we have more eyes that can identify potential issues at the implementation stages.
+Error Prevention can be achieved by practices such as *pair programming* and *code reviews*; Both of these practices ensure that more than one developers validate the code before it is submitted so we have more eyes that can identify potential issues at the implementation stages.
 
 The most important tool though is **testing**. Testing has a multitude of benefits and is critical to achieve correctness. Unit testing as well as BDD tests and e2e tests for more complicated flows are essential for validating the behavior of software.
 
@@ -143,7 +143,7 @@ My rules around documentation are described in the below statements:
 ### Respect the predecessors decisions
 I have worked with a number of legacy projects and I have had thought of the type **"Why on earth did they do this like X? They could have easily done it like Y instead"**. 
 
-Well, software code is organic. And business often prioritize time to market over future extensibility and maintainability. We also learn from our mistakes. All these conditions contribute to instances in which we initially design optimal code for Feature A and Feature B in mind. And when Feature C comes and the code is not ready for it we produce quick results bypassing quality standards. Been there, done that.
+Well, software code is organic. And business often prioritize time to market over future extensibility and maintainability. We also learn from our mistakes. All these conditions contribute to instances in which we initially design optimal code for Feature A and Feature B in mind. And when Feature C comes and the code is not ready for it we produce quick results by bypassing quality standards. Been there, done that.
 
 My philosophy around legacy code is:
 1. Never rush to judge/blame previous code authors. 
