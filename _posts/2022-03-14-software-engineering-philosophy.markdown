@@ -116,6 +116,9 @@ These two are excellently represented by the following principles:
 
 On top of this for readability we should always strive for **consistency** in coding style and the naming of coding components
 
+Comments:
+Comment why - don't comment what
+
 ### Decoupling, High Cohesion & Extensibility
 Decoupling, High Cohesion and Extensibility are the most adored properties by engineers. It's what the cool, smart kids do. It's also what most software engineers consider good quality code.
 
@@ -142,11 +145,21 @@ General performance considerations should always be part of software, but perfor
 
 Premature optimization is unfortunately applied in many projects unecessarily and often introduces uneeded complexity and a low cost vs value benefit.
 
-## On Programming Languages
+## On troubleshooting
+- Be prepared - the most important
+- Alerts, alerts alerts A version of the The Hollywood Principle - Don't call us, we'll call you
+- Observability - smart metrics
 
-## On Analysis
+- Logging
+Log wisely
 
-## On 
+
+## On Technical Requirement Analysis
+Technical analysis should be always done before design and development. The biggest issues I faced in my career were issues on unclear understanding of requirements and a gap of alignment between business, product and engineering.
+All these can be avoided by following a methodical workflow.
+
+## On SDLCs
+Frequent, incremental cycles offers invaluable early feedback that is impossible to achieve in a waterfall-like lifecycle. Strict frameworks are difficult to follow by the book and that's fine. Adaption within the team
 
 # My philosophy on Software Development
 * Logging
