@@ -2,7 +2,7 @@
 layout: single
 title:  "Software Engineering Philosophy: Tradeoffs and Quality"
 date:   2022-03-20 22:15:52 +0300
-tags: software-philosophy
+tags: software-engineering-philosophy
 toc: true
 # classes: wide
 ---
@@ -110,7 +110,7 @@ My list of most essential principles around testing are:
 4. Testing is much easier if you write *testable* code. Invest in a design that allows easy testing of both specific and very generic modules
   - Overall, while testing's primary purpose is correctness, it significantly contributes to maintainability. A testable code is also more maintainable.
 
-On top of the above, I have formed some guidelines around when I tend to choose between specific types of testing. This is very closely related to my preference on architecture design philosophy, such as the Clean Architecture:
+On top of the above, I have formed some guidelines around when I tend to choose between specific types of testing. This is very closely related to my preference on architecture design philosophy, such as the [Clean Architecture](https://pkritiotis.io/clean-architecture-in-golang/):
 1. Write unit tests for business and domain logic. Mock non-business-logic components
 2. Write BDD tests in a unit-style fashion (cucumber-like) for flows that expand in multiple business logic components to test the impact of an action on different components. These should align with business use-cases
 3. Write primarily isolated integration tests for external service integrations. Use unit tests for particular edge case scenarios
@@ -159,7 +159,7 @@ Easiness for change is tackled by promoting two main characteristics: **low-coup
 - Interface Segregation
 - Dependency Inversion
 
-Extensibility is achieved mainly by a mixture of software design patterns[^sdp] and application architecture. I have worked with multiple architecture patterns, and I tend to find that application architecture philosophies such as **clean architecture** solves the problem of extensibility through the promotion of:
+Extensibility is achieved mainly by a mixture of software design patterns[^sdp] and application architecture. I have worked with multiple architecture patterns, and I tend to find that application architecture philosophies such as **clean architecture**[^clean-arch] solves the problem of extensibility through the promotion of:
 - Separation of Concerns[^Soc]
 - Platform independence
 
@@ -181,10 +181,11 @@ Premature optimization is unfortunately applied in many projects unnecessarily. 
 
 We have gone through what I consider the software philosophy and its importance. In software engineering, rigid, opinionated rules can often be proven wrong. For this reason, I see my software philosophy and values as guidelines that are mutable over time.
 
-I firmly believe that all software engineers should have a software engineering philosophy. In this industry that requires constant decision-making, these guidelines are essential. We should carefully maintain, review and reevaluate it as we grow in our careers.
+I firmly believe that all software engineers should have a software engineering philosophy. In this sector that requires constant decision-making, these guidelines are essential. We should carefully maintain, review and reevaluate it as we grow in our careers.
 
 # Rerefences
 
+[^clean-arch]: [Clean coder blog post on Clean Architecture by Uncle Bob Martin](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
 [^SOLID]: [SOLID](https://en.wikipedia.org/wiki/SOLID#:~:text=In%20software%20engineering%2C%20SOLID%20is,engineer%20and%20instructor%20Robert%20C.)
 [^POLA]: [Principle of Least Astonishment](https://en.wikipedia.org/wiki/Principle_of_least_astonishment)
 [^YAGNI]: [You Aren't Gonna Need It](https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it)
