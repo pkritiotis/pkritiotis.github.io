@@ -1,7 +1,7 @@
 ---
 layout: single
-title:  "Software Engineering Philosophy: Development Tradeoffs and Quality"
-date:   2022-03-20 18:15:52 +0300
+title:  "Software Engineering Philosophy: Tradeoffs and Quality"
+date:   2022-03-20 22:15:52 +0300
 tags: software-philosophy
 toc: true
 # classes: wide
