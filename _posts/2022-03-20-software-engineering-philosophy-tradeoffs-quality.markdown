@@ -179,7 +179,7 @@ Premature optimization is unfortunately applied in many projects unnecessarily. 
 
 # Conclusion
 
-We have gone through what I consider the software philosophy and its importance. In software engineering, rigid, opinionated rules can often be proven wrong. For this reason, I see my software philosophy and values as guidelines that are mutable over time.
+We have gone through what I consider the software engineering philosophy and its importance. In software engineering, rigid, opinionated rules can often be proven wrong. For this reason, I see my software philosophy and values as guidelines that are mutable over time.
 
 I firmly believe that all software engineers should have a software engineering philosophy. In this sector that requires constant decision-making, these guidelines are essential. We should carefully maintain, review and reevaluate it as we grow in our careers.
 
