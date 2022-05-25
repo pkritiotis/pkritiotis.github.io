@@ -48,7 +48,7 @@ Since this is an implementation of a very specific-purpose library, the structur
   - Manages the outbox messages incuding the functionality of pushing messages to the outbox table and then processing and publishing the messages to the message broker
 - Store
   - Contains the packages of different providers that implement the functinality around persisting and retrieving outbox messaging capabilities
-- Message Brokers
+- Message Broker
   - Contains the packages of different providers that implement the functionality around publishing messages to thee corresponding broker
 
 ## Core components
@@ -60,15 +60,9 @@ The core components of this implementation are:
    - Stores the provided message to the store
 2. Dispatcher
    - Manages the execution of the RecordUnlocker, Record Processor and the Cleanup Worker 
-3. Record Processor
-   - Checks the Store for new messages, and publishes the eligible messages to the message broker
-4. Record Unlocker
-   - Unlocks records that have been locked for a specific configurable duration
-5. Cleanup Worker
-   - Removes old records from the Store 
-6. Store
+3. Store
    - Provides an interface that is used for interacting with an sql store
-7. Message Broker
+4. Message Broker
    - Provides an interface that is used for interacting with a message broker
 
 ### Publisher
@@ -136,6 +130,7 @@ type DispatcherSettings struct {
 type Dispatcher struct {
 	recordProcessor processor
 	recordUnlocker  unlocker
+	recordCleaner	cleaner
 	settings        DispatcherSettings
 }
 ```
@@ -143,7 +138,7 @@ type Dispatcher struct {
 The responsibilities of the `Dispatcher` are:
 1. Periodically spawn a new `recordProcessor` to check for eligible messages and publish them to the corresponding message broker
 2. Periodically spawn a new `recordUnlocker` to check for stale records that have been locked for a long duration (configurable)
-3. Periodically spawn a new `cleanupWorker` to remove old messages (configurable duration)
+3. Periodically spawn a new `recordCleaner` to remove old messages (configurable duration)
 4. Interrupt the ongoing routines if it receives a message from the provided `done` channel
 5. Communicate all errors of the workers in the provided `error` channel
 
@@ -153,6 +148,7 @@ The responsibilities of the `Dispatcher` are:
 func (d Dispatcher) Run(errChan chan<- error, doneChan <-chan struct{}) {
 	doneProc := make(chan struct{}, 1)
 	doneUnlock := make(chan struct{}, 1)
+	doneClean := make(chan struct{}, 1)
 
 	go func() {
 		<-doneChan
@@ -162,34 +158,13 @@ func (d Dispatcher) Run(errChan chan<- error, doneChan <-chan struct{}) {
 
 	go d.runRecordProcessor(errChan, doneProc)
 	go d.runRecordUnlocker(errChan, doneUnlock)
-}
-
-// runRecordProcessor processes the unsent records of the store
-func (d Dispatcher) runRecordProcessor(errChan chan<- error, doneChan <-chan struct{}) {
-	ticker := time.NewTicker(d.settings.ProcessInterval)
-	for {
-		log.Print("Record processor Running")
-		err := d.recordProcessor.ProcessRecords()
-		if err != nil {
-			errChan <- err
-		}
-		log.Print("Record Processing Finished")
-
-		select {
-		case <-ticker.C:
-			continue
-		case <-doneChan:
-			ticker.Stop()
-			log.Print("Stopping Record processor")
-			return
-		}
-	}
+	go d.runRecordCleaner(errChan, doneClean)
 }
 ```
 
-### Record Processor
+#### Record Processor
 
-The `recordProcessor` uses the provided `Store` and `MessageBroker` to 
+The `recordProcessor` is the heart of the dispatcher and uses the provided `Store` and `MessageBroker` to 
 1. Check and lock the unprocessed entries so another instance of the processor does not process the same records
 2. Retrieves the records that have been locked with its unique identifier(`machineID`)
 3. Tries to publish the messages using and updates the record states
@@ -332,11 +307,16 @@ type MessageBroker interface {
 }
 ```
 
-## Usage
+## Using the go-outbox package
+
+To use the sample outbox package implementation you need to:
+1. Create the outbox table
+2. Use the publisher to send your message
+3. Run the dispatcher worker
 
 For a full example of a mySQL outbox using a Kafka broker check the example [here](https://github.com/pkritiotis/go-outbox/blob/main/examples/mySQL-Kafka/main.go)
 
-### Prerequisite: Create the outbox table
+### Create the outbox table
 In order to use this outbox library you first need to create the outbox table that is required for storing the messages. 
 
 The following script creates the outbox table in a mySQL database
@@ -450,8 +430,12 @@ We could introduce some logic to ensure that the order of messages is guaranteed
 ## Retrial Policy
 We could also include further retrial settings such as *time between attempts* and *maximum attempt duration* to provide even better retrial capabilities.
 
+## Supporting multple message brokers
+The `Message` struct has a number of basic fields that could not be adequate for complex message brokers for which we need further configuration.
+The design of the Broker could be enhanced by providing broker-specific message attributes. This could be done by enhancing the Message struct. We could also remove the Message abstraction completely and use broker specific Messages that are only serialized and deserialized by the outbox package as unknown objects.
+
 # Conclusion
 
-We have seen how we can implement a simple package of the outbox pattern in go. 
+We have seen how we can implement a simple package of the outbox pattern in go that uses a polling mechanism and provides an extensible design to support multiple stores and message brokers. 
 
-This package does not provide leader election capabilities or guaranteed order of messages when running multiple dispatchers, but it includes some cool features such as locking of messages and an extensible design to use any sql provide or message broker that we may need.
+While this is by no means a generic production-ready package, with a few modifications depending on the requirements, it could be used as a reference for implementing the outbox pattern for your own use-cases.
