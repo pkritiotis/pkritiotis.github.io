@@ -1,7 +1,7 @@
 ---
 layout: single
 title:  "Implementing the Outbox pattern in go"
-date:   2022-05-29 19:00:00 +0300
+date:   2022-05-30 19:00:00 +0300
 tags: software-patterns golang
 toc: true
 ---
@@ -53,7 +53,7 @@ Since this is an implementation of a very specific-purpose library, the structur
 
 ## Core components
 
-![Image](../assets/images/outbox-implementation_Core-Components.png)
+![Image](../assets/images/outbox-implementation-Core-Components.png)
 
 The core components of this implementation are:
 1. Publisher
@@ -320,7 +320,7 @@ For a full example of a mySQL outbox using a Kafka broker check the example [her
 In order to use this outbox library you first need to create the outbox table that is required for storing the messages. 
 
 The following script creates the outbox table in a mySQL database
-```mysql
+```sql
 CREATE TABLE outbox (
         id varchar(100) NOT NULL,
         data BLOB NOT NULL,
