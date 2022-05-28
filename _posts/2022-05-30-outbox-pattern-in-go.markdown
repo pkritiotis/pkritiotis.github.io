@@ -6,15 +6,18 @@ tags: software-patterns golang
 toc: true
 ---
 
-This article presents an implementation of the **outbox pattern** in go.
+This article presents the design and implementation of the **outbox pattern** in go. By the end of this post, you will know how to implement and use the outbox pattern in go.
 
 # Introduction
 
-Last November, I wrote an article on the outbox pattern and its implementation challenges. You can check it [here](https://pkritiotis.io/outbox-pattern-implementation-challenges/). 
+Last November, I wrote an article on [what the outbox pattern is and its implementation challenges](https://pkritiotis.io/outbox-pattern-implementation-challenges/). If you are unfamiliar with the outbox pattern, I suggest reading this post first.
 
-In this post we will go through a sample implementation of the outbox pattern in go. 
+As noted in the above post, to implement the outbox pattern, you need to make several decisions about:
+- Message Observation
+- Dispatcher Coordination Approach - Guarantee the order of messages or not
+- Retrial Policy & Retention
 
-We will be looking at the package's features and and how it approaches the outbox pattern and dig into the design and usage details.
+In this blog post, I explain how I designed and implemented the outbox pattern in go with great technical detail and the approach I followed on the above properties.
 
 # Source Code 
 
@@ -31,25 +34,26 @@ The design of this sample `outbox` implementation follows the below approach:
 - Error handling
   - Supports an **optional maximum attempts threshold**. If the threshold is exceeded, the message is discarded
 - Outbox Store extensibility
-  - Supports an extensible design through which we can **integrate with different sql providers**
+  - Supports an extensible design through which we can **integrate with different SQL providers**
 - Message Broker extensibility
   - Supports an extensible design through which we can **integrate with different message brokers**
 
-What this package **does not** support:
-- Single instance running dispatcher (leader election)
-- Guaranteed order of messages when there are more than one dispatcher instances
+What this package does not support:
+- Does **NOT** support leader instance between multiple dispatcher instances (leader election)
+- Does **NOT** support guaranteed order of messages when there are more than one dispatcher instances
 - The message broker interface can be a bit limited depending on the number of features that we need to support from the message broker
 
 # Design
 
+Let's check how the project is structured and go through the core components of the package.
 ## Project Structure
-Since this is an implementation of a very specific-purpose library, the structure is kept very simple using three packages:
-- Outbox
-  - Manages the outbox messages incuding the functionality of pushing messages to the outbox table and then processing and publishing the messages to the message broker
+Since this is an implementation of a very specific-purpose library, the structure is kept very simple using three main directories:
+- Outbox - Main Package
+  - Manages the outbox messages, including the functionality of pushing messages to the outbox table and then processing and publishing the messages to the message broker
 - Store
-  - Contains the packages of different providers that implement the functinality around persisting and retrieving outbox messaging capabilities
+  - Contains the packages of different SQL providers that implement the functionality around persisting and retrieving outbox messaging capabilities
 - Message Broker
-  - Contains the packages of different providers that implement the functionality around publishing messages to thee corresponding broker
+  - Contains the packages of different message broker providers that implement the functionality around publishing messages to the corresponding broker
 
 ## Core components
 
@@ -59,15 +63,15 @@ The core components of this implementation are:
 1. Publisher
    - Stores the provided message to the store
 2. Dispatcher
-   - Manages the execution of the RecordUnlocker, Record Processor and the Cleanup Worker 
+   - Manages the execution of the RecordUnlocker, Record Processor, and the Cleanup Worker 
 3. Store
-   - Provides an interface that is used for interacting with an sql store
+   - Provides an interface that is used for interacting with an SQL store
 4. Message Broker
    - Provides an interface that is used for interacting with a message broker
 
 ### Publisher
 
-The `Publisher` struct is initialized using a `Store`. This allows the publisher to work with any sql provider that implements the `Store`.
+The `outbox.Publisher` struct is initialized using a `Store`. This allows the publisher to work with any SQL provider implementing the `Store`.
 
 ```go
 //Publisher encapsulates the publishing functionality of the outbox pattern
@@ -78,9 +82,14 @@ type Publisher struct {
 }
 ```
 
-The only exported method is `Send` that accepts a `Message` and a sql transaction.
+The only exported method is `Send`, which accepts a `Message` and a SQL transaction.
 
-The responsibility of this method is to transform the `Message` to a `Record` and use the `Store` to save the entry within the provided transaction
+The responsibility of this method is:
+1. Transform the `Message` into a `Record`
+2. Use the `Store` to save the entry within the provided transaction.
+
+The `Message` struct encapsulates the information needed to send a message via a message broker. The attributes of the message, in this case, are limited. Depending on the use case, highly configurable message brokers may need additional details when sending messages.
+
 ```go
 //Message encapsulates the contents of the message to be sent
 type Message struct {
@@ -98,9 +107,6 @@ func (o Publisher) Send(msg Message, tx *sql.Tx) error {
 		Message:     msg,
 		State:       PendingDelivery,
 		CreatedOn:   o.time.Now().UTC(),
-		LockID:      nil,
-		LockedOn:    nil,
-		ProcessedOn: nil,
 	}
 
 	return o.store.AddRecordTx(record, tx)
@@ -146,15 +152,7 @@ The responsibilities of the `Dispatcher` are:
 //Run periodically checks for new outbox messages from the Store, sends the messages through the MessageBroker
 //and updates the message status accordingly
 func (d Dispatcher) Run(errChan chan<- error, doneChan <-chan struct{}) {
-	doneProc := make(chan struct{}, 1)
-	doneUnlock := make(chan struct{}, 1)
-	doneClean := make(chan struct{}, 1)
-
-	go func() {
-		<-doneChan
-		doneProc <- struct{}{}
-		doneUnlock <- struct{}{}
-	}()
+	// [...]
 
 	go d.runRecordProcessor(errChan, doneProc)
 	go d.runRecordUnlocker(errChan, doneUnlock)
@@ -165,9 +163,9 @@ func (d Dispatcher) Run(errChan chan<- error, doneChan <-chan struct{}) {
 #### Record Processor
 
 The `recordProcessor` is the heart of the dispatcher and uses the provided `Store` and `MessageBroker` to 
-1. Check and lock the unprocessed entries so another instance of the processor does not process the same records
-2. Retrieves the records that have been locked with its unique identifier(`machineID`)
-3. Tries to publish the messages using and updates the record states
+1. Check and lock the unprocessed entries, so another instance of the processor does not process the same records
+2. Retrieves the records that have been locked with the dispatcher's unique identifier(`machineID`)
+3. Tries to publish the messages using and updating the record states
 4. Unlocks the records
 
 ```go
@@ -190,9 +188,9 @@ func (d defaultRecordProcessor) ProcessRecords() error {
 }
 ```
 
-The actual publishing of message implements the following algorithm:
+The actual publishing of the message follows this algorithm:
 
-Foreach record:
+For each record:
 1. Update the records fields to indicate a new publishing attempt
 2. Try to publish the message
    - If the publishing succeeded
@@ -244,7 +242,7 @@ func (d defaultRecordProcessor) publishMessages(records []Record) error {
 ```
 
 ### Store
-The `Store` provides an interface that is used for interacting with an sql store
+The `Store` provides an interface that is used for interacting with a SQL store
 
 ```go
 //Store is the interface that should be implemented by SQL-like database drivers to support the outbox functionality
@@ -286,20 +284,20 @@ type RecordState int
 const (
 	//PendingDelivery is the initial state of all records
 	PendingDelivery RecordState = iota
-	//Delivered indicates that the Records is already Delivered
+	//Delivered indicates that the Record is already Delivered
 	Delivered
-	//MaxAttemptsReached indicates that the message is not Delivered but the max attempts are reached so it shouldn't be delivered
+	//MaxAttemptsReached indicates that the message is not Delivered, but the max attempts are reached so it shouldn't be delivered
 	MaxAttemptsReached
 )
 ```
 
-The `RecordState` indicates the state of each record so that the processor will know whether it is processed, delivered or if its max attempts have been reached
+The `RecordState` indicates the state of each record. It is needed by the record processor to know whether it is processed, delivered, or if its max attempts have been reached
 
 ![image](../assets/images/outbox-implementation-State%20Machine.png)
 
 ### `MessageBroker`
 
-The `MessageBroker` is a very simple interface that can be implemented by different providers to publish messages to a message broker.
+The `MessageBroker` is a straightforward interface that can be implemented by different providers to publish messages to a message broker.
 ```go
 //MessageBroker provides an interface for message brokers to send Message objects
 type MessageBroker interface {
@@ -309,17 +307,17 @@ type MessageBroker interface {
 
 ## Using the go-outbox package
 
-To use the sample outbox package implementation you need to:
+To use the sample outbox package implementation, you need to:
 1. Create the outbox table
 2. Use the publisher to send your message
 3. Run the dispatcher worker
 
-For a full example of a mySQL outbox using a Kafka broker check the example [here](https://github.com/pkritiotis/go-outbox/blob/main/examples/mySQL-Kafka/main.go)
+For a complete example of a MySQL outbox using a Kafka broker check the example [here](https://github.com/pkritiotis/go-outbox/blob/main/examples/mySQL-Kafka/)
 
 ### Create the outbox table
-In order to use this outbox library you first need to create the outbox table that is required for storing the messages. 
+To use this outbox library, you first need to create the outbox table that is required for storing the messages. 
 
-The following script creates the outbox table in a mySQL database
+The following script creates the outbox table in a `MySQL` database
 ```sql
 CREATE TABLE outbox (
         id varchar(100) NOT NULL,
@@ -334,7 +332,7 @@ CREATE TABLE outbox (
         error varchar(1000) NULL
 )
 ```
-## Sending a message via the `Publisher` service
+## Sending a message via the `outbox.Publisher` service
 ```go
 type SampleMessage struct {
 	message string
@@ -375,8 +373,8 @@ func main() {
 	tx.Commit()
 }
 ```
-## Starting the outbox dispatcher
-The dispatcher can run on the same or different instance of the application that uses the outbox.
+## Running the outbox dispatcher
+The dispatcher can run on the same or on a different application instance that uses the outbox.
 Once the dispatcher starts, it will periodically check for new outbox messages and push them to the kafka broker
 ```go
 func main() {
@@ -422,20 +420,41 @@ func main() {
 }
 ```
 
-# Possible modifications and improvements
+# Exploring Areas of Improvement and Alternatives
+
+Having seen the above implementation, it's important to note that there is a great number of improvements and alternative approaches that we could follow. 
+
+This depends on what we want to achieve with our outbox implementation. And I believe this is why implementing a fully flexible, generic outbox package is very difficult without sacrificing complexity and performance.
+
+Let's check some of the areas of improvement and alternative approaches.
 
 ## Guaranteeing the order of messages
-We could introduce some logic to ensure that the order of messages is guaranteed by ensuring that only one dispatcher runs at a time. This could be done using a leader election algorithm that would probably need to be orchestrated by an external service. 
+The outbox package presented in this post does not guarantee the correct order of messages if we have multiple dispatcher instances. 
+
+If we want to support such a feature, we could introduce some logic to ensure that the order of messages is guaranteed by ensuring that only one dispatcher runs at a time. This could be done using a leader election algorithm that would probably need to be orchestrated by an external service. 
+Another rough solution would be to have an additional storage location through which dispatchers have to acquire a lock before running. Only one dispatcher runs at a time based on whether the run is already logged. This could be done using a cache store or an extra table in the existing `Store`.
 
 ## Retrial Policy
-We could also include further retrial settings such as *time between attempts* and *maximum attempt duration* to provide even better retrial capabilities.
+The retrial capabilities of this implementation are limited to the maximum number of attempts per message.
 
-## Supporting multple message brokers
-The `Message` struct has a number of basic fields that could not be adequate for complex message brokers for which we need further configuration.
-The design of the Broker could be enhanced by providing broker-specific message attributes. This could be done by enhancing the Message struct. We could also remove the Message abstraction completely and use broker specific Messages that are only serialized and deserialized by the outbox package as unknown objects.
+We could also include other retrial settings such as *time between attempts* and *maximum attempt duration*.
+
+## Supporting multiple message brokers
+The `Message` struct has several primary fields that could not be adequate for complex message brokers for which we need further configuration.
+
+We could enhance the design of the Broker by providing broker-specific message attributes. We could do this by enhancing the Message struct. We could also delete the Message abstraction and use broker-specific messages that are only serialized and deserialized by the outbox package as unknown objects.
+
+## Logging & Observability
+
+This outbox implementation contains very basic logging indicating when the dispatcher has run and when it stopped or had an error. 
+
+An implementation targeting critical systems would need to be more observable. For example, we could enhance the logging capabilities to use configurable logging levels. We could also improve the observability by providing metrics about the number of messages processed, time spent, etc.
 
 # Conclusion
+An outbox pattern implementation has many alternative options, which is why we can have many implementation flavors.
 
 We have seen how we can implement a simple package of the outbox pattern in go that uses a polling mechanism and provides an extensible design to support multiple stores and message brokers. 
 
-While this is by no means a generic production-ready package, with a few modifications depending on the requirements, it could be used as a reference for implementing the outbox pattern for your own use-cases.
+What we've seen in this post is not a generic outbox solution that meets every requirement that a complex application might have. There is room for improvement and alternatives in approaching the different parts of the implementation.
+
+I hope that this post provides the foundation for understanding how the outbox pattern and serves as the base of something more complicated. Clone, fork, experiment, and build your custom outbox pattern with it!
