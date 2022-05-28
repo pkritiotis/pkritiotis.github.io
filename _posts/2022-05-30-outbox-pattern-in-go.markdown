@@ -6,7 +6,7 @@ tags: software-patterns golang
 toc: true
 ---
 
-This article presents the design and implementation of the **outbox pattern** in go. By the end of this post, you will know how to implement and use the outbox pattern in go.
+This article presents the design and implementation of the **outbox pattern** in go.
 
 # Introduction
 
@@ -17,7 +17,7 @@ As noted in the above post, to implement the outbox pattern, you need to make se
 - Dispatcher Coordination Approach - Guarantee the order of messages or not
 - Retrial Policy & Retention
 
-In this blog post, I explain how I designed and implemented the outbox pattern in go with great technical detail and the approach I followed on the above properties.
+In this blog post, I explain how I designed and implemented the outbox pattern in go and the approach I followed on the above properties.
 
 # Source Code 
 

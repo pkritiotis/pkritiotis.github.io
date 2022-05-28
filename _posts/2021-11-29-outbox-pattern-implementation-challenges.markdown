@@ -2,6 +2,7 @@
 layout: single
 title:  "Outbox pattern - Why, How and Implementation Challenges"
 date:   2021-11-29 19:00:00 +0300
+last_modified_at: 2022-05-30 19:00:00 +03:00
 tags: software-patterns microservices
 toc: true
 ---
@@ -237,6 +238,8 @@ We have seen the outbox pattern, an instrumental pattern found in event-driven s
 As we have seen in this article, it ensures message delivery reliability when we need to execute database operations and message delivery as a unit and commit them atomically.
 
 While simple as a concept, it can be complicated to design and implement as there are a lot of edge cases and decisions to make that affect its performance and extensibility.
+
+For an implementation of the outbox pattern in go you can check my blog post [here](outbox-pattern-in-go/).
 
 # References 
 [^idempotent]: [Idempotent Consumer](https://microservices.io/patterns/communication-style/idempotent-consumer.html#:~:text=Implement%20an%20idempotent%20consumer%2C%20which,to%20detect%20and%20discard%20duplicates.)
