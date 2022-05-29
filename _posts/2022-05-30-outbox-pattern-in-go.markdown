@@ -25,6 +25,12 @@ The source code of the library we will be looking at in this post is [here](http
 
 # Features
 
+<p align="center">
+  <img alt="whattodo" src="/assets/images/lamp.png" width="200">
+  <br>
+    <small>Image by <a href="https://github.com/MariaLetta/free-gophers-pack"> Maria Letta @free-gophers-pack</a></small>
+</p> 
+
 The design of this sample `outbox` implementation follows the below approach:
 - Message Observability
   - **Polling** via configurable interval
@@ -44,6 +50,12 @@ What this package does not support:
 - The message broker interface can be a bit limited depending on the number of features that we need to support from the message broker
 
 # Design
+
+<p align="center">
+  <img alt="whattodo" src="/assets/images/write.png" width="200">
+  <br>
+    <small>Image by <a href="https://github.com/MariaLetta/free-gophers-pack"> Maria Letta @free-gophers-pack</a></small>
+</p> 
 
 Let's check how the project is structured and go through the core components of the package.
 ## Project Structure
@@ -425,6 +437,13 @@ func main() {
 Having seen the above implementation, it's important to note that there is a great number of improvements and alternative approaches that we could follow. 
 
 This depends on what we want to achieve with our outbox implementation. And I believe this is why implementing a fully flexible, generic outbox package is very difficult without sacrificing complexity and performance.
+
+<p align="center">
+  <img alt="whattodo" src="/assets/images/fix.png" width="200">
+  <br>
+    <small>Image by <a href="https://github.com/MariaLetta/free-gophers-pack"> Maria Letta @free-gophers-pack</a></small>
+</p> 
+
 
 Let's check some of the areas of improvement and alternative approaches.
 
