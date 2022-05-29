@@ -1,7 +1,7 @@
 ---
 layout: single
 title:  "Implementing the Outbox pattern in go"
-date:   2022-05-30 19:00:00 +0300
+date:   2022-05-29 16:00:00 +0300
 tags: software-patterns golang
 toc: true
 ---
