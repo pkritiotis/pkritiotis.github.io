@@ -239,7 +239,7 @@ As we have seen in this article, it ensures message delivery reliability when we
 
 While simple as a concept, it can be complicated to design and implement as there are a lot of edge cases and decisions to make that affect its performance and extensibility.
 
-For an implementation of the outbox pattern in go you can check my blog post [here](outbox-pattern-in-go/).
+For an implementation of the outbox pattern in go you can check my blog post [here](https://pkritiotis.io/outbox-pattern-in-go/).
 
 # References 
 [^idempotent]: [Idempotent Consumer](https://microservices.io/patterns/communication-style/idempotent-consumer.html#:~:text=Implement%20an%20idempotent%20consumer%2C%20which,to%20detect%20and%20discard%20duplicates.)
