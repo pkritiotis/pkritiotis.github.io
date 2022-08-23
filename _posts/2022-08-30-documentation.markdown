@@ -1,22 +1,25 @@
 ---
 layout: single
-title:  "Write the Docs! Thoughts on Software Documentation"
-date:   2022-02-05 20:30:00 +0300
+title:  "Hail the Docs! Thoughts on Software Documentation"
+date:   2022-08-30 20:30:00 +0300
 tags: software-processes
 author_profile: true
 toc: true
 ---
 ## Introduction
 Documentation has a bad reputation in the software engineering world.
-Everyone complains about the lack of it and no-one wants to invest time in writing quality documentation. 
+Everyone complains about the lack, the quality and the state of documentation. At the same time most people avoid and do not invest time in writing quality documentation. 
 
-Many engineers even hate to write documentation. Some engineers even consider documentation redundant and unecessary; and most of them complain when they don't find something when it is most needed. 
+Many engineers even hate to write documentation. Some engineers even consider documentation redundant and unecessary. And at the same time most of them complain when they don't find something when it is most needed. 
 
-In my early years as a junior engineer I also hated writing documentation. Afterall, "what proper engineer prefers to write text for explaining code instead of investing that time to write more code?"
+In my early years as a junior software engineer I have to admit that I also hated writing documentation. Afterall, "Why would an engineer spend time to write boring text for explaining code instead of investing that time to write more code?"
 
 Well, through the years and my interaction with undocumented systems and codebases, I have grown to be a big proponent of documentation. The pain, tears and time spent to find about undocumented requirements, specs ,and designs were convincing enough for me to appreciate the value of a good documentation.
 
-In this article we'll explore some common reasons why many engineers don't write documentation, the value that documentation can bring and some guidelines that have helped me when dealing with documentation.
+In this article we'll explore three main areas:
+1. Common reasons why many engineers don't write documentation
+2. The value that documentation can bring
+3. Guidelines that have helped me when dealing with writing and maintaining documentation.
 
 ## Why not? Misconceptions
 
@@ -28,11 +31,10 @@ In this article we'll explore some common reasons why many engineers don't write
   - so. much. more. difficult
   
 - it's straightforward
-  - nothing is straightforward
+  - It might be straightforward for you now under your area of work. But nothing is straightforward
 
 - i'll never forget this
-
-- 
+  - Famous last words 
 
 
 ## Why bother?
@@ -44,12 +46,13 @@ In this article we'll explore some common reasons why many engineers don't write
   - people leave
 - no one remembers everything forever
 - enforce correctness
+- promote innersourcing
 
 ## Common Gotchas
 
 - Set and forget
 - Do it for some, don't do it for all
-- Spread them, spread them everywhere
+- Spread the docs, spread the docs everywhere
 
 ## Crucial documents for the software engineer
 - Business use cases
