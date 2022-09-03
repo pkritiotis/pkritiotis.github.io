@@ -126,14 +126,14 @@ How? **Write the docs!**
 Hopefully, it's now clear that avoiding documentation is a dangerous game to play. 
 
 
-In this section, we explore common arguments from engineers that refuse to write documentation.
+This section explores common arguments from engineers who refuse to write documentation.
 <p align="center">
   <img alt="whattodo" src="/assets/images/lamp.png" width="200">
   <br>
     <small>Image by <a href="https://github.com/MariaLetta/free-gophers-pack"> Maria Letta @free-gophers-pack</a></small>
 </p> 
 
-The value of documentation is quite obvious if we think of a scenario in which we don't have documentation:
+The value of documentation is quite evident if we think of a scenario in which we don't have documentation:
 1. We need to find a person who possesses the knowledge that we seek
    1. Blockers:
       1. This person must be available
@@ -150,13 +150,13 @@ If we want to encapsulate everything in one sentence, I would say that the value
 
 
 ## Communication efficiency
-The purpose of software engineering documentation is to communicate what a software system does and how it does it from different perspectives and different levels. The details can vary depending on the target audience and what documentation needs to convey. 
+Software documentation aims to communicate what a software system does and how it does it from different perspectives. The details can vary depending on the target audience and what documentation needs to convey. 
 
 Given this purpose, the great benefit of documentation is **communication efficiency**.
 
 A software project has a lifecycle of many steps that span across different functions. 
 It requires the collaboration of multiple roles such as Business, Product, Design, and Engineering.
-A contributor can wear multiple hats during a project, but for teams with more than a single person, communication is the key to success.
+A contributor can wear numerous hats during a project, but communication is the key to success for teams with more than one person.
 
 Whether we are talking about business needs, detailed use cases, edge cases, and software engineering documentation, all play a key role in communicating the purpose, the behavior of the system, and how the system is implemented.
 
@@ -166,11 +166,11 @@ Whether we are talking about business needs, detailed use cases, edge cases, and
     <small>Image by <a href="https://github.com/MariaLetta/free-gophers-pack"> Maria Letta @free-gophers-pack</a></small>
 </p> 
 
-Each of the people involved in a software project has expertise in their function and, therefore and the single point of contact for specific areas of the project.
+Each person involved in a software project has expertise in their function and, therefore is the single point of contact for specific areas of the project.
 
 The presence of documentation in all areas of the project increases the efficiency by:
 - **Preventing consuming time from people** who work on their ongoing tasks to get an answer for a question about the system's behavior
-- **People are not blocked by someone's unavailability**. The information is documented so you can read it and proceed accordingly
+- **Someone’s unavailability does not block people**. The information is documented so you can read it and proceed accordingly
 - **People who seek information can find what they want easily and quickly**
 
 ## Quick Onboarding time for new members
@@ -178,17 +178,17 @@ When a new member joins the team, we want them to be productive as soon as possi
 
 Depending on the existence of good documentation, the onboarding process can be either a painful resource and time-draining process or a smooth process for both the new joiner and the team. 
 
-I've personally experienced both situations, and the difference in morale and frustration and delivery times is outstanding!
+I've experienced both situations, and the difference in morale and frustration and delivery times is outstanding!
 
 This is especially important for medium-big size and high-growth organizations where hiring is constant.
 
 ## Preserving knowledge
 
-People forget, and people leave companies. No one remembers everything forever, and there is no guaranteed loyalty to a company.
+People forget, and people leave companies. And unfortunately, no one remembers everything forever, and there is no guaranteed loyalty to a company.
 
 Concentrating knowledge on a handful of people is a horrible idea. It's almost guaranteed to lead to an inevitably bad, bad situation.
 
-Imagine what would happen if the people who know the business of the product inside-out left the company. It's a huge cost for a company to take.
+Imagine what would happen if the people who know the business of the product inside-out left the company. It's a massive cost for a company to take.
 
 Thankfully it's preventable.\
 How?\
@@ -198,11 +198,11 @@ Write the docs!
 
 People disagree, and people forget.
 
-Arguments and conflict resolution is part of our job. If we talk about preferences and subjective topics with competing tradeoffs, that's expected, and it's inevitable. 
+Arguments and conflict resolution is part of our job. If we talk about preferences and subjective topics with competing tradeoffs, that's expected; and inevitable. 
 
-Disagreements and arguments on already agreed product requirements, specifications, and decisions made are completely preventable. This might sound obvious. But these sort of arguments is the reality of some software engineering teams. I have recently heard of teams arguing about the agreed feature requirements after the delivery of the feature on its demo days! :facepalm:
+Disagreements and arguments on already agreed product requirements, specifications, and decisions are completely preventable. This might sound obvious. But these sort of arguments is the reality of some software engineering teams.
 
-Maintaining good documentation, especially on use cases, edge-case scenarios, and decisions made about specific parts of the project, has a huge impact on the success of the project. Here are a few examples:
+Maintaining good documentation, especially on use cases, edge-case scenarios, and decisions made about specific parts of the project, dramatically impacts the project's success. Here are a few examples:
 - Software engineers can ensure correctness via test cases and review code against the written documentation
 - New software engineers can understand the decision-making process for "Why was this done this way."
 - Product can confirm use cases and behavior and check the data points they collected to reach their decisions
@@ -215,18 +215,18 @@ Lastly, good documentation, especially in large organizations and open source pr
     <small>Image by <a href="https://github.com/MariaLetta/free-gophers-pack"> Maria Letta @free-gophers-pack</a></small>
 </p> 
 
-This greatly promotes domain knowledge and understanding and can result in cross-domain collaboration and the exchange of ideas.
+This greatly promotes domain knowledge and understanding and can result in cross-domain collaboration exchanging of ideas.
 
 # Common Gotchas
-As we've seen the value of documentation is apparent and software projects can benefit greatly from a well written documentation.
+As we've seen, the value of documentation is apparent, and software projects can benefit significantly from well-written documentation.
 
-However, just writing any documentation is not enough. The documentation should be meet a quality standard and be maintained consistently.
+However, just writing any documentation is not enough. The documentation should meet a quality standard and be maintained consistently.
 
-Below we explore some common mistakes you can see in project where the value of documentation is well understood but the execution fails.
+Below we explore some common mistakes you can see in a project where the value of documentation is well understood, but the execution fails.
 
 ## The "written in stone" documentation
 This is probably the most commonly found problematic state in documentation.
-While a team puts the effort to write documentation, there is no attention to keep the documentation up to date.
+While a team puts effort into writing documentation, there is no attention to keeping the documentation up to date.
 
 
 <p align="center">
@@ -236,21 +236,21 @@ While a team puts the effort to write documentation, there is no attention to ke
 </p> 
 
 
-This is a highly dangerous situation since it can result in:
-1. Either the documentation becomes completely useless since it does not represent the current state of the project
+This is a dangerous situation since it can result in the following:
+1. Either the documentation becomes utterly useless since it does not represent the current state of the project
 2. Or even worse, people could make decisions based on wrong assumptions that are presented in outdated documentation
 
 Documentation should be updated systematically as the software grows organically. 
 
 ## Inaccurate documentation
-Often documentation is assigned and written by a team member, published in the knowledgebase tool of choice and that's all. 
+Often documentation is assigned and written by a team member, published in the knowledgebase tool of choice, and that's all. 
 
-Code is written and reviewed before being published. The same applies for documentation. People make mistakes, miss important information, have misconceptions about how specific things work. 
+Code is written and reviewed before being published. The same applies to documentation. People make mistakes, miss important information, and have misconceptions about how specific things work. 
 
-Therefore it's essential that documentation is peer-reviewed using a feeback-provisioning process to ensure correctness. 
+Therefore it's essential that documentation is peer-reviewed using a feedback-provisioning process to ensure correctness. 
 
 ## Documentation spread in too many locations
-Another relatively common problem found in the software world is using too many documentation approaches and even tools/services without a clear approach of what goes where.
+Another relatively common problem in the software world is using too many documentation approaches and even tools/services without a clear direction of what goes where.
 
 <p align="center">
   <img alt="whattodo" src="/assets/images/docs-docs-everywhere.jpg" width="600">
@@ -258,24 +258,24 @@ Another relatively common problem found in the software world is using too many 
 
 This devalues the documentation since, if someone wants to search for something, they need to check each documentation source separately without a clear indication of what goes where. 
 
-This is of course preventable by either hosting everything together or standardizing the types of documents that exist in each tool and how they should be structured. KISS usually works until a specific inefficiency is identified along the way.
+This is preventable by hosting everything together or standardizing the types of documents in each tool and how they should be structured. KISS usually works until a specific inefficiency is identified along the way.
 
 # Crucial documents for the software engineer
-So far we have explored the misconceptions of documentation, the value of documentation and common problems we see with documentation.
+So far, we have explored the misconceptions of documentation, the value of documentation and common problems we see with documentation.
 
 But what should we document?
 
-We will be looking at this from a software engineer perspective and go through the types of documents that I believe are absolutely necessary in modern projects
+We will look at this from a software engineer perspective, and going through documents I believe are absolutely necessary for modern projects.
 
 ## Business Requirements and use cases
-Software development is all about implementing business use cases. The first stage in the lifecycle of software development is gathering the requirements. From the requirements we continue with technical analysis [todo]() and extract the specifications.
+Software development is all about implementing business use cases. The first stage in the lifecycle of software development is gathering the requirements. From the requirements, we continue with technical analysis [todo]() and extract the specifications.
 
-Documenting this process and the extracted business use cases is one of the most important points of documentation, as they define how the system should behave. This is the part of the documentation that team members will visit often to clarify and confirm how the system should behave under specific circumstances.
+Documenting this process and the extracted business use cases is one of the most critical points of documentation, as they define how the system should behave. This is the part of the documentation that team members will often visit to clarify and confirm how the system should act under specific circumstances.
 
 ## Technical Documentation
 ### Technical Designs
-The technical design is one of the first areas software engineers look to gain a high-level understanding of the system.
-Usually technical designs should contain the following:
+Technical design is one of the first areas in that software engineers look to gain a high-level understanding of the system.
+Usually, technical designs should contain the following:
 - Tech Stack
 - System context
 - Architecture Diagram
@@ -284,51 +284,50 @@ Usually technical designs should contain the following:
 - Data Flow Diagram
 - Component Diagram
 
-When we think of technical design for a specific project we can think about it in two levels:
-- System level technical design
-- Service level technical design
+When we think of a technical design for a specific project, we can think about it on two levels:
+- System-level technical design
+- Service-level technical design
 
-For large projects that consist of multiple components, the system technical design should be hosted in a commonly shared location and describe the high level interaction of sub-components
+For large projects that consist of multiple components, the system technical design should be hosted in a commonly shared location and describe the high-level interaction of sub-components
 
-In a service-level, the technical desing can live with the code itself. It's easier to have a common place for everything related to a project including documentation and code. It's also easier to maintain it.
+At a service level, the technical design can live with the code itself. It's easier to have a common place for everything related to a project, including documentation and code. It's also easier to maintain it.
 
 ### Developer's Handbook
-One of the sections I have adopted in the last years and can't live without it is the Developer's Handbook. 
+The Developer's Handbook is one of the sections I have adopted in the last years and is invaluable.
 
-All documentation that a developer should know about standards, processes, tooling, guides that is non project specific lives in this space.
+All documentation that a developer should know about standards, processes, tooling, and guides that is non-project specific lives in this space.
 
-Let's review in details some of the contents that live under the dev's handbook.
+Let's review some of the contents that live under the dev's handbook.
 
 #### Guides
-A very useful types of documents that is very valueable are guides.
-Guides can be in the form of runbooks, how-tos and specific documented steps of how to achieve a goal that is commonly required and does not have a straightforward approach.
+Guides can be in the form of runbooks, how-tos, and specific documented steps of achieving a goal that is commonly required and does not have a straightforward approach.
 
 #### Onboarding 
-Having an onboarding step-by-step guide is essential for bringing a new team member up to speed without blocking other team members.
+A step-by-step onboarding guide is essential for bringing a new team member up to speed without blocking other team members.
 
 #### Processes
-Every team has its practices that can span on a team, domain or company level. Documenting the processes is important to get everyone in the team aligned.
+Every team has its practices that can span at a team, domain, or company level. Therefore, documenting the processes is important to align everyone on the team.
 
 # Final thoughts - My philosophy on Documentation
-Documentation is an investement; it saves communication and investigation time.
-At the same time documentation needs care; if it gets outdated it can become useless.
+Documentation is an investment; it saves communication and investigation time.
+But, at the same time, documentation needs care; if it gets outdated, it can become useless.
 
 ## My guidelines
 My guidelines around documentation are described in the below statements:
-1. Always document business use cases in detail
-2. Always include and maintain a *Developer's Handbook* section for projects with multiple contributors
-3. When a project is big enough and support takes considerable time, document a *Troubleshooter's guide* for common issues and FAQ
+1. Always document business use cases in detail.
+2. Always include and maintain a *Developer's Handbook* section for projects with multiple contributors.
+3. When a project is big enough, and support takes considerable time, document a *Troubleshooter's guide* for common issues and FAQ.
 
 ## Organizing documentation
-Looking at documentation from a higher level, documentation should always be well-organized., In my experience, I have seen documentations been spread out to multiple locations which causes confusion and defeats it's purpose, since the stakeholders cannot find easily what they want to.
+Documentation should always be well-organized. In my experience, I have seen documention being spread out to multiple locations, which causes confusion and defeats its purpose since the stakeholders cannot easily find what they want.
 
-My approach on organizing this is:
-1. Keep all project/service-specific technical documentation within the corresponding code repository
-2. Keep all business documentation together in one, single common space
-3. Keep technical analysis of features in one, single common space
-4. Keep architecture documentation and documents that involve more than one components separate from the repos, within a dedicated shared location 
+My approach to organizing this is as follows:
+1. Keep all project/service-specific technical documentation within the corresponding code repository.
+2. Keep all business documentation together in one single space.
+3. Keep technical analysis of features in one single space.
+4. Keep architecture documentation and documents that involve more than one component separate from the code repositories, within a dedicated shared location.
 
-Again, documentation is a huge subject on its own, but the above generally encapsulate the fundamental values I formed around the developer's need for it.
+Again, documentation is a vast subject on its own, but the above generally encapsulates the fundamental values I formed around the developer's need for it.
 
 
 For those about to doc, I salute you :metal:
