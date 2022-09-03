@@ -6,22 +6,27 @@ tags: software-processes
 author_profile: true
 toc: true
 ---
-This article explores the value of documentation, its state in many software engineering companies, several misconceptions, some common mistakes when we document software and some suggestions on how to write, structure and maintain great documentation. 
+This article explores the value of documentation, several misconceptions, some common mistakes when we document software, and some suggestions on how to write, structure, and maintain great documentation. 
 
 # Introduction
 Documentation is a hot topic in the software engineering world and has an arguably bad reputation.
 
-Most engineers complain about the quality, the state and the lack of documentation.
+Most engineers complain about the quality, the state, and the lack of documentation.
 
-At the same time most engineers avoid and do not invest time in writing quality documentation. 
+At the same time, most engineers avoid and do not invest time in writing quality documentation. 
 
-Many engineers even hate to write documentation. Some engineers even consider documentation redundant and unecessary. While some of them complain when they don't find something when it is most needed. 
+Many engineers even hate to write documentation. Some engineers even consider documentation redundant and unnecessary. In contrast, some of them complain when they don't find something when it is most needed. 
 
-In my early years as a junior software engineer I have to admit that I also hated writing documentation. Afterall, *"Why would an engineer spend time to write boring text for explaining code instead of investing that time to write more code?"*
+In my early years as a junior software engineer, I have to admit that I also hated writing documentation. After all, *"Why would an engineer write boring text to explain code instead of investing that time to write more code?"*
+<p align="center">
+  <img alt="whattodo" src="/assets/images/write.png" width="200">
+  <br>
+    <small>Image by <a href="https://github.com/MariaLetta/free-gophers-pack"> Maria Letta @free-gophers-pack</a></small>
+</p> 
 
-Well, through the years and my interaction with undocumented systems and codebases, I have grown to be a big proponent of documentation. The pain, tears and time spent to find about undocumented requirements, specs ,and designs were convincing enough for me to appreciate the value of a good documentation.
+Well, through the years and my interaction with undocumented systems and codebases, I have become a big proponent of documentation. The pain, tears and time spent to find about undocumented requirements, specs, and designs were convincing enough for me to appreciate the value of good documentation.
 
-In this article we'll explore three main areas:
+In this article, we'll explore three main areas:
 1. Common reasons why many engineers don't write documentation
 2. The value that documentation can bring
 3. Guidelines that have helped me when dealing with writing and maintaining documentation.
@@ -30,111 +35,138 @@ In this article we'll explore three main areas:
 
 Why should we write software documentation? What's the purpose of software documentation?
 
-Software documentation is like any documentation; it's a form of communication. In software projects built by more than one people, the communication is a key success factor of the software's success.
+Software documentation is like any documentation; it's a form of communication. In software projects built by more than one person, communication is a crucial success factor of the software's success.
 
 > Software documentation either explains how the software operates or how to use it, and may mean different things to people in different roles.
 > from [^wikipedia]()
 
-Is it essential for everyone that wants to build, use, understand or interact in any way with the software to have access to a knowledge-base that can give an understanding about what they seek to find.
+Is it essential for everyone who wants to build, use, understand or interact with the software to have access to a knowledge base that can give an understanding of what they seek to find.
 
 
 # Common Misconceptions
 
-In this section we explore common arguments from engineers that refuse to write documentation.
+This section, explores common arguments from engineers who refuse to write documentation.
+<p align="center">
+  <img alt="whattodo" src="/assets/images/scared.png" width="200">
+  <br>
+    <small>Image by <a href="https://github.com/MariaLetta/free-gophers-pack"> Maria Letta @free-gophers-pack</a></small>
+</p> 
 
-## Misconception #1: It's not required, just look at the code
+## Misconception #1: It's not required; just look at the code
 > You don't need documentation! Just look at the code!
 
 This is a common one. *"Why would you write documentation to explain how things work if the absolute source of truth is the code itself? Just invest time in providing better code readability"*.
 
-Well, code readability is a huge topic on its own and one of the qualities we strive for as software engineers. And it's true, the most correct description of what a software system does it's the code. 
+<p align="center">
+  <img alt="whattodo" src="/assets/images/who-needs-documentation-i-can-read-code.jpg" width="200">
+</p> 
 
-But unfortunately **the purpose of code is to define behavior, not describe behavior**.
+Code readability is a vast topic and one of the qualities we strive for as software engineers. And it's true, the most accurate description of what a software system does it's the code. 
+
+But **the purpose of code is to define behavior, not describe behavior**.
 
 The major problems with this argument are:
 1. Not everyone can read code. There are more roles than software engineers involved in producing a software system
-2. Reading code to understand the behavior of a system is not efficient and does not scale well with the increase of complexity and size
+2. Reading code to understand the behavior of a system is not efficient and does not scale well with the increase in complexity and size
 
 ### Not everyone can read code
 Reading code is an option for software engineers who can read code. But what about the other stakeholders of the system?
 
-A software team interacts with multiple stakeholders. Product Managers want to clarify specific use-cases. Software Engineers of other teams we collaborate with want to know just enough details to integrate with our systems.
+A software team interacts with multiple stakeholders. For example, product managers want to clarify specific use cases. Software Engineers of other teams we collaborate with want to know just enough details to integrate with our systems.
 
-If there is no documentation, the communication overhead with go-to experts becomes too big to handle and the efficiency of the team decreases significantly.
+<p align="center">
+  <img alt="whattodo" src="/assets/images/source-full-code.jpeg" width="300">
+</p> 
+
+Without documentation, the communication overhead with go-to experts becomes too big to handle, and the team's efficiency decreases significantly.
 
 ### Reading code to understand a system is not efficient
 
-Even if you can read code, software engineers that have not worked with the codebase before, need some context. Before working with code when we join new projects we need an overview, the purpose of the system and the main use-cases it tries to solve.
+Even if you can read code, software engineers that have not worked with the codebase need some context. Before working with code, when we join new projects, we need an overview of the purpose of the system and the primary use cases it tries to solve.
 
-**Checking the codebase to extract the behavior of the system is possible, but extremely slow and painful**. It's also possible to result in misconceptions about the behavior. Remember, reading code is much harder than writing code. 
+**Checking the codebase to extract the system's behavior is possible but extremely slow and painful**. It's also possible to result in misconceptions about the behavior. Remember, reading code is much harder than writing code. 
 
-Finally code readability becomes less and less valuable, especially for troubleshooting, when the complexity and size of a system increases over time. Clarifying the behavior of an extreme use-case and "why does this do this instead of that" might become impossible when there is only a codebase to work with.
+Finally, code readability becomes less and less valuable, especially for troubleshooting, when the complexity and size of a system increase over time. Clarifying the behavior of an extreme use case and "why does this do this instead of that" might become impossible when there is only a codebase to work with.
 
 
-## Misconception #2: It wastes time that could be spent in development instead
-> Why would I waste my time on writing about code rather than coding at that time?
+## Misconception #2: Documentation wastes time that could be spent on development instead
+> Why would I waste my time writing about code rather than coding at that time?
 
-Does writing documentation really waste time *in the long term*? How can we determine whether it trully wastes time? 
+Does writing documentation waste time *in the long term*? How can we determine whether it genuinely wastes time? 
 
 Does avoiding documentation in the long term result in a higher throughput? Well, I don't think so.
 
 As mentioned above, as the complexity and size of the software increases, the communication overhead becomes unbearable and will inevitably result in lower throughput. 
 
-If there's no documentation at some point the development time will be inevitably decreased.
+If there's no documentation at some point, the development time will be inevitably decreased.
 
 Why? Because stakeholders will always have questions.
 
-And who knows the answer? Developers! The worst problem is that different people will ask the same questions over and over again to the same engineers. #AutomateThis
+And who knows the answer? Developers! The worst problem is that different people repeatedly ask the same questions to the same engineers. #AutomateThis
   
 
-## Misconception #3: We don't need to write this, it's obvious
-> "We dont' need to document this. Everyone knows that!"
+## Misconception #3: We don't need to write this; it's obvious
+> "We don't need to document this. Everyone knows that!"
 
-Well, it might be obvious for **you**, **now** under your area of work. But nothing is obvious for everyone.
-Documenting clearly use-cases, architecture, interaction between components avoids misunderstandings that could result in major errors/incidents that can be constly to businesses.
+It might be obvious to **you**, **now** under your area of work. But nothing is obvious for everyone.
+Documenting use cases, architecture, and interaction between components prevents misunderstandings that could result in significant errors/incidents that can be costly to businesses.
 
-## Misconception #4: No need to write this, we will remember this
+## Misconception #4: No need to write this; we will remember this
 > "I'll never forget this"
 
 Famous last words.
 
-Well, there's not really much to comment on this one. People forget and people leave from companies. It's inevitable. We need accept it, and be prepared for it.
+Well, there's not really much to comment on this one. People forget, and people leave companies. It's inevitable. We need to accept it and be prepared for it.
 
 How? **Write the docs!**
 
 
 # The value of documentation
 
-Hopefully it's now clear that avoiding documentation is a dangerous game to play. 
+Hopefully, it's now clear that avoiding documentation is a dangerous game to play. 
+
+
+In this section, we explore common arguments from engineers that refuse to write documentation.
+<p align="center">
+  <img alt="whattodo" src="/assets/images/lamp.png" width="200">
+  <br>
+    <small>Image by <a href="https://github.com/MariaLetta/free-gophers-pack"> Maria Letta @free-gophers-pack</a></small>
+</p> 
 
 The value of documentation is quite obvious if we think of a scenario in which we don't have documentation:
-1. We need to find a person who posseses the knowledge that we seek
+1. We need to find a person who possesses the knowledge that we seek
    1. Blockers:
       1. This person must be available
-      2. This person might have other high priority items to work on
+      2. This person might have other high-priority items to work on
    2. Inefficiency
       1. This person must answer the same questions over and over again to different people
 2. Or we will try to extract the information on our own
-   1. If there is existing software we can look at the code
+   1. If there is existing software, we can look at the code
       1. Inefficiency
          1. This is a slow process
    2. If we seek information about things already discussed but not documented, well, we can't do anything :shrugged:
 
-If we want to encapsulate everything in one sentence, I would say that the value of documenation is that **Documentation is always available for everyone to consume, at anytime**
+If we want to encapsulate everything in one sentence, I would say that the value of documentation is that **Documentation is always available for everyone to consume at any time**.
 
 
 ## Communication efficiency
-The purpose of software engineering documentation is communicating what a software system does and how it does it from different perspectives and different levels. The details can vary depending on the target audience and what documentation needs to convey. 
+The purpose of software engineering documentation is to communicate what a software system does and how it does it from different perspectives and different levels. The details can vary depending on the target audience and what documentation needs to convey. 
 
 Given this purpose, the great benefit of documentation is **communication efficiency**.
 
-A software project has a lifecycle of many steps that spans accross different functions. 
-It requires the collaboration of multiple roles such as Business, Product, Design, Engineering.
-A contributor can wear multiple hats during a project, but for teams with more than a single peron, communication is the key to success.
+A software project has a lifecycle of many steps that span across different functions. 
+It requires the collaboration of multiple roles such as Business, Product, Design, and Engineering.
+A contributor can wear multiple hats during a project, but for teams with more than a single person, communication is the key to success.
 
-Whether we are talking about business needs, detailed use-cases, edge-cases and software engineering documentation, all play a key role in communicating the purpose, the behavior of the system and how the system is implemented.
+Whether we are talking about business needs, detailed use cases, edge cases, and software engineering documentation, all play a key role in communicating the purpose, the behavior of the system, and how the system is implemented.
 
-Each of the people involved in a software project, have expertise in their function and therefore and the single point of contact for specific areas of the project.
+<p align="center">
+  <img alt="whattodo" src="/assets/images/agree.png" width="200">
+  <br>
+    <small>Image by <a href="https://github.com/MariaLetta/free-gophers-pack"> Maria Letta @free-gophers-pack</a></small>
+</p> 
+
+Each of the people involved in a software project has expertise in their function and, therefore and the single point of contact for specific areas of the project.
 
 The presence of documentation in all areas of the project increases the efficiency by:
 - **Preventing consuming time from people** who work on their ongoing tasks to get an answer for a question about the system's behavior
@@ -144,9 +176,9 @@ The presence of documentation in all areas of the project increases the efficien
 ## Quick Onboarding time for new members
 When a new member joins the team, we want them to be productive as soon as possible.
 
-Depending on the existence of good documentation, the onboarding process can be either a painful resource and time draining process, or a smooth process for both the new joiner and the team. 
+Depending on the existence of good documentation, the onboarding process can be either a painful resource and time-draining process or a smooth process for both the new joiner and the team. 
 
-I've personally experienced both situations and the difference in moral and frustration and delivery times is outstanding!
+I've personally experienced both situations, and the difference in morale and frustration and delivery times is outstanding!
 
 This is especially important for medium-big size and high-growth organizations where hiring is constant.
 
@@ -154,7 +186,7 @@ This is especially important for medium-big size and high-growth organizations w
 
 People forget, and people leave companies. No one remembers everything forever, and there is no guaranteed loyalty to a company.
 
-Concentrating knowledge to a handful of people is a horrible idea. It's almost guaranteed to lead to an inevitably bad, bad situation.
+Concentrating knowledge on a handful of people is a horrible idea. It's almost guaranteed to lead to an inevitably bad, bad situation.
 
 Imagine what would happen if the people who know the business of the product inside-out left the company. It's a huge cost for a company to take.
 
@@ -166,18 +198,24 @@ Write the docs!
 
 People disagree, and people forget.
 
-Arguments and conflict resolution is part of our job. If we talk about preferences and subjective topics with competing tradeoffs, that's expected and it's inevitable. 
+Arguments and conflict resolution is part of our job. If we talk about preferences and subjective topics with competing tradeoffs, that's expected, and it's inevitable. 
 
-Disagreements and arguments on already agreed product requirements, specifications and decisions made are completely preventable. This might sound obvious. But these sort of arguments is the reality of some software engineering teams. I have recently heard of teams arguing about the agreed feature requirements after the delivery of the feature on its demo days! :facepalm:
+Disagreements and arguments on already agreed product requirements, specifications, and decisions made are completely preventable. This might sound obvious. But these sort of arguments is the reality of some software engineering teams. I have recently heard of teams arguing about the agreed feature requirements after the delivery of the feature on its demo days! :facepalm:
 
-Maintaining a good documentation, especially on use-cases, edge-case scenarios and decisions made about specific parts of the project has a huge impact on the success of the project. A few examples:
+Maintaining good documentation, especially on use cases, edge-case scenarios, and decisions made about specific parts of the project, has a huge impact on the success of the project. Here are a few examples:
 - Software engineers can ensure correctness via test cases and review code against the written documentation
-- New software engineers can understand the decision-making process for "Why was this done this way"
-- Product can confirm use-cases and behavior and check the data points they collected to reach their decisions
+- New software engineers can understand the decision-making process for "Why was this done this way."
+- Product can confirm use cases and behavior and check the data points they collected to reach their decisions
 
 ## Promotes External Collaboration
-Lastly, good documentation, especially in large organizations and open source projects can be used by people outside the contribution team to gain knowledge on the area of work of other teams.
-This greatly promotes domain knowledge and understanding and can result in cross-domain collaboration and exchange of ideas.
+Lastly, good documentation, especially in large organizations and open source projects, can be used by people outside the contribution team to gain knowledge on the area of work of other teams.
+<p align="center">
+  <img alt="whattodo" src="/assets/images/alien.png" width="200">
+  <br>
+    <small>Image by <a href="https://github.com/MariaLetta/free-gophers-pack"> Maria Letta @free-gophers-pack</a></small>
+</p> 
+
+This greatly promotes domain knowledge and understanding and can result in cross-domain collaboration and the exchange of ideas.
 
 # Common Gotchas
 As we've seen the value of documentation is apparent and software projects can benefit greatly from a well written documentation.
@@ -189,6 +227,14 @@ Below we explore some common mistakes you can see in project where the value of 
 ## The "written in stone" documentation
 This is probably the most commonly found problematic state in documentation.
 While a team puts the effort to write documentation, there is no attention to keep the documentation up to date.
+
+
+<p align="center">
+  <img alt="whattodo" src="/assets/images/bomb.png" width="200">
+  <br>
+    <small>Image by <a href="https://github.com/MariaLetta/free-gophers-pack"> Maria Letta @free-gophers-pack</a></small>
+</p> 
+
 
 This is a highly dangerous situation since it can result in:
 1. Either the documentation becomes completely useless since it does not represent the current state of the project
@@ -206,7 +252,9 @@ Therefore it's essential that documentation is peer-reviewed using a feeback-pro
 ## Documentation spread in too many locations
 Another relatively common problem found in the software world is using too many documentation approaches and even tools/services without a clear approach of what goes where.
 
-Spread the docs, spread the docs everywhere
+<p align="center">
+  <img alt="whattodo" src="/assets/images/docs-docs-everywhere.jpg" width="600">
+</p> 
 
 This devalues the documentation since, if someone wants to search for something, they need to check each documentation source separately without a clear indication of what goes where. 
 
@@ -220,9 +268,9 @@ But what should we document?
 We will be looking at this from a software engineer perspective and go through the types of documents that I believe are absolutely necessary in modern projects
 
 ## Business Requirements and use cases
-Software development is all about implementing business use-cases. The first stage in the lifecycle of software development is gathering the requirements. From the requirements we continue with technical analysis [todo]() and extract the specifications.
+Software development is all about implementing business use cases. The first stage in the lifecycle of software development is gathering the requirements. From the requirements we continue with technical analysis [todo]() and extract the specifications.
 
-Documenting this process and the extracted business use-cases is one of the most important points of documentation, as they define how the system should behave. This is the part of the documentation that team members will visit often to clarify and confirm how the system should behave under specific circumstances.
+Documenting this process and the extracted business use cases is one of the most important points of documentation, as they define how the system should behave. This is the part of the documentation that team members will visit often to clarify and confirm how the system should behave under specific circumstances.
 
 ## Technical Documentation
 ### Technical Designs
