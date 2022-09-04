@@ -6,16 +6,16 @@ tags: software-processes
 author_profile: true
 toc: true
 ---
-This article explores the value of documentation, several misconceptions, some common mistakes when we document software, and some suggestions on how to write, structure, and maintain great documentation. 
+This article explores the value of documentation, a few misconceptions around the need for documentation and some common pitfalls we fall when we document software. 
+
+In the end I add some suggestions on what to document and my philosophy for writing, structuring, and maintaining great documentation. 
 
 # Introduction
 Documentation is a hot topic in the software engineering world and has an arguably bad reputation.
 
-Most engineers complain about the quality, the state, and the lack of documentation.
+Many engineers complain about the quality, the state, and the lack of documentation. At the same time, most engineers avoid and do not invest time in writing quality documentation. 
 
-At the same time, most engineers avoid and do not invest time in writing quality documentation. 
-
-Many engineers even hate to write documentation. Some engineers even consider documentation redundant and unnecessary. In contrast, some of them complain when they don't find something when it is most needed. 
+Many engineers even *hate* to write documentation. Some engineers even consider documentation redundant and unnecessary. In contrast, some of them complain when they don't find something when it is most needed. 
 
 In my early years as a junior software engineer, I have to admit that I also hated writing documentation. After all, *"Why would an engineer write boring text to explain code instead of investing that time to write more code?"*
 <p align="center">
@@ -26,19 +26,20 @@ In my early years as a junior software engineer, I have to admit that I also hat
 
 Well, through the years and my interaction with undocumented systems and codebases, I have become a big proponent of documentation. The pain, tears and time spent to find about undocumented requirements, specs, and designs were convincing enough for me to appreciate the value of good documentation.
 
-In this article, we'll explore three main areas:
-1. Common reasons why many engineers don't write documentation
-2. The value that documentation can bring
-3. Guidelines that have helped me when dealing with writing and maintaining documentation.
+In this article, we'll explore thre following areas:
+1. The purpose of documentation
+2. Common reasons why many engineers don't write documentation
+3. The value that documentation can bring in a software team
+4. Guidelines that have helped me when dealing with writing and maintaining documentation.
 
 # Purpose
 
 Why should we write software documentation? What's the purpose of software documentation?
 
-Software documentation is like any documentation; it's a form of communication. In software projects built by more than one person, communication is a crucial success factor of the software's success.
-
 > Software documentation either explains how the software operates or how to use it, and may mean different things to people in different roles.
 > from [^wikipedia]()
+
+Software documentation is like any documentation; it's a form of communication. In software projects built by more than one person, communication is a crucial success factor of the software's success.
 
 Is it essential for everyone who wants to build, use, understand or interact with the software to have access to a knowledge base that can give an understanding of what they seek to find.
 
@@ -47,7 +48,7 @@ Is it essential for everyone who wants to build, use, understand or interact wit
 
 This section, explores common arguments from engineers who refuse to write documentation.
 <p align="center">
-  <img alt="whattodo" src="/assets/images/scared.png" width="200">
+  <img alt="scared" src="/assets/images/scared.png" width="200">
   <br>
     <small>Image by <a href="https://github.com/MariaLetta/free-gophers-pack"> Maria Letta @free-gophers-pack</a></small>
 </p> 
@@ -58,16 +59,16 @@ This section, explores common arguments from engineers who refuse to write docum
 This is a common one. *"Why would you write documentation to explain how things work if the absolute source of truth is the code itself? Just invest time in providing better code readability"*.
 
 <p align="center">
-  <img alt="whattodo" src="/assets/images/who-needs-documentation-i-can-read-code.jpg" width="200">
+  <img alt="who-needs-documentation-i-can-read-code" src="/assets/images/who-needs-documentation-i-can-read-code.jpg" width="250">
 </p> 
 
-Code readability is a vast topic and one of the qualities we strive for as software engineers. And it's true, the most accurate description of what a software system does it's the code. 
+Code readability is a vast topic and one of the qualities we strive for as software engineers. And it's true, the most accurate description of what a software system does is the code. 
 
 But **the purpose of code is to define behavior, not describe behavior**.
 
 The major problems with this argument are:
-1. Not everyone can read code. There are more roles than software engineers involved in producing a software system
-2. Reading code to understand the behavior of a system is not efficient and does not scale well with the increase in complexity and size
+1. **Not everyone can read code**. There are more roles than software engineers involved in producing a software system
+2. Reading code to understand the behavior of a system is **not efficient** and **does not scale** well with the increase in complexity and size
 
 ### Not everyone can read code
 Reading code is an option for software engineers who can read code. But what about the other stakeholders of the system?
@@ -75,7 +76,7 @@ Reading code is an option for software engineers who can read code. But what abo
 A software team interacts with multiple stakeholders. For example, product managers want to clarify specific use cases. Software Engineers of other teams we collaborate with want to know just enough details to integrate with our systems.
 
 <p align="center">
-  <img alt="whattodo" src="/assets/images/source-full-code.jpeg" width="300">
+  <img alt="source-full-code" src="/assets/images/source-full-code.jpeg" width="300">
 </p> 
 
 Without documentation, the communication overhead with go-to experts becomes too big to handle, and the team's efficiency decreases significantly.
@@ -96,13 +97,13 @@ Does writing documentation waste time *in the long term*? How can we determine w
 
 Does avoiding documentation in the long term result in a higher throughput? Well, I don't think so.
 
-As mentioned above, as the complexity and size of the software increases, the communication overhead becomes unbearable and will inevitably result in lower throughput. 
-
-If there's no documentation at some point, the development time will be inevitably decreased.
+As mentioned above, **as the complexity and size of the software increases, the communication overhead becomes unbearable and will inevitably result in lower throughput**. 
 
 Why? Because stakeholders will always have questions.
 
-And who knows the answer? Developers! The worst problem is that different people repeatedly ask the same questions to the same engineers. #AutomateThis
+And who knows the answer? Developers! The worst problem is that different people repeatedly ask the same questions to the same engineers. 
+
+Do you see a task that could be automated here? I do; **#AutomateThis**
   
 
 ## Misconception #3: We don't need to write this; it's obvious
