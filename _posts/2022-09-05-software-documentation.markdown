@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Hail the Docs! Exploring Software Documentation"
+title:  "Software Documentation - Value, Misconceptions, Common Pitfalls, and Essentials"
 date:   2022-09-05 19:00:00 +0300
 tags: software-processes
 author_profile: true
@@ -8,9 +8,9 @@ toc: true
 header:
     og_image: /assets/images/hail-the-docs-squirrel.jpg
 ---
-This article explores the value of documentation, a few misconceptions around the need for documentation, and some common pitfalls we fall into when we document software.
+This article explores the value of software documentation, a few misconceptions around the need for documentation, and some common pitfalls we fall into when we document software.
 
-Finally, we explore essential documents for software engineering teams and some guidelines for organizing documentation.
+Finally, it provides an overview of the essential documentation for software engineering teams and some guidelines for organizing documentation.
 # Introduction
 Documentation is a hot topic in the software engineering world and has an arguably bad reputation.
 
@@ -25,7 +25,7 @@ In my early years as a junior software engineer, I have to admit that I also hat
     <small>Image by <a href="https://github.com/MariaLetta/free-gophers-pack"> Maria Letta @free-gophers-pack</a></small>
 </p> 
 
-Well, through the years and my interaction with undocumented systems and codebases, I have become a big proponent of documentation. The pain, tears 😢  and time spent to find about undocumented requirements, specs, and designs were convincing enough for me to appreciate the value of good documentation.
+Well, through the years and my interaction with undocumented systems and codebases, I have become a big proponent of documentation. The pain, tears and time spent to find about undocumented requirements, specs, and designs were convincing enough for me to appreciate the value of good documentation.
 
 In this article, we'll explore thre following areas:
 1. The purpose of documentation
@@ -443,7 +443,7 @@ The only sure thing, in my view, is that documentation is an investment with com
 
 I hope I have shed some light on the value and misconceptions of software documentation and provided some guidelines for structuring documentation in software engineering teams.
 
-Hail the docs! For those about to doc, I salute you 🤘
+Glory to the docs! For those about to doc, I salute you 🤘
 
 # References
 [^wiki-doc]: [Software Documentation](https://en.wikipedia.org/wiki/Software_documentation)
