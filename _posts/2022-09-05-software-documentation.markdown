@@ -443,7 +443,7 @@ The only sure thing, in my view, is that documentation is an investment with com
 
 I hope I have shed some light on the value and misconceptions of software documentation and provided some guidelines for structuring documentation in software engineering teams.
 
-Glory to the docs! For those about to doc, I salute you 🤘
+For those about to doc, I salute you 🤘
 
 # References
 [^wiki-doc]: [Software Documentation](https://en.wikipedia.org/wiki/Software_documentation)
