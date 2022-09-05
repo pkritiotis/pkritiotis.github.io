@@ -1,7 +1,7 @@
 ---
 layout: single
-title:  "Hail the Docs! The value, the misconceptions, the pitfalls and my philosophy on Software Documentation"
-date:   2022-08-30 20:30:00 +0300
+title:  "Hail the Docs! The value, misconceptions, pitfalls and essentials on Software Documentation"
+date:   2022-09-05 19:00:00 +0300
 tags: software-processes
 author_profile: true
 toc: true
@@ -278,56 +278,66 @@ This devalues the documentation since, if someone wants to search for something,
 
 This is preventable by hosting everything together or standardizing the types of documents in each tool and how they should be structured. KISS usually works until a specific inefficiency is identified along the way.
 
-## Redundant, not helpful documentation
-//todo 
+## Redundant, not helpful code documentation
+There is a fine line between what needs to be documented and what is not. 
+
+Sometimes, the good intention of providing good documentation results in over-documentation, which is not helpful.
+
+For example, some projects include extremely detailed documentation of what code does. However, maintaining a manual process of describing each of the classes and structs of a piece of software with helper utilities is often redundant. Providing some heads-up for important pieces of information to the developers is understandable, but extreme detail is unnecessary.
+
+This practice can become cumbersome for developers that work on frequently changing codebases, and it also increases the maintenance effort of documentation.
+
+The balance between what is needed and what is not is very vague. Identifying redundant documentation can be done as part of process evaluation. If developers recognize no or minimal value in a costly process, it could be dropped or modified to meet the team's needs.
 
 # Essential documentation for software engineering teams
-So far, we have explored some misconceptions about documentation, the value of documentation and common problems we see with documentation.
+So far, we have explored some misconceptions about documentation, the value of documentation, and common problems we see with documentation.
 
 But what should we document?
 
-We will look at this from a software engineer's lens, and share a set of documents I believe are absolutely necessary for modern projects.
+We will look at this from a software engineer's lens and share a set of documents I believe are absolutely necessary for modern projects.
 
 ## Business Requirements and use cases
 Software development is all about implementing business use cases. The first stage in the lifecycle of software development is gathering the requirements. From the requirements, we continue with technical analysis [todo]() and extract the specifications.
 
-Documenting this process and the extracted business use cases is one of the most critical points of documentation, as they define how the system should behave. This is the part of the documentation that team members will often visit to clarify and confirm how the system should act under specific circumstances.
+Documenting this process and the extracted business use cases is one of the most critical documentation points, as they define how the system should behave.
+
+This is the part of the documentation that team members will often visit to clarify and confirm how the system should act under specific circumstances.
 
 ## Technical Documentation
 The business requirements with the use cases bridge the gap between business/product and engineering.
 
-However the heart of a software system lies in the technical specifications and design.
+However, the heart of a software system lies in the technical specifications and design.
 
-Let's see some of the documentation areas that provide invaluable information for engineers to understand how the system is built, organized and operating from a technical point of view.
+Let's see some documentation areas that provide invaluable information for engineers to understand how the system is built, organized, and operating from a technical point of view.
 
 ## Organizing technical documentation
-Before we proceed with exploring the different areas of technical documentation, it's important to define a solid organization structure. This will promote efficiency for searching and maintaining documentation, and avoid duplication and confusion.
+Before we explore the different technical documentation areas, defining a solid organizational structure is essential. This will promote efficient searching and maintaining documentation and avoid duplication and confusion.
 
-So, whenever I think about technical documentation I think about it in three levels:
+So, whenever I think about technical documentation, I think about it on three levels:
 - System-level documentation
 - Team-level documentation
 - Component/Repo/Service-level documentation
 
 ### System-level documentation
-System-level documentation provides a high-level overview of the system. 
+System-level documentation provides a high-level overview of the system.
 
-This documentation area includes interaction of services/components but does not include the details of how services/components are implemented.
+This documentation area includes the interaction of services/components but does not include the details of how services/components are implemented.
 
-This type of documentation should be hosted outside a repository, in a shared location since it has a broader scope that applies for multiple component/services.
+This type of documentation should be hosted outside a repository, in a shared location, since it has a broader scope for multiple components/services.
 
 Typical documentation sections that live in this area are:
 - Tech Stack, Tooling, BoM
 - Architecture Design
 
 #### Tech Stack, Tooling, and Bill of Materials
-One of the first things that an engineer needs to know before contributing to a system is how it is built. 
+One of the first things an engineer needs to know before contributing to a system is how it is built.
 
-For this reason documenting the tech stack with the programming languages, frameworks and the managed services that is used by the overall system is essential for engineers.
+For this reason, engineers need to document the tech stack with the programming languages, frameworks, and managed services used by the overall system.
 
 #### Architecture Design
-The technical design of a system is one of the first areas in that software engineers look to gain a high-level understanding of the system.
+The technical design of a system is one of the first areas in that software engineers are looking to gain a high-level understanding of the system.
 
-The technical design is a very generic term. Usually, technical designs should contain the following:
+*Technical design* is a very generic term. Usually, technical designs should contain the following:
 - System context
 - Component/Service Architecture Diagram
 - Network Architecture Diagram
@@ -335,23 +345,23 @@ The technical design is a very generic term. Usually, technical designs should c
 - High-level Data Flow Diagram
 
 ### Team-level documentation
-Team-level documentation is not product related and is a set of conventions, standards processes that a software team follows in their day-to-day work.
+Team-level documentation is not product-related and consists of a set of conventions, standards, and processes that a software team follows in their day-to-day work.
 
-This type of documentation can also leave in an isolated location. Following the "Don't spread the documents in multiple locations" it's often helpful to include this type of documentation alongside system-level documentation in a separate category.
+This type of documentation can also leave in an isolated location. However, following the "Don't spread the documents in multiple locations", it's often helpful to include this type of documentation alongside system-level documentation in a separate category.
 
 ### Developer's Handbook
 The Developer's Handbook is one of the sections I have adopted in the last years and is invaluable.
 
 All documentation that a developer should know about standards, conventions, processes, tooling, and guides that is non-feature specific lives in this space.
 
-Let's review some of the contents that live under the dev's handbook.
+Let's review some of the contents included in the dev's handbook.
 
 #### Guides
-Guides can be in the form of runbooks, how-tos, and specific documented steps of achieving a goal that is commonly required and does not have a straightforward approach.
+Guides can be runbooks, how-tos, and specific documented steps of achieving a goal that is commonly required and does not have a straightforward approach.
 
 Here are a few examples:
 - Release Guide
-- Adding a new infrastructre as code resource
+- Adding a new infrastructure as a code resource
 - Deploy a hotfix
 
 Is a recurring flow/task error-prone or not straightforward? Write a guide and share it with your team!
@@ -359,30 +369,37 @@ Is a recurring flow/task error-prone or not straightforward? Write a guide and s
 #### Onboarding 
 A step-by-step onboarding guide is essential for bringing a new team member up to speed without blocking other team members.
 
-A sample onboarding document can look like:
+A sample onboarding document can look like this:
 1. Development Environment Setup
-2. Validate/Request Access
+2. Validate/Request Tool Access
 3. Review Processes
 4. Review Overall Architecture
 5. Onboarding Excercise
 
 ### Processes
-Every team has its own practices. These practices can span at a team, domain, or company level. Therefore, documenting the processes is important to align everyone on the team.
+Every team has its practices. These practices can span at a team, domain, or company level. Therefore, documenting the processes is important to align everyone on the team.
 
-For agile teams this can mean sections defining:
+Here are a few examples:
+- Coding Standards
+- Conventions
+- Bug Reporting
+- Addressing Technical Debt
+
+For agile teams, this can mean sections defining:
 - Definition of Ready
 - Definition of Done
 - Development Workflow
 
 
 ### Component/Repo/Service-level documentation
-With component/repo/service-level documentation I refer to the documentation that describes a well defined scope/component that is often implemented by an isolated module or service.
+With component/repo/service-level documentation, I refer to the documentation describing a well-defined scope/component often implemented by an isolated module or service.
 
-Service of course is relevant to a service-oriented architecture, while a module can be a moderate complicated module as part of a monolithic application. This is the lowest-level of documentation since it can contain references that you can find in the code.
+Service is relevant to a service-oriented architecture, while a module can be a moderately complicated module as part of a monolithic application. This is the lowest documentation level since it contains references that you can find in the code.
 
-The information included in this kind of documentation is only applicable and useful for the service/component that implements the functionality.
+The information included in this documentation is only applicable and helpful for the service/component that implements the functionality.
 
-Considering the isolated nature of this, it makes sense to include this kind of documentation next to the code that implements it. This way, it's easier to maintain it along with code changes.
+Considering the isolated nature, it makes sense to include this kind of documentation next to the code that implements it. 
+This way, it's easier to maintain it along with code changes.
 
 Here are a few sections I consider essential for this level:
 - General Overview
@@ -396,10 +413,10 @@ Here are a few sections I consider essential for this level:
 
 # Conclusion
 
-As we've seen, documentation is a vast and hot topic in software engineering. Many despise documentation, some love it. 
+As we've seen, documentation is a vast and hot topic in software engineering. Many despise documentation, and some love it.
 
-The only certain thing, in my view, is that documentation is an investment with compound interest. With proper care, and direction, it can be a key contributor to a team's and even a company's success 
+The only sure thing, in my view, is that documentation is an investment with compound interest. With proper care and direction, documentation can be crucial to a team's and even a company's success.
 
-I hope I shed some light on the value and misconceptions on software documentation and provided some guidelines for structuring documentation in software engineering teams.
+I hope I have shed some light on the value and misconceptions of software documentation and provided some guidelines for structuring documentation in software engineering teams.
 
 Hail the docs! For those about to doc, I salute you 🤘
