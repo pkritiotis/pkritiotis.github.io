@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Hail the Docs! The value, misconceptions, pitfalls, and essentials of software documentation"
+title:  "Hail the Docs! Exploring Software Documentation"
 date:   2022-09-05 19:00:00 +0300
 tags: software-processes
 author_profile: true
