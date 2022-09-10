@@ -8,7 +8,7 @@ toc: true
 header:
     og_image: /assets/images/software-documentation-banner.png
 ---
-This article explores the value of software documentation, a few misconceptions abound the need for documentation, and some common pitfalls we fall into when we document software.
+This article explores the value of software documentation, a few misconceptions about the need for documentation, and some common pitfalls we fall into when we document software.
 
 Finally, it provides an overview of the essential documentation for software engineering teams and some guidelines for organizing documentation.
 # Introduction
