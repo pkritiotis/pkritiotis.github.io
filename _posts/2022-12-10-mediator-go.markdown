@@ -1,51 +1,48 @@
 ---
 layout: single
-title:  "The Mediator Pattern in go"
-date:   2022-05-20 22:15:52 +0300
+title:  "A simple Generic Mediator implementation in go"
+date:   2022-12-10 22:15:52 +0300
 tags: software-engineering-philosophy
-toc: true
+# toc: true
 # classes: wide
 ---
-
 This article presents a simple implementation of the Mediator pattern in Go.
 
 # Introduction
+In large and complex systems, managing the interaction dependencies between different components can become complex. It also gets particularly challenging and erroneous, when the interaction semantics change.
 
-Since the official introduction of generics in Go, I wanted to experiment with a small project that would perhaps benefit from generics. 
+As more and more components are added as part of a big system, it is helpful and can become necessary to introduce different layers of abstraction to separate the domain logic from business logic and from the infrastructure. 
 
-This is something that I haven’t seen used in Go projects that much and always wanted to experiment with it.
+The abstraction of layers can enable some control of the interaction between the components but the components still need to be aware of eachother and depend on eachother for communication purposes.
 
-The mediator pattern also checks the boxes of taking advantage of generics. And here I am with this article! 😃
+A very helpful design pattern that encapsulates the interaction and abstract the communication between components is the **mediator pattern**
 
-Having previously worked with C# and .NET, I had heavily used the mediator pattern to manage the project dependencies when I need to communicate between layers of abstraction. 
-
-In projects that followed a layered approach with well-defined bounds and abstracted interactions, the mediator pattern can be very useful in reducing coupling between different packages. 
+This pattern, is particularly useful in projects that follow a layered approach with well-defined bounds.
 
 In the following sections we’ll explore:
 
 1. What is the mediator pattern
-2. How can we implement it in Go
-3. Pros
-4. Cons
-5. Thoughts on generics
+2. A simple implementation of the mediator in Go
 
 Enjoy!
 
 # The mediator pattern
 
-Before we jump into the implementation of the mediator pattern in go let’s briefly describe what problem the mediator pattern solves.
+Before we jump into the implementation of the mediator pattern in go let’s briefly describe how the mediator pattern addresses the interaction complexity.
 
-## The problem
+*The mediator pattern attempts to address the communication/interaction complexity by encapsulating the interaction of objects within a mediator object*[^1].
 
-In many occasions, the code that implements a specific functionality is in a different package than the code that calls this functionality. 
+The objects interact through the mediator and not directly with eachother; The mediator is responsible to route the requests to the corresponding handler and return the result back to the caller.
 
-In large enough and complex systems, managing the interaction dependencies between these packages can become complex. It also gets particularly challenging and erroneous, when the interaction semantics change.
+## The original definitions and the generic definition
+The original definition of the mediator looks like this:
+- It involves a concrete mediator that references the participants
 
-## How does the mediator pattern address communication dependencies
+Using generics we can use a generic mediator which can use
+- Dynamic registration to register handlers in runtime
+- Dynamic request sending which is routed from the mediator object
 
-*The mediator pattern attempts to address the communication complexity by encapsulating the interaction of objects within a mediator object*[^1].
-
-The caller does not need to know about who implements a specific functionality. It just calls the mediator with an encapsulated object and the mediator knows where the handler of the functionality is located. 
+The prerequisite, is that the handler should use a predefined interface and the caller a generic Send method.
 
 ## The benefits
 
@@ -60,14 +57,25 @@ For a more complete definition of the meditator pattern I would highly recommend
 
 Let’s implement the mediator in go!
 
-The basic components of mediator are the following:
+## Source Code
 
-1. The *Request Handler* interface that provides the definition of the method that needs to be implemented by components that handle *Requests*.
-2. The mediator package which is used for **registering** ***Handlers*** and **executing** ***Requests***.
+You can find the source code of this simple implementation here: https://github.com/pkritiotis/go-mediator
+
+## The `go-mediator` package
+
+The basic components of the `go-mediator` package are the following:
+
+1. The *`RequestHandler`* interface that provides the definition of the method that needs to be implemented by components that handle *Requests*.
+2. The `Register` generic method to map the `RequestHandler` to a specific `Request` and `Result`
+3. The `Send`generic method to send the input `Request`s that return a `TResult, error`
+
+Let’s check each component in detail
 
 ## The `RequestHandler` interface
 
-The `RequestHandler` interface that defines the **generic handler method** that accepts a `TRequest` and returns a `(TResult, error)`. This is the interface that needs to be implemented by the *Request Handler* 
+The `RequestHandler` interface defines the **generic handler method** that accepts a `TRequest` and returns a `(TResult, error)`. 
+
+This is the interface that needs to be implemented by the *Request Handler*  and it is the interface that the mediator can ***register*** and route the ***Requests*** to.
 
 ```go
 type RequestHandler[TRequest any, TResult any] interface {
@@ -75,14 +83,9 @@ type RequestHandler[TRequest any, TResult any] interface {
 }
 ```
 
-## The `mediator` package
+## Registering handlers using the `Register` method
 
-The `mediator` struct that exposes the following API:
-
-1. `Register` generic method to map the `RequestHandler` to a specific `Request` and `Result`
-2. `Send`generic method to send the input `Request`s that return a `TResult, error`
-
-### Storing the registered Handlers
+The `mediator` package is stateful. The state is required to hold the registered *********Handlers*********  in a `[sync.Map](http://sync.Map)` that is used for routing the mediator request to the correct handler.
 
 ```go
 var (
@@ -96,13 +99,9 @@ func init() {
 type key[TRequest any, TResult any] struct {}
 ```
 
-The `mediator` package is stateful. The state is required to hold the registered *********Handlers*********  in a `[sync.Map](http://sync.Map)` that is used for routing the mediator request to the correct handler.
-
 The `key` struct represents the key used for the registered handlers. The pair of request type and result type, allows us to support different handlers that accept the same request but return a different result.
 
-### Registering handlers
-
-The handlers can be registered using the `Register` method is implemented as follows:
+The handlers can be registered using the `Register` method:
 
 ```go
 // Register registers the provided request handler to be used for the corresponding requests
@@ -150,19 +149,23 @@ Based on the requested `Request` and `Result` we try to load and cast the corres
 
 If something goes wrong, we return an error otherwise we call the `Handle` method of the registered handler.
 
-## Using the `go-mediator` - Example
+## Using the `go-mediator`
 
 To use the go-mediator package we need the following:
 
-1. Implement the `RequestHandler` interface for a specific ********Request******** that returns a specific ********Response********.
+1. Implement the `RequestHandler` interface for a specific ********Request******** that returns the respective ********Response********.
 2. Register the handler using the `mediator.Register` method
 3. Call the `mediator.Send` providing the corresponding *******Request*******
 
+### Source code
+
+The source code of this example is here: [https://github.com/pkritiotis/go-mediator/tree/main/examples/notes-http-example](https://github.com/pkritiotis/go-mediator/tree/main/examples/notes-http-example)
+
+### Example Project
+
 Let’s see the above in action using a minimal example of a notes app that exposes an endpoint which returns the list of in-memory notes.
 
-### The source code is here: [https://github.com/pkritiotis/go-mediator/tree/main/examples/notes-http-example](https://github.com/pkritiotis/go-mediator/tree/main/examples/notes-http-example)
-
-The structure of this sample project is the following:
+The structure of this sample project follows a minimalistic version of Clean Architecture with the app layer containing the business logic and the infra layer containing the output port and adapter for exposing notes on an http api.
 
 ```go
 .
@@ -175,10 +178,10 @@ The structure of this sample project is the following:
 └── main.go
 ```
 
-The logic behind this example is that 
+To be more specific
 
-- the `app/notes.go` contains the business logic of the application
-- the `infra/` package spins up an http server and the http handler need to call the notes app logic to obtain and return the notes.
+- the `app/notes.go` contains the query handler that processes the `GetNotesRequest`
+- the `infra/http.go` spins up an http server which uses the `infra/notes/handler.go` http handler that makes teh `GetNotesRequest`.
 
 ### The Request Handler implementation
 
@@ -263,13 +266,13 @@ The caller
 
 Note that there is no knowledge of the request handler at this point. The http handler is only aware about the request model.
 
-# Possible Improvements
+# Improving `go-mediator`
 
-The `go-mediator` is a sample minimal implementation of the mediator pattern so there are possible improvements.
+The `go-mediator` is a sample minimal implementation of the mediator pattern. Let’s explore a couple of possible improvements.
 
 ## Introducing a `CommandHandler`  interface
 
-At the moment the go-mediator only supports request handlers that always return a `TResult, error`. 
+At the moment the `go-mediator` only supports request handlers that always return a `TResult, error`. 
 
 If we want to be stricter, we can introduce a CommandHandler interface that is almost the same as the `RequestHandler` interface; the only difference is that it does not return a `TResult`
 
@@ -279,16 +282,24 @@ type CommandHandler[TRequest any] interface {
 }
 ```
 
+With this interface we would need to also include the corresponding Register method that accepts a `CommandHandler`.
+
 ## Asynchronous mediator call
 
 Another possible improvement in the mediator pattern is to introduce an asynchronous API for mediator calls.
 
+```go
+func Send[TRequest any, TResult any](r TRequest, chan<- TResult, chan<- error) {
+ //[..]
+}
+```
+
 Instead of having the `Send` blocking call, we could allow executing the `Send` in a goroutine that accepts a channel which will return the result of the operation once completed.
 
-# Notes
-
-The `go-mediator` is a very simplistic version of the mediator pattern.
-
 # Conclusion
+
+In this article we have seen how the mediator pattern can help us simplify the interaction between different components.
+
+We have also seen how we can implement the mediator pattern in a very simple, minimalistic approach in go, using generics.
 
 # References
