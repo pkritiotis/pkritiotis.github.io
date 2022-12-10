@@ -1,28 +1,28 @@
 ---
 layout: single
-title:  "A simple Generic Mediator implementation in go"
+title:  "Implementing a simple, generic mediator in go"
 date:   2022-12-10 22:15:52 +0300
 tags: software-engineering-philosophy
 # toc: true
 # classes: wide
 ---
-This article presents a simple implementation of the Mediator pattern in Go.
+This article presents a simple implementation a generic mediator in Go.
 
 # Introduction
 In large and complex systems, managing the interaction dependencies between different components can become complex. It also gets particularly challenging and erroneous, when the interaction semantics change.
 
-As more and more components are added as part of a big system, it is helpful and can become necessary to introduce different layers of abstraction to separate the domain logic from business logic and from the infrastructure. 
+At the same time, as more and more components are added as part of a big system, it is helpful and can become necessary to introduce different layers of abstraction to separate the domain logic from business logic and from the infrastructure.
 
 The abstraction of layers can enable some control of the interaction between the components but the components still need to be aware of eachother and depend on eachother for communication purposes.
 
-A very helpful design pattern that encapsulates the interaction and abstract the communication between components is the **mediator pattern**
+A very helpful design pattern that encapsulates the interaction and abstract the communication between components is the  **mediator pattern**.
 
-This pattern, is particularly useful in projects that follow a layered approach with well-defined bounds.
+The mediator pattern, and especially the generic, dynamic mediator that we will see in this article is particularly useful in projects that follow a layered approach with well-defined bounds and the CQRS[^cqrs] pattern.
 
 In the following sections we’ll explore:
 
-1. What is the mediator pattern
-2. A simple implementation of the mediator in Go
+1. What is the generic mediator pattern
+2. A simple implementation of the generic mediator in Go
 
 Enjoy!
 
@@ -30,20 +30,23 @@ Enjoy!
 
 Before we jump into the implementation of the mediator pattern in go let’s briefly describe how the mediator pattern addresses the interaction complexity.
 
-*The mediator pattern attempts to address the communication/interaction complexity by encapsulating the interaction of objects within a mediator object*[^1].
+*The mediator pattern is a behavioral design pattern originally proposed by the GoF[^GoF] which attempts to address the communication/interaction complexity by encapsulating the interaction of objects within a mediator object*[^1].
 
 The objects interact through the mediator and not directly with eachother; The mediator is responsible to route the requests to the corresponding handler and return the result back to the caller.
 
-## The original definitions and the generic definition
+## The original definitions of the mediator pattern and the generic mediator definition
 The original definition of the mediator looks like this:
 - It involves a concrete mediator that references the participants
 
-Using generics we can use a generic mediator which can use
-- Dynamic registration to register handlers in runtime
-- Dynamic request sending which is routed from the mediator object
 
-The prerequisite, is that the handler should use a predefined interface and the caller a generic Send method.
+## The generic, dynamic mediator
+In this article we will explore a different flavor of the original mediator pattern that works in a dynamic and generic way. One can argue that this is not the mediator pattern and they can be somewhat correct since it doesn't match the exact proposed implementation. However, it solves the same problem that the mediator tries to solve; simplify dependencies and increase maintainability using the power of generics and dynamic registration.
 
+
+## Commonalities with the observer pattern and the command pattern
+
+### Observer vs Mediator
+### Command vs Mediator
 ## The benefits
 
 The major benefit of the mediator pattern is that it reduces coupling which results in:
@@ -53,9 +56,21 @@ The major benefit of the mediator pattern is that it reduces coupling which resu
 
 For a more complete definition of the meditator pattern I would highly recommend the wikipedia definition [here]([https://en.wikipedia.org/wiki/Mediator_pattern](https://en.wikipedia.org/wiki/Mediator_pattern)).
 
-# Implementing the Mediator pattern in go
+## Drawbacks
+As with most things in software engineering, the mediator has some tradeoffs. In my opinion they are minimal, but of course it dependes on a case by case.
+### Magic
+It's too magical! 
 
-Let’s implement the mediator in go!
+I just make a call to a mediator and the call is magically executed by the correct handler. How is this done?
+That's true; the caller does not have knowledge of the handler before the code runs. And this can be considered too much magic for some. Gophers in particular seem to hate magic :magic:
+
+### IDE features
+Since the generic mediator is responsible to dynamically figure out the handler of each request, developers loose the referencing features of the IDEs. 
+
+This can be frustrating in for troubleshooting and refactoring purposes.
+# Implementing the generic dynamic Mediator pattern in go
+
+Let’s implement the generic mediator in go!
 
 ## Source Code
 
@@ -299,6 +314,7 @@ Instead of having the `Send` blocking call, we could allow executing the `Send` 
 # Conclusion
 
 In this article we have seen how the mediator pattern can help us simplify the interaction between different components.
+We have distinguished the generic flavor of the mediator pattern from the *original* mediator pattern definition and explained the common characteristics between the two.
 
 We have also seen how we can implement the mediator pattern in a very simple, minimalistic approach in go, using generics.
 
