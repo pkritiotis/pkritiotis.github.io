@@ -7,7 +7,7 @@ permalink: /about/
 
 I'm **Panayiotis Kritiotis**.
 
-I work as an **Engineering Manager/Technical Lead** @ **[Beat](https://thebeat.co/)**.
+I work as an **Engineering Manager** @ **[Linearity](https://www.vectornator.io/)**.
 
 I am interested in building **high-performance, large-scale, distributed web applications**.
 
