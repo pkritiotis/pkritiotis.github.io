@@ -1,7 +1,7 @@
 ---
 layout: single
 title:  "Implementing a simple, generic mediator pattern in go"
-date:   2022-12-12 19:00:00 +0300
+date:   2022-12-11 23:50:00 +0300
 tags: software-patterns golang
 toc: true
 # classes: wide
