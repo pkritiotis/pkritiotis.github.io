@@ -1,7 +1,7 @@
 ---
 layout: single
 title:  "Implementing a simple, generic mediator pattern in go"
-date:   2022-12-10 22:15:52 +0300
+date:   2022-12-12 22:15:52 +0300
 tags: software-engineering-philosophy
 # toc: true
 # classes: wide
