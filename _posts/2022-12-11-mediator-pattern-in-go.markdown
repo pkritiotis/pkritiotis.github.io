@@ -118,7 +118,7 @@ The primary benefit of the mediator pattern is that it reduces coupling which re
 
 As with most things in software engineering, the mediator has some tradeoffs.
 
-#### Magic
+#### Too much magic
 
 🪄*Too much magic!* 🪄
 
@@ -128,7 +128,7 @@ That's a valid question! The caller does not have knowledge of the handler befor
 
 Well, this is a tradeoff. This can be considered too much magic for some (Gophers, in particular, seem to hate magic), but at the same time it provides the benefits that we have already explored. 🤷
 
-#### IDE features
+#### Missing references in my IDE
 
 Since the generic mediator is responsible for dynamically figuring out the handler of each request, developers lose the referencing features of the IDEs. 
 
