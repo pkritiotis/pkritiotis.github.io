@@ -4,6 +4,8 @@ title:  "Implementing a simple, generic mediator pattern in go"
 date:   2022-12-11 23:50:00 +0300
 tags: software-patterns golang
 toc: true
+header:
+    og_image: /assets/images/Mediator-GenericMediator.png
 # classes: wide
 ---
 This article presents a simple implementation of a generic mediator in Go.
