@@ -168,7 +168,7 @@ type RequestHandler[TRequest any, TResult any] interface {
 
 ## Registering handlers using the `Register` method
 
-The `mediator` package is stateful. The state is required to hold the registered *********Handlers*********  in a `[sync.Map](http://sync.Map)` that is used for routing the mediator request to the correct handler.
+The `mediator` package is stateful. The state is required to hold the registered **Handlers**  in a `[sync.Map](http://sync.Map)` that is used for routing the mediator request to the correct handler.
 
 ```go
 var (
@@ -236,9 +236,9 @@ If something goes wrong, we return an error. Otherwise, we call the `Handle` met
 
 To use the go-mediator package, we need the following:
 
-1. Implement the `RequestHandler` interface for a specific ********Request******** that returns the respective ********Response********.
+1. Implement the `RequestHandler` interface for a specific **Request** that returns the respective **Response**.
 2. Register the handler using the `mediator.Register` method
-3. Call the `mediator.Send` providing the corresponding *******Request*******
+3. Call the `mediator.Send` providing the corresponding **Request**
 
 ### Source code
 
