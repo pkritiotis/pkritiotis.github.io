@@ -75,7 +75,7 @@ The original definition of the mediator looks like this:
 - Once the handler finishes the operation, it notifies the caller through the mediator
 
 
-*For a complete definition of the meditator pattern, I would highly recommend the Wikipedia definition [here]([https://en.wikipedia.org/wiki/Mediator_pattern](https://en.wikipedia.org/wiki/Mediator_pattern)).*
+*For a complete definition of the mediator pattern, I would highly recommend the Wikipedia definition [here]([https://en.wikipedia.org/wiki/Mediator_pattern](https://en.wikipedia.org/wiki/Mediator_pattern)).*
 
 ## The generic, dynamic mediator
 In this article, we will explore a different flavor of the original mediator pattern that works in a dynamic and generic way.
