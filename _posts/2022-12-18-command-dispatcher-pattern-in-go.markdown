@@ -384,10 +384,14 @@ The Command Dispatcher Pattern is a commonly used pattern, in multiple languages
 It seems that patterns outside the ones defined by the GoF are not mapped to specific terminology which can make things confusing.
 
 ## Isn't this the mediator pattern?
-Strictly technically speaking no. The command dispatcher is different from the mediator pattern according to the definition of the GoF.
+Strictly technically speaking no. The command dispatcher is different from the mediator pattern[^Wikipedia-Mediator] according to the definition of the GoF[^GoF].
 
-In the previous version of this blog post I referred to this pattern as a flavor of the mediator pattern. This was also inspired by the quite popular MediatR library  I used in .NET that used the term mediator.
+In the previous version of this blog post I referred to this pattern as a flavor of the mediator pattern. This was also inspired by the quite popular MediatR[^mediatr] library  I used in .NET that used the term mediator.
 Why? Because it has the same intent and tries to solve the same problem but the structure and the proposed solution that each pattern offers is different.
+
+Why did I decide to change it to this one? Because there is a formal definition of this pattern using a different name: command dispatcher. 
+
+The difference might be considered subtle by some, but it is important. Terms are important for alignment when communicating about these concepts.
 
 
 # Conclusion
@@ -400,5 +404,8 @@ Off you go! Clone it, fork it, experiment with it! Happy dispatching!
 
 # References
 [^CommandDispatcher]: [Command Dispatcher Pattern - Benoit Dupire and Eduardo B Fernandez](https://hillside.net/plop/plop/plop2001/accepted_submissions/PLoP2001/bdupireandebfernandez0/PLoP2001_bdupireandebfernandez0_1.pdf)
+[^GoF]: [Gang of Four](http://wiki.c2.com/?GangOfFour)
+[^Wikipedia-Mediator]: [Mediator pattern - Wikipedia](https://en.wikipedia.org/wiki/Mediator_pattern)
 [^cqrs]: [CQRS by Martin Fowler](https://martinfowler.com/bliki/CQRS.html)
+[^mediatr]: MediatR- Simple Mediator in .NET [Gihub Repo](https://github.com/jbogard/MediatR)
 [^clean-architecture]: [Clean Architecture in Go](https://pkritiotis.io/clean-architecture-in-golang/)
