@@ -1,8 +1,8 @@
 ---
 layout: single
 title:  "Planning, adaptability and feedback loops in software engineering"
-date:   2023-04-02 23:50:00 +0300
-tags: software-engineering-philosophy
+date:   2023-05-02 23:50:00 +0300
+tags: software-processes
 toc: true
 # classes: wide
 ---
