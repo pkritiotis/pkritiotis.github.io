@@ -77,3 +77,10 @@ $base0f: #ff5370;
       padding-right: $right-sidebar-width - 50 !important;
     }
 }
+
+strong em {
+  display: inline;
+  padding: .2em 0;
+  background: #ddfc5194;
+  box-shadow: .2em 0 0 #ebee3e81, -.2em 0 0 #e8eb3b81;
+}

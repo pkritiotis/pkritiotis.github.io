@@ -1,7 +1,7 @@
 ---
 layout: single
 title:  "Planning, adaptability and feedback loops in software engineering"
-date:   2023-05-02 23:50:00 +0300
+date:   2023-05-20 23:50:00 +0300
 tags: software-processes
 toc: true
 # classes: wide
@@ -11,14 +11,18 @@ In this blog post, I write about the power of feedback loops and the essential c
 # Introduction
 Our goal, as software engineers, is to deliver software projects. Personal projects, work projects, projects of any type, size and industry.
 
-To achieve any goal, not only in software engineering, one of the first steps, to begin with, is some type of ***planning***.
+To achieve any goal, one of the first steps to begin with, is some type of ***planning***.
 Even for small-size, solo projects, some planning is often handy. But, more significantly, in big projects, especially those requiring one or more teams to work together, planning is one of the first and most essential steps toward a successful project.
 
 While planning is a necessary step for achieving our goals, it's not enough to ensure the efficient delivery of a software project.
-We'll inevitably face some hiccups with our initial plan or miss something, or something unexpected might happen. For this reason, it's crucial that we **adapt** and get back on the right track.
+We'll inevitably face some hiccups with our initial plan or miss something, or something unexpected might happen. For this reason, it's crucial that we ***adapt*** and get back on the right track.
 One of the most powerful tools that we can use in every single stage of a software engineering lifecycle, are ***feedback loops***.
-
-Feedback loops enable us to continuously check whether we are on the right track towards achieving our goals, identify where we can optimize, and then make the following adjustments to improve our process towards achieving our goal.
+<p align="center">
+  <img alt="dependencies-everywhere" src="/assets/images/arrow-right.png" width="200">
+  <br>
+    <small>Image by <a href="https://github.com/MariaLetta/free-gophers-pack"> Maria Letta @free-gophers-pack</a></small>
+</p> 
+Feedback loops enable us to continuously check whether we are on the right track towards achieving our goals, identify where we can optimize, and then make the corresponding adjustments to improve our process towards achieving our goal.
 
 In software engineering, feedback loops are everywhere, even if we don't notice.
 And the efficiency of achieving anything **is all about optimizing the feedback loops**.
@@ -35,17 +39,27 @@ Then, to achieve these goals, we need to do some planning.
 It doesn't have to be a concrete plan; it might be a systematic process eventually getting us there.
 But we still need a high-level idea of the path we must follow to achieve this.
 
-It's usually a good idea to break down the goal into smaller achievable mini-goals. Mini-goals can be a part of the bigger goal or a step towards the right direction of achieving a goal. Whatever the case, we need some planning to get there.
+***Unfortunately, concrete plans, especially the long-term ones, are almost certainly doomed to fail***. As the famous quote by Eisenhauer states *Plans are worthless, but planning is everything*.
 
-**Unfortunately**, **concrete plans**, especially the long-term ones, are almost certainly doomed to fail**. As the famous quote by Eisenhauer states *Plans are worthless, but planning is everything*.
-
-Life happens. "A task is more complicated than expected", "Someone left the team", "My cat spilled coffee on my laptop".
+Life happens. "*A task is more complicated than expected*", "*Someone left the team*", "*My cat spilled coffee on my laptop*".
 
 Before we know it, we derail from our initial goal. **And that's expected.**
 
-\- So how do we manage this?
+\- *So how do we manage unexpected incidents that impact our plans?*
 
-We first need to **recognize** that there is an issue. Then we need to **identify what's wrong**. And then **adapt** to the situation. Then, finally, we address upcoming problems and work to get back on track.
+1. We first need to **recognize** that there is an issue.
+2. Then we need to **identify what's wrong**.
+3. And then **adapt** to the situation.
+4. Finally, we address upcoming problems and work to get back on track.
+
+## The problem is not always obvious
+Of course, this process is not always straightforward.
+
+<p align="center">
+  <img alt="dependencies-everywhere" src="/assets/images/find.png" width="200">
+  <br>
+    <small>Image by <a href="https://github.com/MariaLetta/free-gophers-pack"> Maria Letta @free-gophers-pack</a></small>
+</p> 
 
 The tricky thing about recognizing an issue is that sometimes problems are not obvious. Without the required visibility and tooling, it's easy to miss issues inhibiting our progress.
 
@@ -60,6 +74,9 @@ The above statement should not be underestimated.
 How do we detect issues in the progress of a project/goal? **Feedback loops, of course**
 # The power of feedback loops
 
+Feedback loops are a very valuable tool that allows us to quickly recognize and react to problems at an early stage.
+
+Let's explore what feedback loops are, their main benefits and some characteristics that make a good feedback loop.
 ## What are feedback loops?
 
 Let's check the definition of a feedback loop:
@@ -67,6 +84,11 @@ Let's check the definition of a feedback loop:
 > Feedback occurs when outputs of a system are routed back as inputs as part of a chain of cause-and-effect that forms a circuit or loop.[^feedback loop]
 
 A feedback loop enables us to continuously measure and evaluate our process toward achieving a goal and, based on the results, make adjustments to course-correct our working methods for a more efficient and productive workflow.
+<p align="center">
+  <img alt="dependencies-everywhere" src="/assets/images/feedback-loops.png" width="500">
+  <br>
+    <small> Feedback loops</small>
+</p> 
 
 A feedback loop consists of the following steps:
 
@@ -98,7 +120,9 @@ By quickly responding to issues, we prevent wasting time and resources on tasks 
 
 ### Productivity through continuous improvement
 
-When we close a feedback loop and decide to proceed with the corresponding adjustments for the next one, there is a sign of progression and improvement. Whether in a team scope or individually, these adjustments cultivate a culture of continuous improvement and growth, resulting in greater overall productivity.
+When we close a feedback loop and decide to proceed with the corresponding adjustments for the next one, there is a sign of progression and improvement. 
+
+Whether in a team scope or individually, these adjustments cultivate a culture of continuous improvement and growth, resulting in greater overall productivity.
 
 ### A better understanding of the current progress
 Feedback Loops, by design, require some form of measurement to work. These measurements provide an informed view about the current progress of a project which would be missing otherwise.
@@ -110,7 +134,7 @@ A good feedback loop requires the following characteristics:
 1. Frequent
 2. Quick
 3. Specific
-4. Quality Measurements
+4. Takes high quality measurements
 5. Automated
 6. Actionable
 
@@ -133,12 +157,15 @@ For example, if the collection, analysis, or assessment stages are slow, we dela
 
 Even worse, if they are very slow, we might lose the value of having the feedback loop since it might be too late.
 
-A feedback loop should be quick ☝️. As quick as possible, depending on the use case, of course.
+A feedback loop should be quick ☝️. 
+
+As quick as possible, depending on the use case, of course.
 
 ## Specific
 Ok, so we have regular, timely, and quick feedback loops. So what else do we need from the feedback loop?
 
-Feedback loops should have a specific purpose and only one goal ☝️.
+***Feedback loops should have a specific purpose and only one goal ☝️.***
+
 Trying to get feedback about too many things broadens the feedback loop's focus and decreases the results' quality.
 
 A common problem when designing feedback loops is overcomplicating with multiple metrics which make them hard to understand and make use of.
@@ -158,6 +185,12 @@ Only highly accurate indicators and measurements can result in good-quality feed
 ## Automate feedback loops
 Ok, so we have regular, quick feedback loops. Do we need anything else? Of course, we do 😄. We need easy-to-execute feedback loops. 
 
+<p align="center">
+  <img alt="dependencies-everywhere" src="/assets/images/fix.png" width="200">
+  <br>
+    <small>Image by <a href="https://github.com/MariaLetta/free-gophers-pack"> Maria Letta @free-gophers-pack</a></small>
+</p> 
+
 \- How do we get easy-to-execute feedback loops? 
 
 Automate feedback loops ☝️. Enforce automated feedback loops.
@@ -172,7 +205,7 @@ A common pitfall in this feedback loops characteristic is overoptimizing against
 
 How do we find the cause of the problem? Observability and monitoring to the rescue ☝️.
 
-## Feedback loops are applicable everywhere todo
+# Feedback loops are applicable everywhere
 All of the above characteristics are applicable in the software engineering world, but they are also applicable in all industries and sectors. From sports to physics experiments, even in art.
 
 Tracking each of these characteristics is a distinct challenge, and the combination of efficiency in these areas results in an efficient workflow.
@@ -182,8 +215,14 @@ Let's now see where feedback loops exist in the software engineering world and h
 # Feedback Loops in Software Engineering
 In the software engineering world, teams or individuals work on projects. From massive projects, such as a software system that guides a spaceship for a moon landing, to small projects, such as a simple calculator.
 
+<p align="center">
+  <img alt="dependencies-everywhere" src="/assets/images/read.png" width="200">
+  <br>
+    <small>Image by <a href="https://github.com/MariaLetta/free-gophers-pack"> Maria Letta @free-gophers-pack</a></small>
+</p> 
+
 Let's see some examples of using feedback loops in many areas of software engineering.
-## SDLCs
+## Software Development Lifecycles (SDLCs)
 To deal with software projects we apply software development lifecyle (SDLC) models.
 
 SDLC models help us approach a project in a methodical way with a number of steps towards the successful completion of a project. 
@@ -194,7 +233,7 @@ Agile as a philosophy is proven to be the most successful in adapting to ever-ch
 
 However, the essential concept of Agile is centered around **continuous feedback**. In agile, a team works in small increments with the ultimate goal of getting quick feedback. This feedback is the most valuable asset in this process as it dictates the project's direction and, ultimately, the project's survival based on the results.
 
-Every single meeting in agile methodologies is a feedback meeting
+Every single meeting in agile methodologies is a feedback meeting which is part of a loop
 - Stand Up - daily feedback on the daily blockers
 - Grooming - feedback on what/how we are building
 - Planning - feedback on what we are trying to achieve
@@ -205,25 +244,32 @@ Depending on the feedback we receive in each one of these meetings, we make the 
 
 ## Software Development
 The efficiency of developers, even in small tasks, lies in the development feedback loop.
+
+<p align="center">
+  <img alt="dependencies-everywhere" src="/assets/images/build.png" width="200">
+  <br>
+    <small>Image by <a href="https://github.com/MariaLetta/free-gophers-pack"> Maria Letta @free-gophers-pack</a></small>
+</p> 
+
 In development, we have multiple feedback loops:
 1. While writing code
-   1. Get feedback about the code you are writing in real-time, fix, repeat
-      1. Editor syntax error highlighting, compilation errors, linting warnings/errors, building results
+   - Get feedback about the code you are writing in real-time, fix, repeat
+      - Editor syntax error highlighting, compilation errors, linting warnings/errors, building results
 2. Code Reviews
-   1. Propose changes, peer review, get feedback, improve repeat
+   - Propose changes, peer review, get feedback, improve repeat
 3. Testing
    1. Unit tests
-      1. Using TDD we can get feedback about the correctness of the current function/class we are implementing
-      2. Run test -> success or fail -> fix -> repeat
+      - Using TDD we can get feedback about the correctness of the current function/class we are implementing
+      - Run test -> success or fail -> fix -> repeat
    2. Integration tests
-      1. Get as early feedback about how the current changes affect external components/systems
+      - Get as early feedback about how the current changes affect external components/systems
    3. e2e tests
-      1. Get early feedback about how the current changes affect the whole system
+      - Get early feedback about how the current changes affect the whole system
 4. CI/CD pipeline
-   1. See how my changes affect the version of the code my team works on, along with other changes
-   2. Get feedback about the deployment of the application and fix it immediately if there is a problem
+   - See how my changes affect the version of the code my team works on, along with other changes
+   - Get feedback about the deployment of the application and fix it immediately if there is a problem
 5. Release Management
-   1. Continuously monitor the release, collect feedback about the smooth operations and identify quickly and resolve issues or revert immediately
+   - Continuously monitor the release, collect feedback about the smooth operations and identify quickly and resolve issues or revert immediately
 
 
 # Conclusion
