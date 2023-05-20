@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Planning, adaptability, and feedback loops in software engineering"
+title:  "Feedback loops in software engineering"
 date:   2023-05-20 12:20:00 +0300
 tags: software-processes
 toc: true
