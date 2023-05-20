@@ -42,7 +42,7 @@ But we still need a high-level idea of our path to achieve this.
 
 <mark>Unfortunately, concrete plans, especially the long-term ones, are almost certainly doomed to fail</mark>. 
 
-As the famous quote Eisenhauer states *"Plans are worthless, but planning is everything"*[^Plans-are-useless].
+As the famous quote Eisenhower states *"Plans are worthless, but planning is everything"*[^Plans-are-useless].
 
 Life happens. "*A task is more complicated than expected*", "*Someone left the team*", "*My cat spilled coffee on my laptop*".
 
