@@ -78,9 +78,11 @@ $base0f: #ff5370;
     }
 }
 
-// strong em {
-//   display: inline;
-//   padding: .2em 0;
-//   background: #ddfc5194;
-//   box-shadow: .2em 0 0 #ebee3e81, -.2em 0 0 #e8eb3b81;
-// }
+mark {
+  display: inline;
+  padding: .2em 0;
+  font-weight: bold;
+  font-style: italic;
+  background: #84ebf472;
+  box-shadow: .2em 0 0 #7fe8f269, -.2em 0 0 #7fe8f169;
+}
