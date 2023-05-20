@@ -20,5 +20,17 @@
                 ]
             }
         }
+    ],
+    "grammarly.selectors": [
+        {
+            "language": "markdown",
+            "scheme": "file",
+            "pattern": "_posts/2023-05-02-feedback-loops.markdown"
+        },
+        {
+            "language": "Log",
+            "scheme": "output",
+            "pattern": "extension-output-znck.grammarly-#2-Grammarly"
+        }
     ]
 }

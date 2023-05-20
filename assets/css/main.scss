@@ -77,3 +77,12 @@ $base0f: #ff5370;
       padding-right: $right-sidebar-width - 50 !important;
     }
 }
+
+mark {
+  font-weight: bold;
+  font-style: italic;
+  display: inline;
+  padding: .2em 0;
+  background: #84ebf457;
+  box-shadow: .2em 0 0 #7fe8f236, -.2em 0 0 #7fe7f14a;
+}
