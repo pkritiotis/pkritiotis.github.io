@@ -4,6 +4,8 @@ title:  "Planning, adaptability, and feedback loops in software engineering"
 date:   2023-05-20 12:20:00 +0300
 tags: software-processes
 toc: true
+header:
+    og_image: /assets/images/feedback-loops.png
 # classes: wide
 ---
 In this blog post, I write about the power of feedback loops and the essential characteristics of the ideal feedback loop.
