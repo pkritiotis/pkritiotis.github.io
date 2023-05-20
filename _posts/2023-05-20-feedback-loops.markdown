@@ -11,11 +11,11 @@ In this blog post, I write about the power of feedback loops and the essential c
 # Introduction
 Our goal, as software engineers, is to deliver software projects. Personal projects, work projects, and projects of any type, size, and industry.
 
-<mark>To achieve any goal, one of the first steps, to begin with, is some planning</mark>.
+***To achieve any goal, one of the first steps, to begin with, is some planning***.
 Even for small-size, solo projects, some planning is often handy. But, more significantly, in big projects, especially those requiring one or more teams to work together, planning is one of the first and most essential steps toward a successful project.
 
 While planning is a necessary step for achieving our goals, it's not enough to ensure the efficient delivery of a software project.
-<mark>We'll inevitably face some hiccups</mark> with our initial plan or miss something, or something unexpected might happen. For this reason, <mark>it's crucial that we adapt</mark> and get back on the right track.
+***We'll inevitably face some hiccups*** with our initial plan or miss something, or something unexpected might happen. For this reason, ***it's crucial that we adapt*** and get back on the right track.
 
 One of the most powerful tools we can use in every stage of a software engineering lifecycle is ***feedback loops***.
 <p align="center">
@@ -26,7 +26,7 @@ One of the most powerful tools we can use in every stage of a software engineeri
 Feedback loops enable us to continuously check whether we are on the right track toward achieving our goals, identify where we can optimize, and then make the corresponding adjustments to improve our process toward achieving our goal.
 
 Feedback loops are everywhere in software engineering, even if we don't notice.
-And the efficiency of achieving anything <mark>is all about optimizing the feedback loops</mark>.
+And the efficiency of achieving anything ***is all about optimizing the feedback loops***.
 
 In the following sections, we'll see:
 
@@ -40,19 +40,19 @@ Then, to achieve these goals, we need to do some planning.
 It doesn't have to be a concrete plan; it might be a systematic process eventually getting us there.
 But we still need a high-level idea of our path to achieve this.
 
-<mark>Unfortunately, concrete plans, especially the long-term ones, are almost certainly doomed to fail</mark>. 
+***Unfortunately, concrete plans, especially the long-term ones, are almost certainly doomed to fail***. 
 
 As the famous quote Eisenhower states *"Plans are worthless, but planning is everything"*[^Plans-are-useless].
 
 Life happens. "*A task is more complicated than expected*", "*Someone left the team*", "*My cat spilled coffee on my laptop*".
 
-Before we know it, we derail from our initial goal. And <mark>that's expected</mark>.
+Before we know it, we derail from our initial goal. And ***that's expected***.
 
 \- *So, how do we manage unexpected incidents that impact our plans?*
 
-1. We first need to <mark>recognize that there is an issue</mark>.
-2. Then we need to <mark>identify what's wrong</mark>.
-3. And then <mark>adapt to the situation</mark>.
+1. We first need to ***recognize that there is an issue***.
+2. Then we need to ***identify what's wrong***.
+3. And then ***adapt to the situation***.
 4. Finally, we address upcoming problems and work to get back on track.
 
 ## The problem is not always obvious
@@ -71,7 +71,7 @@ The tricky thing about recognizing an issue is that sometimes problems are not o
 We can only adapt once we detect the issue. Therefore, the quicker we discover the problem, the faster we can react.
 The faster we respond, the less effort we need to resolve the problems and get back on track. This relation is very critical. Small issues can be solved quickly.
 
-However, <mark>the effort to solve issues increases dramatically if we don't identify the problem early in the process.</mark>
+However, ***the effort to solve issues increases dramatically if we don't identify the problem early in the process.***
 The above statement should not be underestimated.
 
 How do we detect issues in the progress of a project/goal? **Feedback loops, of course**
@@ -86,7 +86,7 @@ Let's check the definition of a feedback loop:
 
 > Feedback occurs when outputs of a system are routed back as inputs as part of a chain of cause-and-effect that forms a circuit or loop.[^feedback-loop]
 
-A feedback loop enables us to continuously measure and evaluate our process toward achieving a goal and, based on the results, make adjustments to course-correct our working methods for a more efficient and productive workflow.
+***A feedback loop enables us to continuously measure and evaluate our process toward achieving a goal and, based on the results, make adjustments to course-correct our working methods for a more efficient and productive workflow***.
 <p align="center">
   <img alt="dependencies-everywhere" src="/assets/images/feedback-loops.png" width="500">
   <br>
@@ -265,12 +265,12 @@ The efficiency of developers, even in small tasks, lies in the development feedb
 </p> 
 
 In development, we have multiple feedback loops:
-1. While writing code
+1. **Writing code**
    - Get feedback about the code you are writing in real-time, fix, repeat
       - Editor syntax error highlighting, compilation errors, linting warnings/errors, building results
-2. Code Reviews
+2. **Code Reviews**
    - Propose changes, peer review, get feedback, improve repeat
-3. Testing
+3. **Testing**
    1. Unit tests
       - Using TDD[^tdd], we can get feedback about the correctness of the current function/class we are implementing
       - Run test -> success or fail -> fix -> repeat
@@ -278,10 +278,10 @@ In development, we have multiple feedback loops:
       - Get as early feedback about how the current changes affect external components/systems
    3. e2e tests
       - Get early feedback about how the current changes affect the whole system
-4. CI/CD pipeline
+4. **CI/CD pipeline**
    - See how my changes affect the version of the code my team works on, along with other changes
    - Get feedback about the deployment of the application and fix it immediately if there is a problem
-5. Release Management
+5. **Release Management**
    - Continuously monitor the release, collect feedback about the smooth operations and identify quickly and resolve issues or revert immediately
 
 
