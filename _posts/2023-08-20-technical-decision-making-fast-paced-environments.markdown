@@ -255,12 +255,9 @@ We need to be as fast as possible with our decision-making. This is a global tru
 One of the mental frameworks that can help us is the two-way doors vs one-way doors popularized by Amazon.[^amazon-two-way-doors]
 
 *\- X seems like a good option, but I'm not sure if it will affect our future plans<br>
-
 \- Can we change/roll back X quickly if needed?<br>
-
 \- Yes<br>
-
-\- 👉 Do X now and move on"<br>
+\- 👉 Do X now and move on"<br>*
 
 If it's an easily reversible decision, don't overthink it. <br>
 
@@ -273,9 +270,6 @@ Is it a non-reversible decision? Take your time.<br>
 It's almost certain that while working on a fast-paced project, we don't have enough data to support a decision for moving forward. In such a scenario, we need to avoid the analysis-paralysis state.
 
 > **"More is lost by indecision than wrong decision. Indecision is the thief of opportunity. It will steal you blind."**
-
->
-
 > Marcus Tullius Cicero
 
 There are two things that I keep in mind and help me cope with this:
