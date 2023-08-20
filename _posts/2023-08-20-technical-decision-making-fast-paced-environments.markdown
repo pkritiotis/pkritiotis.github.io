@@ -79,13 +79,13 @@ From an engineering perspective, the core goals are, of course, aligned with the
 
 Uncertainty/assumptions and the state of the codebase play a significant role in the engineering's ability to deliver correctly and quickly. We also need to do this consistently.
 
-If **we want *consistent* quality and quick deliverables under high requirement uncertainty, we need technical agility**.
+**If we want *consistent* quality and quick deliverables under high requirement uncertainty, we need technical agility**.
 
 Technical agility is the property of our software that encapsulates a set of attributes that give us the ability to move quickly, with good quality deliverables, while being ready to adapt if needed based on multiple assumptions and limited knowledge.
 
 # Balancing between product value and engineering cost
 
-For a sustainable flow, Our ultimate goal is to optimize the engineering cost VS product value. How do we do that? We need to aim for:
+For a sustainable flow, our ultimate goal is to optimize the engineering cost VS product value. How do we do that? We need to aim for:
 
 1. A software that does what is expected to do while
 2. Balancing between
@@ -94,7 +94,7 @@ For a sustainable flow, Our ultimate goal is to optimize the engineering cost VS
 
 <p align="center">
 
-<img alt="Product Value vs Engineering Cost" src="/assets/images/Sustainable-Technical-Decision-Making-ProductValue-EngineeringInvestment.png" width="500">
+<img alt="Product Value vs Engineering Cost" src="/assets/images/Sustainable-Technical-Decision-Making-ProductValue-EngineeringInvestment.png" width="600">
 
 </p>
 
@@ -105,8 +105,8 @@ The two sides in the balancing spectrum are the "locked-in" and the "over-invest
 - Your MVP did well and proved to be successful. However, your next requirements are only possible to build if the underlying technical foundation supports them.
 2. Over-investment
 - You have dedicated too much time focusing on quality and making the super duper extra wow extensible architecture but
-- It's too late. You missed the competitive advantage, or you are out of money.
-- The experiment didn't work out - you need to throw your idea and start a new one.
+  - It's too late. You missed the competitive advantage, or you are out of money.
+  - The experiment didn't work out - you need to throw your idea and start a new one.
 
   
 
@@ -129,7 +129,7 @@ We can think of these decision-making guidelines in three main dimensions:
 3. ⏩ Decision speed
   - Move quickly; unblock yourself.
 
-Below we will see a set of guidelines that I have followed as a Technical Lead and an Engineering Manager. These guidelines have been serving my teams well, especially in high-pressure times, since they make the decision-making a bit more systematic:
+Below we will see a set of guidelines that I have been following as a Technical Lead and an Engineering Manager to make decision-making more systematic. These guidelines have been serving my teams well, especially in high-pressure times:
 
 1. 🚩 Define your focus in an ever-changing environment
 
@@ -216,12 +216,9 @@ This is not only a software engineering problem; it's a human problem. We tend t
 In software engineering, it has many forms and is disguised and infiltrates teams without being recognized until much later in the process. Some of its forms:
 
 - The new shiny promising technology
-
-- The induction of new technologies to solve a particular problem comes with overhead. Time overhead and one of the most underrated types of overhead: cognitive overhead. Do we really need it? Does it make our life easier or harder?
-
+  - The induction of new technologies to solve a particular problem comes with overhead. Time overhead and one of the most underrated types of overhead: cognitive overhead. Do we really need it? Does it make our life easier or harder?
 - The clever complicated solution
-
-- Clever solutions bring clever problems. This statement can be significantly abused and should be used with caution. Finding the balance between when you need a complicated solution and a very simple one that does the work is not straightforward; it comes with experience.
+  - "Clever systems produce clever problems"[^taylor-town]. This statement can be significantly abused and should be used with caution. Finding the balance between when you need a complicated solution and a very simple one that does the work is not straightforward; it comes with experience.
 
 The most significant advantage of keeping things simple is reducing the cognitive load of the team, which in fast-paced environments with continuously changing factors is crucial.
 
@@ -302,3 +299,5 @@ I hope the above guidelines set a framework that enables speeding up decision-ma
 [^product-driven-development]: [Product Driven Development - UsabilityHub](https://usabilityhub.com/blog/product-driven-development)
 
 [^definition-of-done]: [Definition of Done - Leading Agile](https://www.leadingagile.com/2017/02/definition-of-done/)
+
+[^taylor-town]: [11 Ways to Shave a Yak - Taylor Troesh](https://taylor.town/shave-a-yak#4)
