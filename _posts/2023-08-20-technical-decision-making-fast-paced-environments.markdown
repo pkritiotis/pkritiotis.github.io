@@ -8,7 +8,7 @@ header:
     og_image: /assets/images/Sustainable-Technical-Decision-Making-EngineeringFocus.png
 # classes: wide
 ---
-In this blog post, we explore the engineering decision-making challenges in fast-paced development environments, the importance of maintaining technical agility, and present a framework to make balanced technical decisions that enable consistent velocity and quality.
+This blog post explores the engineering decision-making challenges in fast-paced development environments, the importance of maintaining technical agility, and presents a framework to make balanced technical decisions that enable consistent velocity and quality.
 
 # Introduction
 
