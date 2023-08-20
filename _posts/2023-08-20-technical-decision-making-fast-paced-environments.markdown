@@ -5,7 +5,7 @@ date:   2023-08-20 16:36:00 +0300
 tags: software-processes software-engineering-philosophy
 toc: true
 header:
-    og_image: /assets/images/Sustainable-Technical-Decision-Making-ProductValue-EngineeringInvestment.png
+    og_image: /assets/images/Sustainable-Technical-Decision-Making-ProductValue-OG.png
 # classes: wide
 ---
 This blog post explores the engineering decision-making challenges in fast-paced development environments, the importance of maintaining technical agility, and presents a framework to make balanced technical decisions that enable consistent velocity and quality.

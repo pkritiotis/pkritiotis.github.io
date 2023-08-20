@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2023-08-20T13:35:51.740Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.8 Chrome/114.0.5735.289 Electron/25.5.0 Safari/537.36" etag="IE0wLEqxe0tDUzEtAoga" version="21.6.8" type="device" pages="4">
+<mxfile host="Electron" modified="2023-08-20T19:10:02.853Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.8 Chrome/114.0.5735.289 Electron/25.5.0 Safari/537.36" etag="9PLvzMZqgWOZ9hbbCyCr" version="21.6.8" type="device" pages="5">
   <diagram name="Product-Driven-Development" id="Hv0fic1qNLi7Bhu2EPep">
-    <mxGraphModel dx="1434" dy="778" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="984" dy="642" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -38,10 +38,13 @@
     </mxGraphModel>
   </diagram>
   <diagram id="Krk6oxTYH5T-_O7la_tZ" name="ProductValue-EngineeringInvestment">
-    <mxGraphModel dx="2261" dy="1947" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2139" dy="2025" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="muURSo7kiGUq-d2MjXDh-1" value="" style="rounded=0;whiteSpace=wrap;html=1;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=20;" vertex="1" parent="1">
+          <mxGeometry x="-140" y="-80.67" width="1123.88" height="580.67" as="geometry" />
+        </mxCell>
         <mxCell id="b9SiHdu-EOQoZzf7b_I1-1" value="" style="endArrow=classic;html=1;rounded=0;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;fontSize=16;" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="160" y="440" as="sourcePoint" />
@@ -89,36 +92,36 @@
         <mxCell id="b9SiHdu-EOQoZzf7b_I1-42" value="Sweet spot" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=20;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;" parent="1" vertex="1">
           <mxGeometry x="375" y="160" width="120" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="XYF1_vqNk5iaqy3Q5V4W-1" value="Product Value - Engineering Investment Balance" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=20;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;" vertex="1" parent="1">
+        <mxCell id="XYF1_vqNk5iaqy3Q5V4W-1" value="Product Value - Engineering Investment Balance" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=20;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;" parent="1" vertex="1">
           <mxGeometry x="180" y="-60" width="430" height="40" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
   <diagram id="NR59sbxptGXzZKw-5Ohn" name="EngineeringFocus">
-    <mxGraphModel dx="1434" dy="778" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="984" dy="642" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="x6db8BqT7DP4WcuD8SuU-1" value="" style="endArrow=classic;html=1;rounded=0;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;fontSize=16;" edge="1" parent="1">
+        <mxCell id="x6db8BqT7DP4WcuD8SuU-1" value="" style="endArrow=classic;html=1;rounded=0;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;fontSize=16;" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="230" y="450" as="sourcePoint" />
             <mxPoint x="230" y="210" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="x6db8BqT7DP4WcuD8SuU-2" value="Time Urgency" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;" vertex="1" parent="1">
+        <mxCell id="x6db8BqT7DP4WcuD8SuU-2" value="Time Urgency" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;" parent="1" vertex="1">
           <mxGeometry x="75" y="297" width="130" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="x6db8BqT7DP4WcuD8SuU-3" value="" style="endArrow=classic;html=1;rounded=0;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;fontSize=16;" edge="1" parent="1">
+        <mxCell id="x6db8BqT7DP4WcuD8SuU-3" value="" style="endArrow=classic;html=1;rounded=0;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;fontSize=16;" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="230" y="450" as="sourcePoint" />
             <mxPoint x="540" y="450" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="x6db8BqT7DP4WcuD8SuU-4" value="Technical Agility Investment" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;" vertex="1" parent="1">
+        <mxCell id="x6db8BqT7DP4WcuD8SuU-4" value="Technical Agility Investment" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;" parent="1" vertex="1">
           <mxGeometry x="285" y="460" width="240" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="x6db8BqT7DP4WcuD8SuU-5" value="" style="endArrow=none;html=1;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;fontSize=16;curved=1;entryX=1.1;entryY=0.753;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="INXG8qfQ006INTBNTf1A-14">
+        <mxCell id="x6db8BqT7DP4WcuD8SuU-5" value="" style="endArrow=none;html=1;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;fontSize=16;curved=1;entryX=1.1;entryY=0.753;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="INXG8qfQ006INTBNTf1A-14" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="260" y="240" as="sourcePoint" />
             <mxPoint x="510" y="420" as="targetPoint" />
@@ -127,54 +130,54 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="gy4CQ5isyY0Sl1oVv9PT-1" value="." style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=150;fontFamily=Architects Daughter;fontStyle=1;fontColor=#7AA860;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;" vertex="1" parent="1">
+        <mxCell id="gy4CQ5isyY0Sl1oVv9PT-1" value="." style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=150;fontFamily=Architects Daughter;fontStyle=1;fontColor=#7AA860;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;" parent="1" vertex="1">
           <mxGeometry x="338" y="222" width="40" height="190" as="geometry" />
         </mxCell>
-        <mxCell id="INXG8qfQ006INTBNTf1A-2" value="Engineering Focus" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=20;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;" vertex="1" parent="1">
+        <mxCell id="INXG8qfQ006INTBNTf1A-2" value="Engineering Focus" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=20;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;" parent="1" vertex="1">
           <mxGeometry x="325" y="150" width="170" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="INXG8qfQ006INTBNTf1A-10" value="Steady, sustainable" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=20;fontFamily=Kalam;fontColor=#688F52;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;" vertex="1" parent="1">
+        <mxCell id="INXG8qfQ006INTBNTf1A-10" value="Steady, sustainable" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=20;fontFamily=Kalam;fontColor=#688F52;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;" parent="1" vertex="1">
           <mxGeometry x="355" y="310" width="190" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="INXG8qfQ006INTBNTf1A-11" value="Quick Delivery, Rigid solution" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=15;fontFamily=Kalam;fontColor=#2969FF;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;" vertex="1" parent="1">
+        <mxCell id="INXG8qfQ006INTBNTf1A-11" value="Quick Delivery, Rigid solution" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=15;fontFamily=Kalam;fontColor=#2969FF;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;" parent="1" vertex="1">
           <mxGeometry x="275" y="222" width="210" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="INXG8qfQ006INTBNTf1A-12" value="Slow Delivery, Highly adaptable/extensible" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=15;fontFamily=Kalam;fontColor=#B5739D;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;" vertex="1" parent="1">
+        <mxCell id="INXG8qfQ006INTBNTf1A-12" value="Slow Delivery, Highly adaptable/extensible" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=15;fontFamily=Kalam;fontColor=#B5739D;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;" parent="1" vertex="1">
           <mxGeometry x="515" y="390" width="290" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="INXG8qfQ006INTBNTf1A-13" value="." style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=150;fontFamily=Architects Daughter;fontStyle=1;fontColor=#2969FF;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;" vertex="1" parent="1">
+        <mxCell id="INXG8qfQ006INTBNTf1A-13" value="." style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=150;fontFamily=Architects Daughter;fontStyle=1;fontColor=#2969FF;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;" parent="1" vertex="1">
           <mxGeometry x="246" y="115" width="40" height="190" as="geometry" />
         </mxCell>
-        <mxCell id="INXG8qfQ006INTBNTf1A-14" value="." style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=150;fontFamily=Architects Daughter;fontStyle=1;fontColor=#B5739D;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;" vertex="1" parent="1">
+        <mxCell id="INXG8qfQ006INTBNTf1A-14" value="." style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=150;fontFamily=Architects Daughter;fontStyle=1;fontColor=#B5739D;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;" parent="1" vertex="1">
           <mxGeometry x="495" y="297" width="40" height="190" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
   <diagram id="xy1RhiI0sX3VHP9iVXZ2" name="Quality-Agility">
-    <mxGraphModel dx="1434" dy="778" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="984" dy="642" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="LB-LWOhMNtrXTpyCwVb2-1" value="Over-engineering" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=15;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;" vertex="1" parent="1">
+        <mxCell id="LB-LWOhMNtrXTpyCwVb2-1" value="Over-engineering" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=15;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;" parent="1" vertex="1">
           <mxGeometry x="443" y="170" width="130" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="LB-LWOhMNtrXTpyCwVb2-2" value="Software Quality" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;" vertex="1" parent="1">
+        <mxCell id="LB-LWOhMNtrXTpyCwVb2-2" value="Software Quality" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;" parent="1" vertex="1">
           <mxGeometry x="115" y="250" width="150" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="LB-LWOhMNtrXTpyCwVb2-3" value="" style="endArrow=classic;html=1;rounded=0;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;fontSize=16;" edge="1" parent="1">
+        <mxCell id="LB-LWOhMNtrXTpyCwVb2-3" value="" style="endArrow=classic;html=1;rounded=0;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;fontSize=16;" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="285" y="390" as="sourcePoint" />
             <mxPoint x="285" y="150" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="LB-LWOhMNtrXTpyCwVb2-4" value="" style="endArrow=classic;html=1;rounded=0;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;fontSize=16;" edge="1" parent="1">
+        <mxCell id="LB-LWOhMNtrXTpyCwVb2-4" value="" style="endArrow=classic;html=1;rounded=0;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;fontSize=16;" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="285" y="390" as="sourcePoint" />
             <mxPoint x="595" y="390" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="LB-LWOhMNtrXTpyCwVb2-5" value="" style="endArrow=none;html=1;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;fontSize=16;curved=1;fillColor=#ffe6cc;strokeColor=#d79b00;" edge="1" parent="1">
+        <mxCell id="LB-LWOhMNtrXTpyCwVb2-5" value="" style="endArrow=none;html=1;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;fontSize=16;curved=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="325" y="360" as="sourcePoint" />
             <mxPoint x="585" y="210" as="targetPoint" />
@@ -184,14 +187,75 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="LB-LWOhMNtrXTpyCwVb2-6" value="Adaptiveness/Extensibility" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;" vertex="1" parent="1">
+        <mxCell id="LB-LWOhMNtrXTpyCwVb2-6" value="Adaptiveness/Extensibility" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;" parent="1" vertex="1">
           <mxGeometry x="348" y="410" width="220" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="LB-LWOhMNtrXTpyCwVb2-7" value="Under-engineering" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=15;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;" vertex="1" parent="1">
+        <mxCell id="LB-LWOhMNtrXTpyCwVb2-7" value="Under-engineering" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=15;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;" parent="1" vertex="1">
           <mxGeometry x="280" y="360" width="140" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="eXwHJWgf---35wizVZwf-1" value="Software Quality VS Agility" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=20;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;" vertex="1" parent="1">
+        <mxCell id="eXwHJWgf---35wizVZwf-1" value="Software Quality VS Agility" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=20;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;" parent="1" vertex="1">
           <mxGeometry x="275" y="70" width="250" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="SOB34b5zw1dl8QhEVCju" name="OG">
+    <mxGraphModel dx="2139" dy="856" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="UBufxz_6yYUkkRJGciJK-1" value="" style="rounded=0;whiteSpace=wrap;html=1;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=20;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="-20" y="84.5" width="804.2" height="415.5" as="geometry" />
+        </mxCell>
+        <mxCell id="UBufxz_6yYUkkRJGciJK-2" value="" style="endArrow=classic;html=1;rounded=0;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;fontSize=16;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="160" y="440" as="sourcePoint" />
+            <mxPoint x="160" y="160" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UBufxz_6yYUkkRJGciJK-3" value="" style="endArrow=classic;html=1;rounded=0;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;fontSize=16;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="160" y="440" as="sourcePoint" />
+            <mxPoint x="670" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UBufxz_6yYUkkRJGciJK-4" value="" style="endArrow=none;html=1;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;fontSize=16;curved=1;fillColor=#ffe6cc;strokeColor=#d79b00;" edge="1" parent="1">
+          <mxGeometry x="-0.0017" width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="160" y="440" as="sourcePoint" />
+            <mxPoint x="640" y="210" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="230" y="240" />
+              <mxPoint x="440" y="200" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UBufxz_6yYUkkRJGciJK-5" value="Product Value" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;" vertex="1" parent="1">
+          <mxGeometry x="10" y="242" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="UBufxz_6yYUkkRJGciJK-6" value="TIme/Engineering Investment" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;" vertex="1" parent="1">
+          <mxGeometry x="296.94" y="460" width="250" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="UBufxz_6yYUkkRJGciJK-7" value="took too long" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=20;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;" vertex="1" parent="1">
+          <mxGeometry x="530" y="160" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="UBufxz_6yYUkkRJGciJK-8" value="locked-in" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=20;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;" vertex="1" parent="1">
+          <mxGeometry x="180" y="390" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="UBufxz_6yYUkkRJGciJK-9" value="." style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=150;fontFamily=Architects Daughter;fontStyle=1;fontColor=#7AA860;" vertex="1" parent="1">
+          <mxGeometry x="278" y="100" width="40" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="UBufxz_6yYUkkRJGciJK-10" value="" style="endArrow=classic;html=1;rounded=0;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;fontSize=16;fillColor=#d5e8d4;strokeColor=#82b366;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="365" y="292" as="sourcePoint" />
+            <mxPoint x="310" y="250" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UBufxz_6yYUkkRJGciJK-11" value="Sweet spot" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=20;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;" vertex="1" parent="1">
+          <mxGeometry x="370" y="282" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="UBufxz_6yYUkkRJGciJK-12" value="Product Value - Engineering Investment Balance" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=20;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;" vertex="1" parent="1">
+          <mxGeometry x="150" y="100" width="430" height="40" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
