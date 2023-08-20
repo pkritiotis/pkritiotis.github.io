@@ -11,10 +11,9 @@ header:
 This blog post explores the engineering decision-making challenges in fast-paced development environments, the importance of maintaining technical agility, and presents a framework to make balanced technical decisions that enable consistent velocity and quality.
 
 # Introduction
+In the software engineering industry, it's almost inevitable that, at some point, we'll be working with tight timelines. For some, this is the standard way of working.
 
-In the software engineering industry, it's almost inevitable that, at some point, we'll get into tight timeline situations. For some, this is the standard way of working.
-
-In some situations, tight timelines and running against time result from bad planning and wrong estimations. Unrealistic timelines are always a problem; however, **timelines can be tight by design**.
+Frequently, tight deadlines can result from bad planning and wrong estimations. While unrealistic timelines are always a problem, sometimes, **timelines can be tight by design**.
 
 One of the most common and arguably successful approaches to building digital products is *product-driven development*[^product-driven-development]. Product-driven development is a user-centric approach aligned with the agile philosophy that uses quick rounds of experiments to discover value and adjust accordingly. **This makes a fast-paced environment the usual way of working**.
 
