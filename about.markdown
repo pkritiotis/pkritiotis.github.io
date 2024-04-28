@@ -3,16 +3,12 @@ layout: single
 title: About me
 permalink: /about/
 ---
-I'm **Panayiotis Kritiotis**.
+Hey 👋 , I’m Panayiotis Kritiotis.
 
-I work as an **Senior Engineering Manager** @ **[Linearity](https://www.linearity.io/)**.
+I work as a **Senior Engineering Manager** at **[Linearity](https://linearity.io)**, guiding our teams to deliver top-notch software solutions.
 
-I am dedicated to **leading high-performing software engineering teams** and **delivering successful projects**.
+I've spent over a decade in the tech industry, where my love for deep technical challenges and hands-on approach meets my enthusiasm for leadership. I have extensive **experience in building large-scale, distributed web services**.
 
-I have over a **decade of experience in building large-scale, high-performance web applications**.
+I’m passionate about understanding the core of software engineering - delving into **high-performing teams, architecture, and software design** and enjoy working with **Go** and **C#**.
 
-I am fascinated by **software team organization and performance**, **architecture and software design**, and the **human factors in software engineering**.
-
-I love working with **Go** and **C#**.
-
-In my free time, you will find me **rock climbing**, **running**, and **reading books**.
+In my free time, you will find me rock climbing, running, and reading books.

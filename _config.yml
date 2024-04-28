@@ -11,7 +11,7 @@
 # https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/#installing-the-theme
 
 #theme                  : "minimal-mistakes-jekyll"
-remote_theme           : "mmistakes/minimal-mistakes@4.24.0"
+remote_theme           : "mmistakes/minimal-mistakes@4.25.0"
 minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
@@ -27,6 +27,7 @@ repository               : "pkritiotis/pkritiotis.github.io" # GitHub username/r
 teaser                   : #https://avatars.githubusercontent.com/u/2086112?v=4 # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo                     : #https://avatars.githubusercontent.com/u/2086112?v=4 # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
 masthead_title           :  # overrides the website title displayed in the masthead, use " " for no title
+github: [metadata]
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 250
 comments:
@@ -103,7 +104,7 @@ analytics:
 author:
   name             : "Panayiotis Kritiotis"
   avatar           : https://avatars.githubusercontent.com/u/2086112?v=4 # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "Fascinated by the art of software engineering"
+  bio              : "Developing software, leading teams, and loving every byte of it"
   location         : Nicosia, Cyprus
   email            : pkritiotis@gmail.com
   links:
