@@ -110,7 +110,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .archive a {
-  color: #263133;
+  color: #212b2d;
   font-weight: 500;
   text-decoration: none;
   &:hover {
@@ -118,7 +118,11 @@ h1, h2, h3, h4, h5, h6,
     text-decoration: underline;
   }
   &:visited {
-    color: rgb(29, 92, 102);
+    color: #38484b;
+    &:hover {
+      color: #015477;
+      text-decoration: underline;
+    }
   }
 }
 .page {
