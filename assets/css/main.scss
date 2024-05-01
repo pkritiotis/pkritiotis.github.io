@@ -31,10 +31,10 @@ $right-sidebar-width-narrow: 200px !default;
 $right-sidebar-width: 260px !default;
 $right-sidebar-width-wide: 350px !default;
 
-$base00: #263238;
-$base01: #2e3c43;
-$base02: #314549;
-$base03: #546e7a;
+$base00: #273136;
+$base01: #313d43;
+$base02: #334447;
+$base03: #566c76;
 $base04: #b2ccd6;
 $base05: #eeffff;
 $base06: #eeffff;
@@ -64,7 +64,34 @@ $base0f: #ff5370;
       padding-bottom: 2em;
     }
 }
+.greedy-nav a {
+  color: #565c61;
+}
 
+.site-title {
+  font-weight: 600;
+}
+
+.toc__menu a {
+  font-weight: 500;
+}
+h1, h2, h3, h4, h5, h6,
+.author__content a {
+   font-weight: 550;
+}
+
+.archive a {
+  color: #425559;
+  font-weight: 500;
+  text-decoration: none;
+  &:hover {
+    color: #355157;
+    text-decoration: underline;
+  }
+  &:visited {
+    color: #48656b;
+  }
+}
 .page {
     @include breakpoint($large) {
       float: right;
