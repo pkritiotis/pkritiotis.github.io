@@ -4,6 +4,21 @@
 
 @charset "utf-8";
 
+$gray: #7a8288 !default;
+$dark-gray: mix(#000, $gray, 50%) !default;
+$darker-gray: mix(#000, $gray, 60%) !default;
+$light-gray: mix(#fff, $gray, 50%) !default;
+$lighter-gray: mix(#fff, $gray, 90%) !default;
+
+$background-color: #fff !default;
+$code-background-color: #fafafa !default;
+$code-background-color-dark: $light-gray !default;
+$text-color: $dark-gray !default;
+$muted-text-color: mix(#fff, $text-color, 20%) !default;
+$border-color: $lighter-gray !default;
+$form-background-color: $lighter-gray !default;
+$footer-background-color: $lighter-gray !default;
+
 $doc-font-size: 13 !default;
 
 $intro-transition: none !important;
@@ -27,9 +42,6 @@ $h-size-4: 1.0625em !default; // ~17px
 $h-size-5: 1.03125em !default; // ~16.5px
 $h-size-6: 1em !default; // ~16px
 
-$right-sidebar-width-narrow: 200px !default;
-$right-sidebar-width: 260px !default;
-$right-sidebar-width-wide: 350px !default;
 
 $base00: #273136;
 $base01: #313d43;
@@ -47,11 +59,26 @@ $base0c: #ff0077;
 $base0d: #6a41ff;
 $base0e: #00dbf8;
 $base0f: #ff5370;
+$small: 600px !default;
+$medium: 768px !default;
+$medium-wide: 900px !default;
+$large: 1024px !default;
+$x-large: 1400px !default;
+$max-width: $x-large !default;
 
+$right-sidebar-width-narrow: 200px !default;
+$right-sidebar-width:260px;
+$right-sidebar-width-wide: 350px !default;
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
 
+.sidebar {
+  opacity: 1 !important;
+}
+.archive__subtitle{
+  color: #000;
+}
 .page__content {
     p,
     li,
@@ -65,7 +92,7 @@ $base0f: #ff5370;
     }
 }
 .greedy-nav a {
-  color: #565c61;
+  color: #000000;
 }
 
 .site-title {
@@ -74,22 +101,24 @@ $base0f: #ff5370;
 
 .toc__menu a {
   font-weight: 500;
+  color: #000;
 }
 h1, h2, h3, h4, h5, h6,
 .author__content a {
    font-weight: 550;
+   color: #000;
 }
 
 .archive a {
-  color: #425559;
+  color: #263133;
   font-weight: 500;
   text-decoration: none;
   &:hover {
-    color: #355157;
+    color: #015477;
     text-decoration: underline;
   }
   &:visited {
-    color: #48656b;
+    color: rgb(29, 92, 102);
   }
 }
 .page {
