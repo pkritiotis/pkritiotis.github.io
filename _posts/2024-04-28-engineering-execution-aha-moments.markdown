@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Engineering Execution - My Aha Moments as an Engineering Manager"
+title:  "Engineering Execution - My \"Aha Moments\" as an Engineering Manager"
 date:   2024-04-28 18:00:00 +0300
 tags: software-processes engineering-management
 toc: true
