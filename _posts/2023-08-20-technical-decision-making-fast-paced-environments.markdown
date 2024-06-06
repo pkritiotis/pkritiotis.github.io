@@ -1,7 +1,8 @@
 ---
 layout: single
-title:  "A pragmatic approach to technical decision-making in fast-paced environments"
+title:  "An 8-Step Framework for Pragmatic Technical Decision-Making in Fast-Paced Environments"
 date:   2023-08-20 16:36:00 +0300
+last_modified_at: 2024-06-06 10:23:00 +0300
 tags: software-processes software-engineering-philosophy
 toc: true
 header:
