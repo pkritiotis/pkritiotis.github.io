@@ -1,7 +1,8 @@
 ---
 layout: single
-title:  "Engineering Execution - My \"Aha Moments\" as an Engineering Manager"
+title:  "5 Lessons That Transformed How I Approach Execution as an Engineering Manager"
 date:   2024-04-28 18:00:00 +0300
+last_modified_at: 2024-06-06 10:05:00 +0300
 tags: software-processes engineering-management
 toc: true
 header:
@@ -32,14 +33,14 @@ I used to think that execution is all about maximum speed and maximum code quali
 
 Speed and quality can impact each other, but even if you strike a balance and establish a quality baseline, your focus might need to shift. Here lies the first Aha Moment:
 
-✨**The execution focus, what you optimize for, is dynamic.**  **It's dicated by your company needs at any given time.**
+✨**The execution focus, what you optimize for, is dynamic.**  **It's dictated by your company needs at any given time.**
 
 <img alt="Example of engineering focus changing over time" src="/assets/images/aha-moments_engineering_focus.png" width="600">
 
 
 So, if it's dynamic, what do we optimize for when it comes to execution?
 
-**What we focus shifts periodically based on the engineering and business targets**. Beyond speed and code quality, there are more dimensions to consider. For example:
+**What we focus on, shifts periodically based on the engineering and business targets**. Beyond speed and code quality, there are more dimensions to consider. For example:
 - We might prioritize knowledge sharing in scenarios like dealing with a bus factor or when onboarding new hires, even if it reduces throughput.
 - Sometimes, we optimize for throughput to meet urgent business needs or gain a competitive edge, potentially at the expense of knowledge transfer and stability.
 - At times, we focus on stability to address technical debt, which inhibits the current development speed.
