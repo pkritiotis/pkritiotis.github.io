@@ -4,7 +4,7 @@ title:  "Understanding and Achieving Your Goal as an Engineering Manager: 3 Fund
 date:   2024-06-07 16:02:00 +0300
 # classes: wide
 header:
-    og_image: /assets/images/Engineering-Manager-Goal-The-Goal.png
+    og_image: /assets/images/Engineering-Manager-Goal-The Goal.png
 ---
 As an Engineering Manager, you have a lot on your plate and need a wide range of skills to be successful. From technical expertise, to execution know-how and people management, mastering all these skills takes a lifetime, no doubt about it.
 
@@ -24,7 +24,7 @@ Simply put, **the goal of an engineering manager is to deliver results that alig
 3. **Cultivate a high-performing team**
 
 <p align=center>
-<img alt="The Engineering Manager's Goal" src="/assets/images/Engineering-Manager-Goal-The-Goal.png" width="700">
+<img alt="The Engineering Manager's Goal" src="/assets/images/Engineering-Manager-Goal-The Goal.png" width="700">
 </p>
 
 These are the three fundamental principles. You need to leverage your engineering expertise along with your execution and leadership skills in these areas. 
