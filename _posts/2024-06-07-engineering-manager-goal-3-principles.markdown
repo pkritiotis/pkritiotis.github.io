@@ -4,7 +4,7 @@ title:  "Understanding and Achieving Your Goal as an Engineering Manager: 3 Fund
 date:   2024-06-07 16:02:00 +0300
 # classes: wide
 header:
-    og_image: /assets/images/Engineering-Manager-Goal-The Goal.png
+    og_image: /assets/images/Engineering-Manager-Goal-The-Goal-OG.png
 ---
 As an Engineering Manager, you have a lot on your plate and need a wide range of skills to be successful. From technical expertise, to execution know-how and people management, mastering all these skills takes a lifetime, no doubt about it.
 
