@@ -8,13 +8,13 @@ tags: software-processes engineering-management
 header:
     og_image: /assets/images/PrioritizationFrameworks-OG.png
 ---
-As an Engineering Manager, your time is limited and your task list feels endless.
+Your time is finite, and your team's backlog feels endless — welcome to the life of an Engineering Manager.
 
-As explained in the [Engineering Manager's ultimate goal](https://pkritiotis.io/engineering-manager-goal-3-principles/), the most important part of your role is execution—you need to deliver results. To do this as efficiently and effectively as possible, you need to identify the highest-leverage activities that will give you the best value at a specific time. Given that you have many activities to choose from, you need to do some prioritization.
+As we highlighted in the previous post on the [Engineering Manager's ultimate goal](https://pkritiotis.io/engineering-manager-goal-3-principles/), the most important part of your role is execution — you need to deliver results. To do this as efficiently and effectively as possible, you need to identify the highest-leverage activities that will give you the best value at a specific time. This principle applies not only to your own task list but also to your team’s backlog. With numerous tasks in line, prioritization becomes crucial.
 
 Prioritization goes hand in hand with alignment and is the first step to successful execution.
 
-Many decisions on what to work on next may come from the Product team, but as an EM, you can influence prioritization as the owner of the execution process and the technical expert. On top of that, you also have to make your own decisions when managing the team backlog, your tech-debt list, and your technical initiatives.
+While many decisions on what to work on next may come from the Product team, as an EM, you can influence prioritization as the owner of the execution process and the technical expert. On top of that, you also have to make your own decisions when managing the team backlog, your tech-debt list, and your technical initiatives.
 
 In this post, I’m sharing five prioritization frameworks that I’ve regularly used as an Engineering Manager to make the decision-making process more structured and systematic.
 
@@ -56,9 +56,9 @@ The MoSCoW framework has three priority buckets, from highest to lowest:
 
 While simplistic, this model forces the product team and me to think pragmatically and focus on the important buckets. It’s particularly useful for MVPs. *Plus, who doesn't like saying "MoSCoW"?*
 
-# 2. **Value Effort Map**
+# 2. **The Value-Effort Map**
 
-The Value Effort Map is a powerful tool that helps you make smart decisions based on the time and resources available.
+The Value-Effort Map is a powerful tool that helps you make smart decisions based on the time and resources available.
 
 The matrix has four buckets:
 
@@ -82,7 +82,7 @@ The matrix has four buckets:
 
 I’ve had great success using this for tech-debt items. The collaborative nature of this framework is fantastic, and it really makes you compare items directly. *Plus, it’s a great way to sneak in some team bonding over which tasks are truly the worst!*
 
-# 3. **Severity-Frequency**
+# 3. **The Severity-Frequency Matrix**
 
 The Severity-Frequency framework is a go-to for incident management, helping you gauge the urgency of issues.
 
@@ -167,7 +167,7 @@ The simplest, yet one of the most powerful prioritization frameworks when you re
 
 I use this all the time in combination with the above frameworks, and it is particularly useful when you work with deadlines and time-limited execution processes. *Plus, it's a relief to finally put an end to the 'Which task should we work on next?' debates—just pick the top one!*
 
-# 5. **Eisenhower Matrix**
+# 5. **The Eisenhower Matrix**
 
 The Eisenhower Matrix is an insightful framework, particularly useful for managers deciding whether to delegate tasks and how to deal with tasks based on urgency and importance.
 
