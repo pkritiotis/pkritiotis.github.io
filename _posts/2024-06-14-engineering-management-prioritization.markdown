@@ -28,6 +28,10 @@ The MoSCoW framework has three priority buckets, from highest to lowest:
 2. Should-have
 3. Could-have
 
+<p align=center>
+<img alt="The Moscow Method" src="/assets/images/PrioritizationFrameworks-Moscow.png" width="600">
+</p>
+
 ## How to run it:
 
 1. Map each task into one of the buckets.
@@ -52,9 +56,9 @@ The MoSCoW framework has three priority buckets, from highest to lowest:
 
 While simplistic, this model forces the product team and me to think pragmatically and focus on the important buckets. It’s particularly useful for MVPs. *Plus, who doesn't like saying "MoSCoW"?*
 
-# 2. **Value Effort Matrix**
+# 2. **Value Effort Map**
 
-The Value Effort Matrix is a powerful tool that helps you make smart decisions based on the time and resources available.
+The Value Effort Map is a powerful tool that helps you make smart decisions based on the time and resources available.
 
 The matrix has four buckets:
 
@@ -63,9 +67,13 @@ The matrix has four buckets:
 3. **Low Effort, High Value**: Quick wins—your best friends, like fixing that one-line bug that’s been annoying everyone.
 4. **Low Effort, Low Value**: Not worth your time. Go get a coffee instead.
 
+<p align=center>
+<img alt="The Value-Effort Map" src="/assets/images/PrioritizationFrameworks-Value Effort.png" width="700">
+</p>
+
 ## How to run it:
 
-1. Go through each task one by one and place it on the matrix relative to other tasks.
+1. Go through each task one by one and place it on the map relative to other tasks.
 2. As you add more items, tweak previous placements to keep the distribution balanced.
 
 ## Key Characteristics:
@@ -85,6 +93,10 @@ Each issue is associated with a predefined set of rules.
   - What’s the business impact (cost, reputation, data loss, security, etc.)?
 - **Frequency Level**: Indicates how often and how many people experience the issue.
 - **Priority Level** is determined based on Severity and Frequency Levels and is associated with a predefined set of actions.
+
+<p align=center>
+<img alt="The Severity-Frequency Matrix" src="/assets/images/PrioritizationFrameworks-Severity Frequency.png" width="500">
+</p>
 
 ## How to run it:
 
@@ -134,6 +146,10 @@ The simplest, yet one of the most powerful prioritization methods when you reall
 - Each task is assigned a unique priority.
 - It is either higher priority or lower priority than each other item being prioritized.
 
+<p align=center>
+<img alt="Stack Ranking" src="/assets/images/PrioritizationFrameworks-Stack Ranking.png" width="600">
+</p>
+
 ## How to run it:
 
 1. Put all the tasks in a list.
@@ -163,6 +179,10 @@ There are four buckets:
 2. **Not Important but Urgent:** Delegate these tasks. Someone else can handle them.
 3. **Important but Non-urgent:** Plan to do these tasks later. Schedule them when you have more time.
 4. **Not Important and Non-urgent:** Discard these tasks. They are not worth your time.
+
+<p align=center>
+<img alt="The Eisenhower Matrix" src="/assets/images/PrioritizationFrameworks-Eisenhower.png" width="700">
+</p>
 
 ## Key Characteristics:
 
