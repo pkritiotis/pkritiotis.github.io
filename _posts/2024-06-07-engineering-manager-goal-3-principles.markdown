@@ -2,6 +2,8 @@
 layout: single
 title:  "Understanding and Achieving Your Goal as an Engineering Manager: 3 Fundamental Principles"
 date:   2024-06-07 16:02:00 +0300
+toc: true
+tags: engineering-management
 # classes: wide
 header:
     og_image: /assets/images/Engineering-Manager-Goal-The-Goal-OG.png
