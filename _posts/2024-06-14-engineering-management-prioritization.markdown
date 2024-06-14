@@ -1,12 +1,12 @@
 ---
 layout: single
-title:  "5 Simple Prioritization Methods for Engineering Managers"
-date:   2024-06-14 16:02:00 +0300
+title:  "5 Essential Prioritization Frameworks for Engineering Managers"
+date:   2024-06-14 12:30:00 +0300
 toc: true
 tags: software-processes engineering-management
 # classes: wide
 header:
-    og_image: /assets/images/Engineering-Manager-Goal-The-Goal-OG.png
+    og_image: /assets/images/PrioritizationFrameworks-OG.png
 ---
 As an Engineering Manager, your time is limited and your task list feels endless.
 
@@ -16,7 +16,7 @@ Prioritization goes hand in hand with alignment and is the first step to success
 
 Many decisions on what to work on next may come from the Product team, but as an EM, you can influence prioritization as the owner of the execution process and the technical expert. On top of that, you also have to make your own decisions when managing the team backlog, your tech-debt list, and your technical initiatives.
 
-In this post, I’m sharing five prioritization techniques that I’ve regularly used as an Engineering Manager to make the decision-making process more structured and systematic.
+In this post, I’m sharing five prioritization frameworks that I’ve regularly used as an Engineering Manager to make the decision-making process more structured and systematic.
 
 # 1. The **MoSCoW** Method
 
@@ -139,7 +139,7 @@ This framework helps keep your incidents under control and your sanity intact—
 
 # 4. **Stack Ranking**
 
-The simplest, yet one of the most powerful prioritization methods when you really need to make hard choices.
+The simplest, yet one of the most powerful prioritization frameworks when you really need to make hard choices.
 
 ## How it works:
 
