@@ -6,7 +6,7 @@ toc: true
 tags: software-processes engineering-management
 # classes: wide
 header:
-    og_image: /assets/images/PrioritizationFrameworks-OG.png
+    og_image: /assets/images/PrioritizationFrameworks--OG.png
 ---
 Your time is finite, and your team's backlog feels endless — welcome to the life of an Engineering Manager.
 
