@@ -8,11 +8,11 @@ tags: software-processes engineering-management
 header:
     og_image: /assets/images/PrioritizationFrameworks--OG.png
 ---
-Your time is finite, and your team's backlog feels endless — welcome to the life of an Engineering Manager.
+Your time is finite, and your team's backlog feels endless — welcome to life as an Engineering Manager.
 
-As we highlighted in the previous post on the [Engineering Manager's ultimate goal](https://pkritiotis.io/engineering-manager-goal-3-principles/), the most important part of your role is execution — you need to deliver results. To do this as efficiently and effectively as possible, you need to identify the highest-leverage activities that will give you the best value at a specific time. This principle applies not only to your own task list but also to your team’s backlog. With numerous tasks in line, prioritization becomes crucial.
+As we highlighted in the previous post on the [Engineering Manager's ultimate goal](https://pkritiotis.io/engineering-manager-goal-3-principles/), the most important part of your role is execution — you need to deliver results. To do this as efficiently and effectively as possible, you need to identify the highest-leverage activities that will give you the best value at a specific time. This principle applies not only to your own task list but also to your team’s backlog.
 
-Prioritization goes hand in hand with alignment and is the first step to successful execution.
+With numerous tasks in line, prioritization becomes crucial - It's the first step to successful execution.
 
 While many decisions on what to work on next may come from the Product team, as an EM, you can influence prioritization as the owner of the execution process and the technical expert. On top of that, you also have to make your own decisions when managing the team backlog, your tech-debt list, and your technical initiatives.
 
