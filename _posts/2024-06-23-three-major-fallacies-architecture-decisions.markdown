@@ -6,7 +6,7 @@ toc: true
 tags: software-architecture
 # classes: wide
 header:
-    og_image: /assets/images/3-big-fallacies-OG.png
+    og_image: /assets/images/3-major-fallacies-OG.png
 ---
 Over the past 10 years, I've led and participated in numerous architecture designs, learning a lot from my mistakes and observations.
 
