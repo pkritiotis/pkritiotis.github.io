@@ -1,14 +1,15 @@
 ---
 layout: single
-title:  "Clean Architecture in Go"
+title:  "Clean Architecture in Go [2024 Updated]"
 date:   2021-09-08 21:30:00 +0300
-last_modified_at: 2021-12-05 21:30:00 +0300
+last_modified_at: 2024-08-03 21:30:00 +0300
 tags: clean-architecture golang software-patterns
 author_profile: true
 header:
   image: assets/images/clean-architecture-in-go.png
 toc: true
 ---
+***❇️ This post and the respective [repository](https://github.com/pkritiotis/go-climb-clean-architecture-example) was updated in August 2024 to reflect a simplified infra layering approach and more accurate terminology***
 
 This article covers the fundamentals of the Clean Architecture design concept and demonstrates how to apply its principles in Go through a simple web app implementation.
 
@@ -16,7 +17,8 @@ This article covers the fundamentals of the Clean Architecture design concept an
 
 > The one constant in software development is *change*.[^change]
 
-*Change* in software development introduces *risk*. The risk occurs since modifying working code can introduce bugs, which harm software quality.
+*Change* in software development introduces *risk*. The risk occurs since modifying working code can introduce bugs.
+Besides bugs, without a solid design approach, your codebase will quickly become a mess.
 
 As software engineers, we reduce this risk by applying architecture and design patterns that promote **decoupling** and **separation of concerns**[^soc]; Keeping areas of a codebase that change more frequently or serve different purposes *separate*.
 
@@ -50,7 +52,7 @@ The domain layer contains the components of the application that describe the bu
 - **Domain Entities & Value Objects**
   - You can think of these as the data structures of the business domain
   - *Entities* are uniquely identifiable structs
-  - *Value Objects* are structs that are not uniquely identifiable, and they describe the characteristics of an Object.
+  - *Value Objects* are structs that are identifiable by their properties, and they describe the characteristics of an Object.
 - **Domain Services**
   - They provide domain functionality using entities and objects
     - i.e., data repository
@@ -76,25 +78,26 @@ The application layer code depends only on the domain layer.
 
 ## Infrastructure
 Typically, software applications have the following behavior:
-1. Receive input to initiate an operation
+1. Receive a signal/input to initiate an operation
 2. Interact with infrastructure services to complete a function or produce output. 
 
-The entry points from which we receive information (i.e., requests) are called *input ports*. The gateways through which we integrate with external services are called *interface adapters*.
+For the entry points from which we receive information (i.e., requests) I use the term *inbound communication handlers*. For the gateways through which we integrate with external services I use the term *interface providers*.
 
-Input Ports and interface adapters depend on frameworks/platforms and external services that are not part of the business or domain logic. For this reason, they belong to this separate layer named *infrastructure*. This layer is sometimes referred to as *Ports & Adapters*.
+Inbound communication handlers and interface providers depend on frameworks/platforms and external services that are not part of the business or domain logic. For this reason, they belong to this separate layer named *infrastructure*. This layer is sometimes referred to as *Ports & Adapters*.
 
-
-### Interface Adapters
-The interface adapters are responsible for ***implementing* domain and application services**(interfaces) by **integrating** with specific frameworks/providers.  
+### Interface Providers
+The interface providers are responsible for ***implementing* domain and application services**(interfaces) by **integrating** with specific frameworks/providers.  
 
 For example, we can use a SQL provider to implement a domain repository or integrate with an email/SMS provider to implement a Notification service.
 
-### Input ports
-The input ports provide the *entry points* of the application that receive input from the outside world.
+### Inbound communication handlers
+The inbound communication handlers provide the *entry points* of the application that receive input from the outside world.
 
-For example, an input port could be an HTTP handler handling synchronous calls or a Kafka consumer handling asynchronous messages.
+For example, an inbound communication handler could be an HTTP handler handling synchronous calls or a Kafka consumer handling asynchronous messages.
 
 ![Clean Architecture - Infrastructure](/assets/diagrams/clean-architecture/clean-architecture-infrastructure.png)
+
+***❇️ Update***: In the initial version of this blog post, interface providers and inbound communication handlers were referred as *interface adapters* and *input ports*. This terminology can be confusing when thinking about these terms in the Ports and Adapters Architecture.
 
 ### Infrastructure Dependencies
 The infrastructure layer interacts with the application layer only. (again *only* is a strong word here; more on that below in *data contracts*)
@@ -180,29 +183,25 @@ Go Climb follows the group-by-layer structure:
 │   │       ├── crag.go
 │   │       ├── mock_repository.go
 │   │       └── repository.go
-│   ├── inputports
+│   ├── infra
 │   │   ├── http
 │   │   │   ├── crag
 │   │   │   └── server.go
-│   │   └── sevices.go
-│   ├── outputadapters
 │   │   ├── notification
 │   │   │   └── console
-│   │   ├── services.go
 │   │   └── storage
 │   │       ├── memory
 │   │       └── mysql
 |   │   └── pkg
 |   │       ├── time/
 |   │       └── uuid/
+│   │   └── sevices.go
 │   └── vendor/
 ```
 - `cmd` contains the `main.go` file, the entry point of the application
 - `docs` contains documentation about the application
 - `internal` contains the main implementation of our application. It consists of the three layers of clean architecture + shared utility code under `pkg/`
   - infra
-	- outputadapters
-	- inputports
   - app
   - domain
   - pkg
@@ -348,15 +347,21 @@ The application layer depends on domain entities and services and uses the `crag
 
 ### Infrastructure
 
+#### ❇️ *Important Update (2024)*
+
+*In the original version of this post, the infra layer consisted of two sub-layers: inputports, and interfaceadapters.*
+
+*In this updated version I've opted for a simpler version that groups all inbound handlers and interface providers under a single layer.*
+ 
+*Besides simplicity, there are cases in which a provider can act as both an inbound handler and an outbound provider. Message brokers can fit into that use-case. For example Kafka can be used as an inbound communication handler that accepts messages and a message publisher.
+
 ```
-├── inputports
+├── infra
 │   ├── http
 │   │   ├── crag
 │   │   │   ├── handler.go
 │   │   │   └── handler_test.go
 │   │   └── server.go
-│   └── sevices.go
-├── outputadapters
 │   ├── notification
 │   │   └── console
 │   │       ├── notificationservice.go
@@ -371,8 +376,8 @@ The application layer depends on domain entities and services and uses the `crag
 
 ```
 
-#### Interface Adapters
-Interface adapters contain the implementation of *domain* and *application* services. In our case, these are the `crag.Repository` and the `notification.Service`, respectively.
+#### Interface Providers
+Interface services contain the implementation of *domain* and *application* services. In our case, these are the `crag.Repository` and the `notification.Service`, respectively.
 
 The `crag.Repository` is implemented by `memory.Repo`, a repo that holds all data in memory. 
 ```go
@@ -434,7 +439,7 @@ func (NotificationService) Notify(notification notification.Notification) error 
 	return nil
 }
 ```
-#### Input Ports
+#### Inbound Communication Handlers
 
 In Go Climb, the input/requests are provided through HTTP. The handler of this RESTful API is implemented by `crag.Handler`.
 
@@ -516,19 +521,19 @@ Since everything is/should be using an interface for external operations, we nee
 
 ```go
 func main() {
-	interfaceAdapterServices := interfaceadapters.NewServices()
+	infraProviders := infra.NewInfraProviders()
 	tp := time.NewTimeProvider()
 	up := uuid.NewUUIDProvider()
-	appServices := app.NewServices(interfaceAdapterServices.CragRepository, interfaceAdapterServices.NotificationService, up, tp)
-	inputPortsServices := inputports.NewServices(appServices)
-	inputPortsServices.Server.ListenAndServe(":8080")
+	appServices := app.NewServices(infraProviders.CragRepository, infraProviders.NotificationService, up, tp)
+	infraHTTPServer := infra.NewHTTPServer(appServices)
+	infraHTTPServer.ListenAndServe(":8080")
 }
 ```
 
 `main` is responsible for getting the external configuration, if any, instantiating the infrastructure services based on this config and passing them over to the application and domain layer to instantiate their structs.
 
 ### Per Layer Wiring
-In this sample application, we also have a per layer entry-point (`[app|inputports|interfaceadapters]/services.go`) file. This entry point bootstraps the layer dependencies in a grouped manner to avoid bloating `main` with layer-specific code. 
+In this sample application, we also have a per layer entry-point (`[app|infra]/services.go`) file. This entry point bootstraps the layer dependencies in a grouped manner to avoid bloating `main` with layer-specific code. 
 
 This separation is also applicable in the domain layer and would help if we had multiple domain services.
 
@@ -596,7 +601,7 @@ This pattern has the following benefits:
 
 ### Testing
  - The application layer and domain layer are tested only by unit tests. This makes it easy to cover edge cases and focus on the application's core logic instead of integrating external services.
- - Depending on the nature of the adapter implementations, tests in this layer include mainly integration tests. Unit tests are also applicable if adapters contain non-basic application flows.
+ - Depending on the nature of the provider implementations, tests in this layer include mainly integration tests. Unit tests are also applicable if providers contain non-basic application flows.
  
 ## Maintenance
 So we have designed the application using the clean architecture philosophy.  Which files do I need to add/change to add a new requirement? Where do I need to look if something is buggy? 
@@ -609,9 +614,9 @@ Great, a new requirement; we must be getting good traction :).
 - Scenario A: A new business requirement, as in, a new feature, is a new use case 
     1. Is the domain covering the requirements of the application? If not, add the required domain entities/services
     2. Add a new use case: Add a query when returning some requested data or command when modifying something or triggering an action.
-    3. Add the corresponding adapter to implement the new services, if any.
+    3. Add the corresponding provider to implement the new services, if any.
 - Scenario B:  A new infrastructure requirement like the need for data persistence since in-memory storage is not reliable
-    1. Touch only the adapter layer: Add a new implementation of the `crag.Repository` interface using MySQL, for example
+    1. Touch only the infra layer: Add a new implementation of the `crag.Repository` interface using MySQL, for example
     2. *Rewire* main to instantiate the MySQL repository by passing the required configs
     3. If we need to deploy different instances with different repositories, keep both implementations and introduce a *factory pattern* to instantiate the corresponding repo based on configuration
 
