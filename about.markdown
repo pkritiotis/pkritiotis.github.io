@@ -4,12 +4,15 @@ title: About me
 author_profile: true
 permalink: /about/
 ---
-Hey 👋 , I’m Panayiotis Kritiotis.
 
-I work as a **Senior Engineering Manager** at [Delivery Hero(efood)](https://efood.gr).
+Hey 👋, I’m Panayiotis Kritiotis.
 
-I've spent over a decade in the tech industry, where my love for deep technical challenges and hands-on approach meets my enthusiasm for leadership. I have extensive **experience in building large-scale, distributed web services**.
+I’m a **Senior Engineering Manager** at efood, with over a decade of experience in the tech world. My work combines a hands-on love for solving technical challenges with a passion for engineering leadership.
 
-I’m passionate about understanding the core of software engineering - delving into **high-performing teams, architecture, and software design** and enjoy working with **Go**.
+I specialize in architecting and building **large-scale, distributed web services** and have a particular passion for **Go**.
 
-In my free time, you will find me rock climbing, running, and reading books.
+You’ll often hear me talking about Domain-Driven Design (DDD) and frameworks (*“Frameworks, frameworks everywhere!”*)—topics that fascinate me for how they guide decision-making, whether it’s about building scalable systems or fostering effective teamwork.
+
+I’m especially drawn to the **core principles of software engineering**—from shaping **high-performing teams** to designing **robust architectures** and **refining software design**.
+
+Outside of work, you’ll often find me rock climbing, running, or getting lost in a good book.
