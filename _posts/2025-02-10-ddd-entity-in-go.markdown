@@ -1,18 +1,20 @@
 ---
 layout: single
-title:  "Domain-Driven Design Entities in Go: What Works, What Breaks, and What’s Overkill"
+title:  "Domain-Driven Design in Go: Designing Entities - What Works, What Breaks, and What’s Overkill"
 date:   2025-02-10 22:00:00 +0300
 toc: true
 tags: golang software-patterns
 # classes: wide
 header:
-    og_image: /assets/images/Agile-Philosophy-Vs-Framework-OG.png
+    og_image: /assets/images/ddd-entities.png
 ---
+At first glance, defining an entity in Go seems simple—just a struct, right? Well, not quite.
+
 # Introduction
 
-I’ve been fascinated with Domain-Driven Design (DDD) for a while now. Over the past year, I’ve spent considerable time deep-diving into its details, refining my understanding, and exploring how to apply it effectively in real-world projects.
+I’ve been fascinated with Domain-Driven Design (DDD) for a while now. I’ve been using bits and pieces of DDD for several years, but in the last couple of years, I’ve spent considerable time deep-diving into its details—refining my understanding and exploring how to apply it effectively in real-world projects.
 
-While I’ve used DDD concepts in various ways, I’ve never approached it dogmatically - *I believe in practical applications over rigid adherence to theory*. Early in my career, working with OOP, I found that many DDD principles felt more straightforward due to built-in language features like encapsulation and rich domain models. There’s also significantly more material on applying DDD in OOP languages. Even Eric Evans, the author of the well-known Blue Book[^ddd], was involved in one of the first attempts to codify DDD in Java.
+While I’ve used DDD concepts in various ways, I’ve never approached it dogmatically — *I believe in practical applications over rigid adherence to theory*. Early in my career, working with OOP, I found that many DDD principles felt more straightforward due to built-in language features like encapsulation and rich domain models. There’s also significantly more material on applying DDD in OOP languages. Even Eric Evans, the author of the well-known Blue Book[^ddd], was involved in one of the first attempts to codify DDD in Java.
 
 But Go, with its different programming paradigm, makes things more interesting.
 
@@ -64,7 +66,7 @@ type User struct {
 - Fields are **unexported**, enforcing encapsulation.
   - External packages cannot modify the entity’s fields directly, ensuring controlled access.
 - **State is encapsulated within the entity itself**.
-  - The only\* way to modify the entity should be through well-defined methods.
+  - The only*(\*see next section)* way to modify the entity should be through well-defined methods.
 
 A better way to instantiate an entity is by using a constructor function, ensuring valid creation:
 ```go
@@ -206,11 +208,11 @@ func (u *User) SaveToDB(db *sql.DB) error {
     return err
 }
 ```
-🔴***Why this is bad:***\n
+🔴***Why this is bad:***<br>
 	•	The entity now depends on infrastructure (database logic).
 	•	It violates separation of concerns, making the entity hard to test.
 
-:point_right:Better approach: Separate persistence logic into an external service, in this case a **repository**:
+👉Better approach: Separate persistence logic into an external service, in this case a **repository**:
 ```go
 type UserRepository struct {
     db *sql.DB
@@ -231,16 +233,16 @@ A critical responsibility of an entity is to enforce invariants - rules that mus
 🔴 Example of a bad entity:
 ```go
 type BankAccount struct {
-    Balance float64
+    balance float64
 }
 
 func (b *BankAccount) SetBalance(amount float64) {
-    b.Balance = amount
+    b.balance = amount
 }
 ```
 The above code allows an account to have a negative balance, which is likely invalid.
 
-✅ Better approach:
+👉 Better approach:
 ```go
 type BankAccount struct {
     balance float64
@@ -263,7 +265,9 @@ func (b *BankAccount) Balance() float64 {
 ```
 Now, the entity always remains in a valid state. By enforcing invariants through controlled methods, you not only safeguard your entity’s integrity but also make it easier to write unit tests that assume a consistent state.
 
-Admittedly, this was a mistake I made repeatedly in my early attempts at applying DDD in my projects. 🙈. Separating application logic from domain logic can be confusing for first-time adopters. Remember, if you tamper directly with an entity’s attributes, you are essentially embedding domain logic outside of its intended boundaries.
+Admittedly, not protecting invariants was a mistake I made repeatedly in my early attempts at applying DDD in my projects. I used to keep all my logic outside the entities as an attempt to *avoid polluting* the models🙈. This is known as the *anemic model* anti-pattern.
+
+Separating application logic from domain logic can be confusing for first-time adopters. Remember, **if you tamper directly with an entity’s attributes, you are essentially embedding domain logic outside of its intended boundaries**.
 
 # Conclusion
 Designing DDD entities in Go requires a deliberate approach. Unlike OOP languages with built-in encapsulation, Go relies on structuring entities intentionally while maintaining clarity, correctness, and domain integrity.
@@ -275,10 +279,7 @@ Here are the key takeaways:
 - Keep entities focused—they should contain domain logic, not persistence details.
 - Go is pragmatic—while constructors are great, absolute enforcement isn’t always necessary.
 
-What’s Next?
-
 Entities are just the beginning. In future posts, I’ll explore how to expand entities into aggregates, define domain services, and structure repositories to build a complete domain model in Go.
-
 
 
 ## References
