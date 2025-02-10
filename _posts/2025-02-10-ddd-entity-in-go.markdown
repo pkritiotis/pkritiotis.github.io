@@ -163,7 +163,7 @@ Go is designed to favor simplicity over strict enforcement. **Idiomatic Go often
 
 Even though Go allows flexible struct usage, there are a few pitfalls that can lead to poorly designed entities.
 
-### 1. Exposing Fields Publicly
+## 1.Exposing Fields Publicly
 
 One of the most common mistakes in Go is exporting struct fields, allowing direct access:
 ```go
@@ -198,7 +198,7 @@ func (u *User) Email() EmailAddress {
 }
 ```
 
-### 2. Mixing Business Logic & Infrastructure
+## 2.Mixing Business Logic & Infrastructure
 
 Entities should contain domain logic, but they shouldn’t know how they are stored or retrieved. A common mistake is embedding database logic inside entities:
 
@@ -226,7 +226,7 @@ func (r *UserRepository) Save(u *User) error {
 ```
 This way, the User entity stays focused on domain logic while persistence is handled separately. This of course has additional benefits on testability and respects the single responsibility principle.
 
-### 3. Blind Setters And Not Protecting Invariants
+## 3.Blind Setters And Not Protecting Invariants
 
 A critical responsibility of an entity is to enforce invariants - rules that must always be true.
 
@@ -270,6 +270,7 @@ Admittedly, not protecting invariants was a mistake I made repeatedly in my earl
 Separating application logic from domain logic can be confusing for first-time adopters. Remember, **if you tamper directly with an entity’s attributes, you are essentially embedding domain logic outside of its intended boundaries**.
 
 # Conclusion
+
 Designing DDD entities in Go requires a deliberate approach. Unlike OOP languages with built-in encapsulation, Go relies on structuring entities intentionally while maintaining clarity, correctness, and domain integrity.
 
 Here are the key takeaways:
@@ -282,7 +283,7 @@ Here are the key takeaways:
 Entities are just the beginning. In future posts, I’ll explore how to expand entities into aggregates, define domain services, and structure repositories to build a complete domain model in Go.
 
 
-## References
+# References
 
 [^ddd]: **Domain-Driven Design: Tackling Complexity in the Heart of Software (Blue Book)**  
     [Eric Evans' Blue Book](https://www.domainlanguage.com/ddd/)
