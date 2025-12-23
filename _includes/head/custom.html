@@ -9,5 +9,34 @@
     }
 </script>
 
+
+<!-- Dark Mode -->
+<link rel="stylesheet" href="/assets/css/main-dark.css" id="theme-style" disabled>
+<script>
+  const toggleBtn = document.getElementById('theme-toggle');
+  const themeStyle = document.getElementById('theme-style');
+  const currentTheme = localStorage.getItem('theme');
+
+  if (currentTheme === 'dark') {
+    themeStyle.removeAttribute('disabled');
+  }
+
+  // Wait for DOM content to load because the button is in the body
+  document.addEventListener("DOMContentLoaded", function() {
+    const toggleBtn = document.getElementById('theme-toggle');
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+            if (themeStyle.disabled) {
+            themeStyle.removeAttribute('disabled');
+            localStorage.setItem('theme', 'dark');
+            } else {
+            themeStyle.setAttribute('disabled', 'true');
+            localStorage.setItem('theme', 'light');
+            }
+        });
+    }
+  });
+</script>
+
 <script defer src="https://cloud.umami.is/script.js" data-website-id="427472ce-b8b2-4168-9cf1-dd4b46053e95"></script>
 <!-- end custom head snippets -->

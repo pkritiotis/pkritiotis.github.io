@@ -1,0 +1,104 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+@charset "utf-8";
+
+@import "minimal-mistakes/skins/dark"; // skin
+@import "minimal-mistakes"; // main partials
+
+/* Custom Dark Mode Overrides */
+
+.sidebar {
+  opacity: 1 !important;
+}
+.archive__subtitle{
+  color: #fff !important;
+}
+.page__content {
+    p,
+    li,
+    dl {
+      font-size: $type-size-5 !important;
+    }
+
+    img{
+      padding-top: 2em;
+      padding-bottom: 2em;
+    }
+}
+.greedy-nav a {
+  color: #fff !important;
+}
+
+.site-title {
+  font-weight: 600;
+}
+
+.toc__menu a {
+  font-weight: 500;
+  color: #eee !important;
+}
+h1, h2, h3, h4, h5, h6,
+.author__content a {
+   font-weight: 550;
+   color: #fff !important;
+}
+
+.archive a {
+  color: #ccc;
+  font-weight: 500;
+  text-decoration: none;
+  &:hover {
+    color: #4facfe;
+    text-decoration: underline;
+  }
+  &:visited {
+    color: #aaa;
+    &:hover {
+      color: #4facfe;
+      text-decoration: underline;
+    }
+  }
+}
+
+.page {
+    @include breakpoint($large) {
+      float: right;
+      width: calc(100% - #{$right-sidebar-width-narrow});
+      padding-right: $right-sidebar-width-narrow - 20;
+    }
+  
+    @include breakpoint($x-large) {
+      width: calc(100% - #{$right-sidebar-width});
+      padding-right: $right-sidebar-width - 50 !important;
+    }
+}
+
+mark {
+  font-weight: bold;
+  font-style: italic;
+  display: inline;
+  padding: .2em 0;
+  background: #2a4b50; /* Darker highlighting */
+  box-shadow: .2em 0 0 #2a4b50, -.2em 0 0 #2a4b50;
+  color: #fff;
+}
+
+// Ensure toggle button looks right
+.theme__toggle {
+  float: right;
+  height: $nav-height;
+  line-height: $nav-height; 
+  padding: 0 0.75rem;
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+  border: 0;
+  background-color: transparent;
+  color: #fff !important; 
+  cursor: pointer;
+
+  &:hover {
+    color: $masthead-link-color-hover;
+  }
+}
