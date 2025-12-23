@@ -12,8 +12,17 @@
 
 <!-- Dark Mode -->
 <link rel="stylesheet" href="/assets/css/main-dark.css" id="theme-style" disabled>
+<style>
+  /* Animation for theme switch */
+  #theme-icon {
+    transition: transform 0.1s ease;
+  }
+  .icon-rotate {
+    transform: rotate(180deg) scale(0.5);
+    opacity: 0.5;
+  }
+</style>
 <script>
-  const toggleBtn = document.getElementById('theme-toggle');
   const themeStyle = document.getElementById('theme-style');
   const currentTheme = localStorage.getItem('theme');
 
@@ -21,18 +30,37 @@
     themeStyle.removeAttribute('disabled');
   }
 
-  // Wait for DOM content to load because the button is in the body
   document.addEventListener("DOMContentLoaded", function() {
     const toggleBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    
+    // Set initial icon state
+    if (localStorage.getItem('theme') === 'dark') {
+      themeIcon.classList.remove('fa-moon');
+      themeIcon.classList.add('fa-sun');
+    }
+
     if (toggleBtn) {
         toggleBtn.addEventListener('click', () => {
-            if (themeStyle.disabled) {
-            themeStyle.removeAttribute('disabled');
-            localStorage.setItem('theme', 'dark');
-            } else {
-            themeStyle.setAttribute('disabled', 'true');
-            localStorage.setItem('theme', 'light');
-            }
+            // Add animation class
+            themeIcon.classList.add('icon-rotate');
+            
+            // Switch theme and icon after short delay for animation effect
+            setTimeout(() => {
+                if (themeStyle.disabled) {
+                    themeStyle.removeAttribute('disabled');
+                    localStorage.setItem('theme', 'dark');
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                } else {
+                    themeStyle.setAttribute('disabled', 'true');
+                    localStorage.setItem('theme', 'light');
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                }
+                // Remove animation class
+                themeIcon.classList.remove('icon-rotate');
+            }, 300); // Wait 300ms (halfway through transition) to switch icon
         });
     }
   });

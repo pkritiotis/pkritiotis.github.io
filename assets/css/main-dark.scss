@@ -5,9 +5,39 @@
 @charset "utf-8";
 
 // Layout Variables (Must be defined BEFORE imports)
+// Breakpoints and Widths (match main.scss)
+$small: 600px !default;
+$medium: 768px !default;
+$medium-wide: 900px !default;
+$large: 1024px !default;
+$x-large: 1400px !default; // Wide layout
+$max-width: $x-large !default;
+
 $right-sidebar-width-narrow: 200px !default;
 $right-sidebar-width: 260px; // Override default
 $right-sidebar-width-wide: 350px !default;
+$background-color: #181d26; // Example: Set to pure black
+
+// Code Highlighting (copied from main.scss)
+$code-background-color: #fafafa;
+$code-background-color-dark: #bebebe; // Approx $light-gray
+
+$base00: #273136;
+$base01: #313d43;
+$base02: #334447;
+$base03: #566c76;
+$base04: #b2ccd6;
+$base05: #eeffff;
+$base06: #eeffff;
+$base07: #ffffff;
+$base08: #fffc5b;
+$base09: #f78c6c;
+$base0a: #6bff77;
+$base0b: #ffd258;
+$base0c: #ff0077;
+$base0d: #6a41ff;
+$base0e: #00dbf8;
+$base0f: #ff5370;
 
 @import "minimal-mistakes/skins/dark"; // skin
 @import "minimal-mistakes"; // main partials
