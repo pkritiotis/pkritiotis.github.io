@@ -4,6 +4,11 @@
 
 @charset "utf-8";
 
+// Layout Variables (Must be defined BEFORE imports)
+$right-sidebar-width-narrow: 200px !default;
+$right-sidebar-width: 260px; // Override default
+$right-sidebar-width-wide: 350px !default;
+
 @import "minimal-mistakes/skins/dark"; // skin
 @import "minimal-mistakes"; // main partials
 
@@ -19,7 +24,7 @@
     p,
     li,
     dl {
-      font-size: $type-size-5 !important;
+      font-size: 1em !important; // Match default size
     }
 
     img{
@@ -99,6 +104,6 @@ mark {
   cursor: pointer;
 
   &:hover {
-    color: $masthead-link-color-hover;
+    color: #bbb;
   }
 }
