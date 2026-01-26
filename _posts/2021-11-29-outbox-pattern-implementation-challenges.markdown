@@ -21,7 +21,7 @@ One of these challenges in event-driven architecture is the **guaranteed message
 
 Let's look at an example of a typical scenario in a microservice:
 
-![NonAtomicSuccess](../assets/diagrams/outbox/outbox-Atomic_Success.drawio.png)
+![NonAtomicSuccess](../assets/diagrams/outbox/outbox-Atomic_Success.drawio.webp)
 
 1. The service receives an entity-related request via an HTTP API
 2. The handler processes the request and stores the updated entity in a persistent storage
@@ -30,15 +30,15 @@ Let's look at an example of a typical scenario in a microservice:
 
 ***- Q: What happens if the message broker is not available at the time of the message delivery***
 
-![NonAtomicBrokerError](../assets/diagrams/outbox/outbox-Atomic_Error.drawio.png)
+![NonAtomicBrokerError](../assets/diagrams/outbox/outbox-Atomic_Error.drawio.webp)
 
 \- A: We can rollback the change we just applied on the database.
 
-![NonAtomicDBRollBack](../assets/diagrams/outbox/outbox-Atomic_DBRollback.drawio.png)
+![NonAtomicDBRollBack](../assets/diagrams/outbox/outbox-Atomic_DBRollback.drawio.webp)
 
 ***- Q: But what if the database is not available at that time? Or what if the program somehow crashes?***
 
-![NonAtomicDBRollBackError](../assets/diagrams/outbox/outbox-Atomic_DbRollback_Failed.drawio.png)
+![NonAtomicDBRollBackError](../assets/diagrams/outbox/outbox-Atomic_DbRollback_Failed.drawio.webp)
 
 \- A: Well, **we end up in an inconsistent state**. The database will have the entity changes stored, while the external subscribers will never get notified.
 
@@ -58,7 +58,7 @@ The outbox pattern consists of two main components
 2. The `message dispatcher`
   The message dispatcher is a background worker that observes and publishes the entries of the `outbox` table to the designated message broker
 
-![OutboxPattern](../assets/diagrams/outbox/outbox-OutboxGeneric.drawio.png)
+![OutboxPattern](../assets/diagrams/outbox/outbox-OutboxGeneric.drawio.webp)
 
 
 Request Handler:
@@ -126,7 +126,7 @@ Depending on how generic we want the outbox implementation to be, we could intro
 The `state` column is used to control the flow of the message.
 Every message starts in the `Undelivered` state, and it proceeds to the `Delivered` state when it is delivered successfully.
 
-![States](../assets/diagrams/outbox/outbox-States.drawio.png)
+![States](../assets/diagrams/outbox/outbox-States.drawio.webp)
 
 It can also end up in a `Discarded` state if the message is discarded. This scenario can occur when the dispatcher has tried to send the message multiple times, exceeding the maximum retrials threshold.
 

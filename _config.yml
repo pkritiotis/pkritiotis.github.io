@@ -24,8 +24,8 @@ description              : "Thoughts on Engineering Leadership, Software Enginee
 url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "pkritiotis/pkritiotis.github.io" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
-teaser                   : #https://avatars.githubusercontent.com/u/2086112?v=4 # path of fallback teaser image, e.g. "/assets/images/500x300.png"
-logo                     : #https://avatars.githubusercontent.com/u/2086112?v=4 # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
+teaser                   : #https://avatars.githubusercontent.com/u/2086112?v=4 # path of fallback teaser image, e.g. "/assets/images/500x300.webp"
+logo                     : #https://avatars.githubusercontent.com/u/2086112?v=4 # path of logo image to display in the masthead, e.g. "/assets/images/88x88.webp"
 masthead_title           :  # overrides the website title displayed in the masthead, use " " for no title
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 250
@@ -102,7 +102,7 @@ analytics:
 # Site Author
 author:
   name             : "Panayiotis Kritiotis"
-  avatar           : https://avatars.githubusercontent.com/u/2086112?v=4 # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : https://avatars.githubusercontent.com/u/2086112?v=4 # path of avatar image, e.g. "/assets/images/bio-photo.webp"
   bio              : "Developing software, leading teams, and loving every byte of it"
   location         : Nicosia, Cyprus
   email            : pkritiotis@gmail.com

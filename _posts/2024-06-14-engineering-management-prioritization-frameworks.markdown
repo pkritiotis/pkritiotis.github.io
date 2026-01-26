@@ -6,7 +6,7 @@ toc: true
 tags: software-processes engineering-management
 # classes: wide
 header:
-    og_image: /assets/images/PrioritizationFrameworks--OG.png
+    og_image: /assets/images/PrioritizationFrameworks--OG.webp
 ---
 Your time is finite, and your team's backlog feels endless — welcome to life as an Engineering Manager.
 
@@ -29,7 +29,7 @@ The MoSCoW framework has three priority buckets, from highest to lowest:
 3. Could-have
 
 <p align=center>
-<img alt="The Moscow Method" src="/assets/images/PrioritizationFrameworks-Moscow.png" width="600">
+<img alt="The Moscow Method" src="/assets/images/PrioritizationFrameworks-Moscow.webp" width="600">
 </p>
 
 ## How to run it:
@@ -68,7 +68,7 @@ The matrix has four buckets:
 4. **Low Effort, Low Value**: Not worth your time. Go get a coffee instead.
 
 <p align=center>
-<img alt="The Value-Effort Map" src="/assets/images/PrioritizationFrameworks-Value Effort.png" width="700">
+<img alt="The Value-Effort Map" src="/assets/images/PrioritizationFrameworks-Value Effort.webp" width="700">
 </p>
 
 ## How to run it:
@@ -95,7 +95,7 @@ Each issue is associated with a predefined set of rules.
 - **Priority Level** is determined based on Severity and Frequency Levels and is associated with a predefined set of actions.
 
 <p align=center>
-<img alt="The Severity-Frequency Matrix" src="/assets/images/PrioritizationFrameworks-Severity Frequency.png" width="500">
+<img alt="The Severity-Frequency Matrix" src="/assets/images/PrioritizationFrameworks-Severity Frequency.webp" width="500">
 </p>
 
 ## How to run it:
@@ -147,7 +147,7 @@ The simplest, yet one of the most powerful prioritization frameworks when you re
 - It is either higher priority or lower priority than each other item being prioritized.
 
 <p align=center>
-<img alt="Stack Ranking" src="/assets/images/PrioritizationFrameworks-Stack Ranking.png" width="600">
+<img alt="Stack Ranking" src="/assets/images/PrioritizationFrameworks-Stack Ranking.webp" width="600">
 </p>
 
 ## How to run it:
@@ -181,7 +181,7 @@ There are four buckets:
 4. **Not Important and Non-urgent:** Discard these tasks. They are not worth your time.
 
 <p align=center>
-<img alt="The Eisenhower Matrix" src="/assets/images/PrioritizationFrameworks-Eisenhower.png" width="700">
+<img alt="The Eisenhower Matrix" src="/assets/images/PrioritizationFrameworks-Eisenhower.webp" width="700">
 </p>
 
 ## Key Characteristics:

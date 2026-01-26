@@ -5,7 +5,7 @@ date:   2022-12-18 23:50:00 +0300
 tags: software-patterns golang
 toc: true
 header:
-    og_image: /assets/images/Mediator-GenericMediator.png
+    og_image: /assets/images/Mediator-GenericMediator.webp
 # classes: wide
 ---
 This article presents a simple implementation of a generic mediator in Go.
@@ -14,7 +14,7 @@ This article presents a simple implementation of a generic mediator in Go.
 As software systems become larger and more complex, **managing the interaction dependencies between different components can become complicated**. Refactoring and introducing changes can also become particularly challenging and error-prone when the interaction semantics change.
 
 <p align="center">
-  <img alt="dependencies-everywhere" src="/assets/images/Dependencies-Dependencies-Everywhere.png" width="200">
+  <img alt="dependencies-everywhere" src="/assets/images/Dependencies-Dependencies-Everywhere.webp" width="200">
   <br>
     <small>Image by <a href="https://github.com/MariaLetta/free-gophers-pack"> Maria Letta @free-gophers-pack</a></small>
 </p> 
@@ -32,7 +32,7 @@ The answer is yes!
 We can do this by using an incredible design pattern that encapsulates the interaction and abstracts the communication between components: **mediator pattern**.
 
 <p align="center">
-  <img alt="idea-mediator" src="/assets/images/lamp.png" width="200">
+  <img alt="idea-mediator" src="/assets/images/lamp.webp" width="200">
   <br>
     <small>Image by <a href="https://github.com/MariaLetta/free-gophers-pack"> Maria Letta @free-gophers-pack</a></small>
 </p>
@@ -63,7 +63,7 @@ The main things to remember here are:
 
 The original definition of the mediator looks like this:
 <p align="center">
-  <img alt="original-mediator" src="/assets/images/Mediator-OriginalMediator.png">
+  <img alt="original-mediator" src="/assets/images/Mediator-OriginalMediator.webp">
     <br>
   <small>The Mediator Pattern</small>
 </p> 
@@ -88,7 +88,7 @@ Cool, how does it work, then?
    - The **mediator** knows which **handler** should serve the **request** because it has already been registered to serve these specific **request types**.
 
 <p align="center">
-  <img alt="generic-mediator" src="/assets/images/Mediator-GenericMediator.png">
+  <img alt="generic-mediator" src="/assets/images/Mediator-GenericMediator.webp">
   <br>
   <small>The Generic Mediator</small>
 </p> 
@@ -272,7 +272,7 @@ In a nutshell
 
 Here is a sample diagram of the relations between the different components:
 <p align="center">
-  <img alt="notes-generic" src="/assets/images/Mediator-NotesExample-GenericMediator.png">  
+  <img alt="notes-generic" src="/assets/images/Mediator-NotesExample-GenericMediator.webp">  
   <br>
   <small>Notes Example - Component Interaction</small> 
 </p> 
@@ -280,7 +280,7 @@ Here is a sample diagram of the relations between the different components:
 The following diagram shows the execution flow looks like this:
 
 <p align="center">
-  <img alt="notes-mediator-flow" src="/assets/images/Mediator-NotesExample-Mediator.png"> 
+  <img alt="notes-mediator-flow" src="/assets/images/Mediator-NotesExample-Mediator.webp"> 
   <br>
   <small>Notes Example - Execution flow</small> 
 </p> 

@@ -4,12 +4,12 @@ title:  "Refreshing My Writing Journey"
 date:   2024-06-01 13:49:00 +0300
 # classes: wide
 header:
-    og_image: /assets/images/new-writing-path.png
+    og_image: /assets/images/new-writing-path.webp
 ---
 In August 2021, I published my first "Hello World" blog post. My goal was to share the valuable lessons I've learned and experienced with the community, while also documenting my journey and deepening my understanding of the topics I write about.
 
 <p align=center>
-<img alt="New writing path" src="/assets/images/new-writing-path.png" width="500">
+<img alt="New writing path" src="/assets/images/new-writing-path.webp" width="500">
 </p>
 
 Three years later, I’m incredibly grateful for what writing has given back to me. Even though I haven't been publishing posts regularly, it's been truly rewarding to put my thoughts into words and share them with others.

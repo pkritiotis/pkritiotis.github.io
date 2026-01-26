@@ -4,7 +4,7 @@ title:  "Designing functions that return potentially absent values in Go"
 date:   2021-10-14 18:00:00 +0300
 tags: golang software-patterns
 header:
-  image: assets/images/find-functions-in-go.png
+  image: assets/images/find-functions-in-go.webp
 toc: true
 ---
 

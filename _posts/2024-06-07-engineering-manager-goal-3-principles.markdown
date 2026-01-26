@@ -6,7 +6,7 @@ toc: true
 tags: engineering-management
 # classes: wide
 header:
-    og_image: /assets/images/Engineering-Manager-Goal-The-Goal-OG.png
+    og_image: /assets/images/Engineering-Manager-Goal-The-Goal-OG.webp
 ---
 As an Engineering Manager, you have a lot on your plate and need a wide range of skills to be successful. From technical expertise, to execution know-how and people management, mastering all these skills takes a lifetime, no doubt about it.
 
@@ -26,7 +26,7 @@ Simply put, **the goal of an engineering manager is to deliver results that alig
 3. **Cultivate a high-performing team**
 
 <p align=center>
-<img alt="The Engineering Manager's Goal" src="/assets/images/Engineering-Manager-Goal-The Goal.png" width="700">
+<img alt="The Engineering Manager's Goal" src="/assets/images/Engineering-Manager-Goal-The Goal.webp" width="700">
 </p>
 
 These are the three fundamental principles. You need to leverage your engineering expertise along with your execution and leadership skills in these areas. 
@@ -56,7 +56,7 @@ This mismatch between company goals and team output is often referred in differe
 **What do you need to achieve the right results? Alignment**.
 
 <p align=center>
-<img alt="Align with the company's goals" src="/assets/images/Engineering-Manager-Goal-Alignment.png" width="450">
+<img alt="Align with the company's goals" src="/assets/images/Engineering-Manager-Goal-Alignment.webp" width="450">
 </p>
 
 There’s a lot of literature on alignment tools like OKRs[^OKR], MBOs[^MBO], OGSMs[^OGSM] and KPI-driven strategies, but simply put, you need to:
@@ -76,7 +76,7 @@ Delivering results is your top priority as an Engineering Manager. Frankly, ever
 No matter how organized your documentation is, how much you've achieved in building trust and upskilling your team, if you don't deliver, you've failed.
 
 <p align=center>
-<img alt="Execute" src="/assets/images/Engineering-Manager-Goal-Execute.png" width="700">
+<img alt="Execute" src="/assets/images/Engineering-Manager-Goal-Execute.webp" width="700">
 </p>
 
 Building the right processes to deliver results is what we call **execution**. As a manager, leading a team means that execution is no longer about putting down time working on the right thing by yourself. You need to coordinate your team and ensure that everyone has the tools, frameworks, and processes to get the job done.
@@ -103,7 +103,7 @@ What do you optimize for? At a high level you're looking at:
 To achieve this, focus on _high-leverage activities[^high-output-management]_. As a manager, you’re always on the lookout for the smallest efforts that produce the biggest results.
 
 <p align=center>
-<img alt="High Performing Team" src="/assets/images/Engineering-Manager-Goal-High Performing Team.png" width="450">
+<img alt="High Performing Team" src="/assets/images/Engineering-Manager-Goal-High Performing Team.webp" width="450">
 </p>
 
 These activities aren’t just about process; they include anything that helps improve results. When it comes to engineering management, you can think of this in four main categories:

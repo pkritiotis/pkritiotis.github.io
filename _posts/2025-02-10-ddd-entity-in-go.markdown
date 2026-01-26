@@ -6,7 +6,7 @@ toc: true
 tags: golang software-patterns
 # classes: wide
 header:
-    og_image: /assets/images/ddd-entities.png
+    og_image: /assets/images/ddd-entities.webp
 ---
 At first glance, defining an entity in Go seems simple—just a struct, right? Well, not quite.
 

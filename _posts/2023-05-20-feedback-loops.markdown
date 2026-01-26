@@ -5,7 +5,7 @@ date:   2023-05-20 12:20:00 +0300
 tags: software-processes
 toc: true
 header:
-    og_image: /assets/images/feedback-loops.png
+    og_image: /assets/images/feedback-loops.webp
 # classes: wide
 ---
 In this blog post, I write about the power of feedback loops and the essential characteristics of the ideal feedback loop.
@@ -21,7 +21,7 @@ While planning is a necessary step for achieving our goals, it's not enough to e
 
 One of the most powerful tools we can use in every stage of a software engineering lifecycle is ***feedback loops***.
 <p align="center">
-  <img alt="dependencies-everywhere" src="/assets/images/arrow-right.png" width="200">
+  <img alt="dependencies-everywhere" src="/assets/images/arrow-right.webp" width="200">
   <br>
     <small>Image by <a href="https://github.com/MariaLetta/free-gophers-pack"> Maria Letta @free-gophers-pack</a></small>
 </p> 
@@ -61,7 +61,7 @@ Before we know it, we derail from our initial goal. And ***that's expected***.
 Of course, this process is not always straightforward.
 
 <p align="center">
-  <img alt="dependencies-everywhere" src="/assets/images/find.png" width="200">
+  <img alt="dependencies-everywhere" src="/assets/images/find.webp" width="200">
   <br>
     <small>Image by <a href="https://github.com/MariaLetta/free-gophers-pack"> Maria Letta @free-gophers-pack</a></small>
 </p> 
@@ -90,7 +90,7 @@ Let's check the definition of a feedback loop:
 
 ***A feedback loop enables us to continuously measure and evaluate our process toward achieving a goal and, based on the results, make adjustments to course-correct our working methods for a more efficient and productive workflow***.
 <p align="center">
-  <img alt="dependencies-everywhere" src="/assets/images/feedback-loops.png" width="500">
+  <img alt="dependencies-everywhere" src="/assets/images/feedback-loops.webp" width="500">
   <br>
     <small> Feedback loops</small>
 </p> 
@@ -197,7 +197,7 @@ Only highly accurate indicators and measurements can result in good-quality feed
 Ok, so we have regular, quick feedback loops. Do we need anything else? Of course, we do 😄. We need easy-to-execute feedback loops. 
 
 <p align="center">
-  <img alt="dependencies-everywhere" src="/assets/images/fix.png" width="200">
+  <img alt="dependencies-everywhere" src="/assets/images/fix.webp" width="200">
   <br>
     <small>Image by <a href="https://github.com/MariaLetta/free-gophers-pack"> Maria Letta @free-gophers-pack</a></small>
 </p> 
@@ -220,7 +220,7 @@ How do we find the cause of the problem? Observability and monitoring to the res
 In the software engineering world, teams or individuals work on projects, from massive projects, such as a software system that guides a spaceship for a moon landing, to small projects, such as a simple calculator.
 
 <p align="center">
-  <img alt="dependencies-everywhere" src="/assets/images/read.png" width="200">
+  <img alt="dependencies-everywhere" src="/assets/images/read.webp" width="200">
   <br>
     <small>Image by <a href="https://github.com/MariaLetta/free-gophers-pack"> Maria Letta @free-gophers-pack</a></small>
 </p> 
@@ -234,7 +234,7 @@ All of these SDLC follows the approach of splitting the goal/project into smalle
 Historically the software industry started with waterfall as a means of completing a project, and more recently, we see *Agile*[^agile] being the most prominent model that most teams use.
 
 <p align="center">
-  <img alt="dependencies-everywhere" src="/assets/images/feedback-loops-everywhere.png" width="300">
+  <img alt="dependencies-everywhere" src="/assets/images/feedback-loops-everywhere.webp" width="300">
   <br>
     <small>Image by <a href="https://github.com/MariaLetta/free-gophers-pack"> Maria Letta @free-gophers-pack</a></small>
 </p> 
@@ -261,7 +261,7 @@ Depending on the feedback we receive in each one of these meetings, we make the 
 The efficiency of developers, even in small tasks, lies in the development feedback loop.
 
 <p align="center">
-  <img alt="dependencies-everywhere" src="/assets/images/build.png" width="200">
+  <img alt="dependencies-everywhere" src="/assets/images/build.webp" width="200">
   <br>
     <small>Image by <a href="https://github.com/MariaLetta/free-gophers-pack"> Maria Letta @free-gophers-pack</a></small>
 </p> 

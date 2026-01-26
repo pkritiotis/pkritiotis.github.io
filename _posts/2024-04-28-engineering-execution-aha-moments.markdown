@@ -6,7 +6,7 @@ last_modified_at: 2024-06-06 10:05:00 +0300
 tags: software-processes engineering-management
 toc: true
 header:
-    og_image: /assets/images/aha-moments_engineering_focus.png
+    og_image: /assets/images/aha-moments_engineering_focus.webp
 # classes: wide
 ---
 In this blog post, I'm diving into execution; arguably the most crucial skill in engineering management because it's all about delivering the results that drive your company forward.
@@ -35,7 +35,7 @@ Speed and quality can impact each other, but even if you strike a balance and es
 
 ✨**The execution focus, what you optimize for, is dynamic.**  **It's dictated by your company needs at any given time.**
 
-<img alt="Example of engineering focus changing over time" src="/assets/images/aha-moments_engineering_focus.png" width="600">
+<img alt="Example of engineering focus changing over time" src="/assets/images/aha-moments_engineering_focus.webp" width="600">
 
 
 So, if it's dynamic, what do we optimize for when it comes to execution?
@@ -59,7 +59,7 @@ Even though team utilization does relate to efficiency, striving for maximum uti
 
 Efficient workflows inevitably require some slack. This slack allows for addressing missed issues, managing unplanned blockers, and provides a chance to reflect and possibly rethink the process to improve overall flow. Without this built-in flexibility, bottlenecks can become more frequent, affecting not just projects but the team members as well. Some flexibility in schedules can greatly benefit productivity and enhance mental well-being.
 
-<img alt="Team Utilization VS Productivity" src="/assets/images/aha-moments-team-utilization.png" width="600">
+<img alt="Team Utilization VS Productivity" src="/assets/images/aha-moments-team-utilization.webp" width="600">
 
 Furthermore, planning doesn't always go smoothly. There may be times when you don’t have a product backlog ready for your team, not due to a lack of work but because of temporary blocks—perhaps due to dependencies or a sudden shift in focus.
 

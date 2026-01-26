@@ -6,7 +6,7 @@ last_modified_at: 2024-08-03 21:30:00 +0300
 tags: clean-architecture golang software-patterns
 author_profile: true
 header:
-  image: assets/images/clean-architecture-in-go.png
+  image: assets/images/clean-architecture-in-go.webp
 toc: true
 ---
 ***❇️ This post and the respective [repository](https://github.com/pkritiotis/go-climb-clean-architecture-example) was updated in August 2024 to reflect a simplified infra layering approach and more accurate terminology***
@@ -29,7 +29,7 @@ Clean Architecture is a software design concept that isolates change through the
 
 The separation of software in Clean Architecture is based on the purpose and dependencies of the software components.
 
-![Clean Architecture - Uncle Bob](https://blog.cleancoder.com/uncle-bob/images/2012-08-13-the-clean-architecture/CleanArchitecture.jpg)
+![Clean Architecture - Uncle Bob](https://blog.cleancoder.com/uncle-bob/images/2012-08-13-the-clean-architecture/CleanArchitecture.webp)
 
 The above diagram is from the original post by Uncle Bob[^uncle-bob]. Circles contain different software components based on their purpose/concern. The rule of this diagram is that outer circles always have to depend on inner circles.
 
@@ -41,7 +41,7 @@ In combination with Domain Driver Design concepts, these four circles are often 
 
 Here is an alternative diagram containing the main components of an application that matches the three-layer grouping.
 
-![Clean Architecture - Main](/assets/diagrams/clean-architecture/clean-architecture-main.png)
+![Clean Architecture - Main](/assets/diagrams/clean-architecture/clean-architecture-main.webp)
 
 We will describe these three layers in detail in this article. The main idea is the same as in the original diagram. Each layer has well-defined boundaries and dependency rules, represented by the arrows and their direction.
 
@@ -57,7 +57,7 @@ The domain layer contains the components of the application that describe the bu
   - They provide domain functionality using entities and objects
     - i.e., data repository
 
-![Clean Architecture - Domain](/assets/diagrams/clean-architecture/clean-architecture-domain.png)
+![Clean Architecture - Domain](/assets/diagrams/clean-architecture/clean-architecture-domain.webp)
 
 ### Domain Dependencies
 The domain layer does not have any dependencies on other layers. It is also *only* used by the application layer (This is not strictly always applied; more on that later in *data contracts*)
@@ -71,7 +71,7 @@ The application layer exposes all supported use cases of the application to the 
     - They provide isolated business logic/use cases functionality that is required. This functionality, is expressed by use cases.
     - It can be an interface-only service if it is infrastructure-dependent
 
-![Clean Architecture - Application](/assets/diagrams/clean-architecture/clean-architecture-application.png)
+![Clean Architecture - Application](/assets/diagrams/clean-architecture/clean-architecture-application.webp)
 
 ### Application Dependencies
 The application layer code depends only on the domain layer.
@@ -95,7 +95,7 @@ The inbound communication handlers provide the *entry points* of the application
 
 For example, an inbound communication handler could be an HTTP handler handling synchronous calls or a Kafka consumer handling asynchronous messages.
 
-![Clean Architecture - Infrastructure](/assets/diagrams/clean-architecture/clean-architecture-infrastructure.png)
+![Clean Architecture - Infrastructure](/assets/diagrams/clean-architecture/clean-architecture-infrastructure.webp)
 
 ***❇️ Update***: In the initial version of this blog post, interface providers and inbound communication handlers were referred as *interface adapters* and *input ports*. This terminology can be confusing when thinking about these terms in the Ports and Adapters Architecture.
 
@@ -247,7 +247,7 @@ type Repository interface {
     - The `MockRepository` contains a mock implementation of the `Repository` interface. This mock is needed for testing purposes.
 
 
-![Clean Architecture - Domain](/assets/diagrams/clean-architecture/clean-architecture-go-climb-domain.png)
+![Clean Architecture - Domain](/assets/diagrams/clean-architecture/clean-architecture-go-climb-domain.webp)
 
 #### Dependencies/Interaction with other layers
 The domain layer consists of pure domain code that **does not have any external dependencies**.
@@ -341,7 +341,7 @@ type Service interface {
 
 #### Dependencies/Interaction with other services
 
-![Clean Architecture - Application](/assets/diagrams/clean-architecture/clean-architecture-go-climb-application.png)
+![Clean Architecture - Application](/assets/diagrams/clean-architecture/clean-architecture-go-climb-application.webp)
 
 The application layer depends on domain entities and services and uses the `crag.Repository` *domain service* to interact with the data storage service, in Go Climb.
 
@@ -507,7 +507,7 @@ The `crag.Handler` performs the following steps:
 
 
 #### Dependencies/Interactions with other layers
-![Clean Architecture - Infrastructure](/assets/diagrams/clean-architecture/clean-architecture-go-climb-infrastructure.png)
+![Clean Architecture - Infrastructure](/assets/diagrams/clean-architecture/clean-architecture-go-climb-infrastructure.webp)
 
 The infrastructure components in Go Climb depend on both the application layer and the domain layer.
 1. They **implement** application and domain services(interfaces). The infrastructure layer **does not use** the `crag.Repository`.
@@ -546,7 +546,7 @@ In many programming languages, mainly OO, it is common to use *Dependency Inject
 
 The following diagram contains the complete picture of clean architecture in Go Climb through the separation of domain, application, and infrastructure layers.
 
-![Clean Architecture - Main](/assets/diagrams/clean-architecture/clean-architecture-go-climb.png)
+![Clean Architecture - Main](/assets/diagrams/clean-architecture/clean-architecture-go-climb.webp)
 
 
 ## Noteworthy Patterns, Principles, and Properties
@@ -559,7 +559,7 @@ Let's dive into some interesting patterns and properties of the implementation.
 ### Data Contracts
 We refer to the agreed interaction model between two components that belong in separate layers by *data contracts*.
 For example, when we need to call a method from an HTTP handler, we need to somehow pass the required data through a *model* to the application layer's command/query handler to handle the request. This model is the *application* data contract.
-![Clean Architecture - Main](/assets/diagrams/clean-architecture/clean-architecture-contracts.png)
+![Clean Architecture - Main](/assets/diagrams/clean-architecture/clean-architecture-contracts.webp)
 
 While not consistently enforced for simplicity, it is a good practice to interact with external layer components through dedicated layer contacts. Applying this in the application layer means that application services expose their operations by accepting their own maintained models rather than receiving domain entities.
 

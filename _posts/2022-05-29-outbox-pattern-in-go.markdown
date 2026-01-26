@@ -5,7 +5,7 @@ date:   2022-05-29 16:00:00 +0300
 tags: software-patterns golang
 toc: true
 header:
-    og_image: /assets/images/outbox-implementation-Core-Components.png
+    og_image: /assets/images/outbox-implementation-Core-Components.webp
 ---
 
 This article presents the design and implementation of the **outbox pattern** in go.
@@ -28,7 +28,7 @@ The source code of the library we will be looking at in this post is [here](http
 # Features
 
 <p align="center">
-  <img alt="whattodo" src="/assets/images/lamp.png" width="200">
+  <img alt="whattodo" src="/assets/images/lamp.webp" width="200">
   <br>
     <small>Image by <a href="https://github.com/MariaLetta/free-gophers-pack"> Maria Letta @free-gophers-pack</a></small>
 </p> 
@@ -54,7 +54,7 @@ What this package does not support:
 # Design
 
 <p align="center">
-  <img alt="whattodo" src="/assets/images/write.png" width="200">
+  <img alt="whattodo" src="/assets/images/write.webp" width="200">
   <br>
     <small>Image by <a href="https://github.com/MariaLetta/free-gophers-pack"> Maria Letta @free-gophers-pack</a></small>
 </p> 
@@ -71,7 +71,7 @@ Since this is an implementation of a very specific-purpose library, the structur
 
 ## Core components
 
-![Image](../assets/images/outbox-implementation-Core-Components.png)
+![Image](../assets/images/outbox-implementation-Core-Components.webp)
 
 The core components of this implementation are:
 1. Publisher
@@ -307,7 +307,7 @@ const (
 
 The `RecordState` indicates the state of each record. It is needed by the record processor to know whether it is processed, delivered, or if its max attempts have been reached
 
-![image](../assets/images/outbox-implementation-State%20Machine.png)
+![image](../assets/images/outbox-implementation-State%20Machine.webp)
 
 ### `MessageBroker`
 
@@ -441,7 +441,7 @@ Having seen the above implementation, it's important to note that there is a gre
 This depends on what we want to achieve with our outbox implementation. And I believe this is why implementing a fully flexible, generic outbox package is very difficult without sacrificing complexity and performance.
 
 <p align="center">
-  <img alt="whattodo" src="/assets/images/fix.png" width="200">
+  <img alt="whattodo" src="/assets/images/fix.webp" width="200">
   <br>
     <small>Image by <a href="https://github.com/MariaLetta/free-gophers-pack"> Maria Letta @free-gophers-pack</a></small>
 </p> 

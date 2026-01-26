@@ -6,7 +6,7 @@ toc: true
 tags: software-architecture
 # classes: wide
 header:
-    og_image: /assets/images/3-major-fallacies-OG.png
+    og_image: /assets/images/3-major-fallacies-OG.webp
 ---
 Over the past 10 years, I've led and participated in numerous architecture designs, learning a lot from my mistakes and observations.
 
@@ -25,7 +25,7 @@ But a shiny new thing isn’t always the best solution.
 Too many projects waste money, time, and resources on new technologies just because they seem cool and modern.
 
 <p align=center>
-<img alt="Shiny object" src="/assets/images/shiny-object.png" width="400">
+<img alt="Shiny object" src="/assets/images/shiny-object.webp" width="400">
 </p>
 
 
@@ -55,7 +55,7 @@ No. You Aren't Gonna Need It (YAGNI). There’s a fine line between under-engine
 
 
 <p align=center>
-<img alt="Shiny object" src="/assets/images/wishful-thinking.png" width="400">
+<img alt="Shiny object" src="/assets/images/wishful-thinking.webp" width="400">
 </p>
 
 As engineers, we tend to lean towards over-engineering, adding unnecessary complexity. And complexity can kill your project.
@@ -82,7 +82,7 @@ Here are a few rules to have in mind when making architecture decisions:
 Meanwhile, the total engineering team at your company consists of just 10 engineers across two teams.
 
 <p align=center>
-<img alt="Shiny object" src="/assets/images/false-equivalence.png" width="300">
+<img alt="Shiny object" src="/assets/images/false-equivalence.webp" width="300">
 </p>
 
 This might be an extreme and obvious example, but false equivalence fallacy can be tricky to recognize. It happens when you make incorrect comparisons by focusing on a few selected characteristics of a case study or success story to justify a solution.

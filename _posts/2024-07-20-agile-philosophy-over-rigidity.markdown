@@ -6,7 +6,7 @@ toc: true
 tags: software-processes software-execution engineering-management
 # classes: wide
 header:
-    og_image: /assets/images/Agile-Philosophy-Vs-Framework-OG.png
+    og_image: /assets/images/Agile-Philosophy-Vs-Framework-OG.webp
 ---
 Staying strictly fixated on any Agile framework and enforcing written-in-stone rules by the book is inefficient.
 

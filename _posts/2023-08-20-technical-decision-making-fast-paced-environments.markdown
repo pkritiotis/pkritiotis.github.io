@@ -6,7 +6,7 @@ last_modified_at: 2024-06-06 10:23:00 +0300
 tags: software-processes software-engineering-philosophy
 toc: true
 header:
-    og_image: /assets/images/Sustainable-Technical-Decision-Making-OG.png
+    og_image: /assets/images/Sustainable-Technical-Decision-Making-OG.webp
 # classes: wide
 ---
 This blog post explores the engineering decision-making challenges in fast-paced development environments, the importance of maintaining technical agility, and presents a framework to make balanced technical decisions that enable consistent velocity and quality.
@@ -28,7 +28,7 @@ In this blog post, we see in more detail what is Engineering's role in product-d
 
 To understand what we need to do from an engineering perspective, we need to understand the macro-level end goal of what we are trying to achieve.
 
-![Product Driven Development](/assets/images/Sustainable-Technical-Decision-Making-Product-Driven-Development.png)
+![Product Driven Development](/assets/images/Sustainable-Technical-Decision-Making-Product-Driven-Development.webp)
 
   
 
@@ -95,7 +95,7 @@ For a sustainable flow, our ultimate goal is to optimize the engineering cost VS
 
 <p align="center">
 
-<img alt="Product Value vs Engineering Cost" src="/assets/images/Sustainable-Technical-Decision-Making-ProductValue-EngineeringInvestment.png" width="600">
+<img alt="Product Value vs Engineering Cost" src="/assets/images/Sustainable-Technical-Decision-Making-ProductValue-EngineeringInvestment.webp" width="600">
 
 </p>
 
@@ -166,7 +166,7 @@ The answer is simple but not easy to find. **It all depends on the focus, what w
 
 **Defining the focus is the foundational step and affects every single decision we'll make.** Finding what you are optimizing for is a global requirement applied at all levels, from a company to teams and individuals. In this case, we see the engineering focus as a second-level dimension that runs parallel with OKRs and product direction.
 
-![Engineering Focus](/assets/images/Sustainable-Technical-Decision-Making-EngineeringFocus.png)
+![Engineering Focus](/assets/images/Sustainable-Technical-Decision-Making-EngineeringFocus.webp)
 
 When a company runs out of money if feature X is not delivered by date Y, delivery time is much more critical than technical agility. It's necessary to have a correct rigid solution that does what it is supposed to do and invest more time later to fix it and make it more adaptable/extensible.
 
