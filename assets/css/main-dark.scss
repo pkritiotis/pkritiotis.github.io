@@ -19,8 +19,9 @@ $right-sidebar-width-wide: 350px !default;
 $background-color: #181d26; // Example: Set to pure black
 
 // Code Highlighting (copied from main.scss)
-$code-background-color: #fafafa;
-$code-background-color-dark: #bebebe; // Approx $light-gray
+// These variables are used by block code blocks
+$code-background-color: #2d3748;
+$code-background-color-dark: #4a5568;
 
 $base00: #273136;
 $base01: #313d43;
@@ -136,4 +137,14 @@ mark {
   &:hover {
     color: #bbb;
   }
+}
+
+// Inline code styling
+:not(pre) > code {
+  padding: 2px 4px;
+  font-size: 90%;
+  color: #f0f0f0;           // Bright Cyan
+  background-color: #656666; // Deep Blue
+  border: 1px solid #808080;
+  border-radius: 4px;
 }
